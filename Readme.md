@@ -16,3 +16,13 @@
 - Eclipse Memory Analyzer(MAT)
 - YourKit Java Profiler
 - IBM HEAP Analyzer
+
+
+# Type of Memory Leaks in Java
+## Memory Leak Through static Fields
+## Through Unclosed Resources
+## 
+## Inner Classes That Reference Outer Classes
+## Through finalize() Methods
+## Interned Strings
+## Using ThreadLocals
