@@ -1,12 +1,15 @@
 package zxf.java.memory.leak;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class ThreadLocalsLeak {
-    private ThreadLocal<Long> threadLocal;
+    private ThreadLocal<byte[]> threadLocal = new ThreadLocal<>();
 
     public Integer test() throws IOException {
-        threadLocal.set(System.nanoTime());
+        byte[] buffer = new byte[3000];
+        new Random().nextBytes(buffer);
+        threadLocal.set(buffer);
         return 1;
     }
 }

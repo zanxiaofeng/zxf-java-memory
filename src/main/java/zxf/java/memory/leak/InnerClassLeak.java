@@ -4,28 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class OuterClassLeak {
-    private static List<InnerClass> cache = new ArrayList<>();
-    private byte[] buffer = new byte[300];
+public class InnerClassLeak {
+    private byte[] buffer = new byte[3000];
 
-    public OuterClassLeak() {
+    public InnerClassLeak() {
         new Random().nextBytes(buffer);
     }
 
-    public void create() {
+    public InnerClass create() {
         Long sum = 0l;
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 3000; i++) {
             sum += buffer[i];
         }
-        cache.add(new InnerClass(sum));
+        return new InnerClass(sum);
     }
 
-    class InnerClass {
+    public class InnerClass {
         public Long sum;
 
         public InnerClass(Long sum) {
             this.sum = sum;
         }
-
     }
 }
