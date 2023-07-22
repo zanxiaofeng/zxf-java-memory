@@ -43,7 +43,6 @@ public class LeakController {
         printMemoryInfo();
         for (int i = 0; i < 1024; i++) {
             InnerClassLeak.InnerClass object = new InnerClassLeak().create();
-            printObjectSize(object, "InnerClassLeak.InnerClass");
             innerClasses.add(object);
         }
         printMemoryInfo();
@@ -71,10 +70,5 @@ public class LeakController {
         Long usedHeapSize = Runtime.getRuntime().totalMemory();
         Long freeHeapSize = Runtime.getRuntime().freeMemory();
         System.out.println(String.format("Memory Usage: max=%d, used=%d, free=%d", maxHeapSize, usedHeapSize, freeHeapSize));
-    }
-
-    private void printObjectSize(Object object, String type) {
-        long size = ObjectSizeFetcher.getObjectSize(object);
-        System.out.println(String.format("Object Size: type=%s, size=%d", type, size));
     }
 }
