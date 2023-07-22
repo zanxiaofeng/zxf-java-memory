@@ -17,7 +17,9 @@ public class LeakController {
 
     @GetMapping("/gc")
     public void gc() {
+        printMemoryInfo();
         System.gc();
+        printMemoryInfo();
     }
 
     @GetMapping("/byStaticReference")
@@ -37,18 +39,34 @@ public class LeakController {
 
     @GetMapping("/byInnerClass")
     public Integer byInnerClass() throws IOException {
-        for (int i = 0; i < 1000000000; i++) {
+        printMemoryInfo();
+        for (int i = 0; i < 1024; i++) {
             innerClasses.add(new InnerClassLeak().create());
         }
-        return 1000000000;
+        printMemoryInfo();
+        return 1024;
     }
-
 
     @GetMapping("/byThreadLocal")
     public Integer byThreadLocal() throws IOException {
-        for (int i = 0; i < 100000; i++) {
-            new ThreadLocalsLeak().test();
+        printMemoryInfo();
+        for (int i = 0; i < 1024; i++) {
+            new Thread(() -> {
+                try {
+                    new ThreadLocalsLeak().test();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
         }
-        return 100000;
+        printMemoryInfo();
+        return 1024;
+    }
+
+    private void printMemoryInfo() {
+        Long maxHeapSize = Runtime.getRuntime().maxMemory();
+        Long usedHeapSize = Runtime.getRuntime().totalMemory();
+        Long freeHeapSize = Runtime.getRuntime().freeMemory();
+        System.out.println("Memery Uasage: max=%d, used=%d, free=%d", maxHeapSize, usedHeapSize, freeHeapSize);
     }
 }
