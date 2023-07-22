@@ -67,6 +67,6 @@ public class LeakController {
         Long maxHeapSize = Runtime.getRuntime().maxMemory();
         Long usedHeapSize = Runtime.getRuntime().totalMemory();
         Long freeHeapSize = Runtime.getRuntime().freeMemory();
-        System.out.println("Memery Uasage: max=%d, used=%d, free=%d", maxHeapSize, usedHeapSize, freeHeapSize);
+        System.out.println(String.format("Memery Uasage: max=%d, used=%d, free=%d", maxHeapSize, usedHeapSize, freeHeapSize));
     }
 }
