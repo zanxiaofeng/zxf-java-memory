@@ -17,7 +17,7 @@
 - YourKit Java Profiler
 - IBM HEAP Analyzer
 
-# Other tools
+# Other Analyzing methods
 - jmap -histo <pid>
 
 # Type of Memory Leaks in Java
