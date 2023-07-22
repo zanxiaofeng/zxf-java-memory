@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zxf.java.memory.leak.*;
+import zxf.java.memory.service.ObjectSizeFetcher;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,7 +42,9 @@ public class LeakController {
     public Integer byInnerClass() throws IOException {
         printMemoryInfo();
         for (int i = 0; i < 1024; i++) {
-            innerClasses.add(new InnerClassLeak().create());
+            InnerClassLeak.InnerClass object = new InnerClassLeak().create();
+            printObjectSize(object, "InnerClassLeak.InnerClass");
+            innerClasses.add(object);
         }
         printMemoryInfo();
         return 1024;
@@ -68,5 +71,10 @@ public class LeakController {
         Long usedHeapSize = Runtime.getRuntime().totalMemory();
         Long freeHeapSize = Runtime.getRuntime().freeMemory();
         System.out.println(String.format("Memory Usage: max=%d, used=%d, free=%d", maxHeapSize, usedHeapSize, freeHeapSize));
+    }
+
+    private void printObjectSize(Object object, String type) {
+        long size = ObjectSizeFetcher.getObjectSize(object);
+        System.out.println(String.format("Object Size: type=%s, size=%d", type, size));
     }
 }
