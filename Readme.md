@@ -17,6 +17,8 @@
 - YourKit Java Profiler
 - IBM HEAP Analyzer
 
+# Other tools
+- jmap -histo <pid>
 
 # Type of Memory Leaks in Java
 ## Memory Leak Through static Fields
