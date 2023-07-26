@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zxf.java.memory.leak.*;
 import zxf.java.memory.service.ObjectSizeFetcher;
+import zxf.java.memory.util.DebugUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,9 +19,9 @@ public class LeakController {
 
     @GetMapping("/gc")
     public void gc() {
-        printMemoryInfo();
+        DebugUtils.printMemInfoFromRuntime("gc.before");
         System.gc();
-        printMemoryInfo();
+        DebugUtils.printMemInfoFromRuntime("gc.after");
     }
 
     @GetMapping("/byStaticReference")
@@ -40,18 +41,18 @@ public class LeakController {
 
     @GetMapping("/byInnerClass")
     public Integer byInnerClass() throws IOException {
-        printMemoryInfo();
+        DebugUtils.printMemInfoFromRuntime("byInnerClass.before");
         for (int i = 0; i < 1024; i++) {
             InnerClassLeak.InnerClass object = new InnerClassLeak().create();
             innerClasses.add(object);
         }
-        printMemoryInfo();
+        DebugUtils.printMemInfoFromRuntime("byInnerClass.after");
         return 1024;
     }
 
     @GetMapping("/byThreadLocal")
     public Integer byThreadLocal() throws IOException {
-        printMemoryInfo();
+        DebugUtils.printMemInfoFromRuntime("byThreadLocal.before");
         for (int i = 0; i < 1024; i++) {
             new Thread(() -> {
                 try {
@@ -61,14 +62,7 @@ public class LeakController {
                 }
             }).run();
         }
-        printMemoryInfo();
+        DebugUtils.printMemInfoFromRuntime("byThreadLocal.after");
         return 1024;
-    }
-
-    private void printMemoryInfo() {
-        Long maxHeapSize = Runtime.getRuntime().maxMemory();
-        Long usedHeapSize = Runtime.getRuntime().totalMemory();
-        Long freeHeapSize = Runtime.getRuntime().freeMemory();
-        System.out.println(String.format("Memory Usage: max=%d, used=%d, free=%d", maxHeapSize, usedHeapSize, freeHeapSize));
     }
 }
