@@ -29,11 +29,11 @@ public class PdfboxTests {
     private static void loadPdf() throws IOException, InterruptedException {
         System.gc();
         DebugUtils.printMemInfoFromRuntime("loadPdf.start");
-        DebugUtils.callJmap("loadPdf.start");
+        //DebugUtils.callJmap("loadPdf.start");
         List<BufferedImage> results = new ArrayList<>();
         try (PDDocument pdfDocument = PDDocument.load(Paths.get("./testpdf/developer-mozilla-org-CORS-en.pdf").toFile())) {
             DebugUtils.printMemInfoFromRuntime("loadPdf.after.load");
-            DebugUtils.callJmap("loadPdf.after.load");
+            //DebugUtils.callJmap("loadPdf.after.load");
             PDFRenderer pdfRenderer = new PDFRenderer(pdfDocument);
             for (int pageIndex = 0; pageIndex < pdfDocument.getNumberOfPages(); pageIndex++){
                 BufferedImage image = pdfRenderer.renderImageWithDPI(pageIndex, 200);
@@ -41,6 +41,6 @@ public class PdfboxTests {
             }
         }
         DebugUtils.printMemInfoFromRuntime("loadPdf.end");
-        DebugUtils.callJmap("loadPdf.end");
+        //DebugUtils.callJmap("loadPdf.end");
     }
 }

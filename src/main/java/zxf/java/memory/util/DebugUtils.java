@@ -47,9 +47,6 @@ public class DebugUtils {
     }
 
     public static void callJmap(String title) throws IOException, InterruptedException {
-        if (true) {
-            return;
-        }
         System.out.println("Call jmap: " + title + " - " + ProcessHandle.current().pid());
         Process process = Runtime.getRuntime().exec("jmap -histo " + ProcessHandle.current().pid());
         logOutput(process.getInputStream(), "");
