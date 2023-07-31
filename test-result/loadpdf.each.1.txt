@@ -1,0 +1,1123 @@
+ num     #instances         #bytes  class name (module)
+-------------------------------------------------------
+   1:         54146       82787416  [I (java.base@11.0.12)
+   2:        105019       16713120  [B (java.base@11.0.12)
+   3:         51801        1657632  jdk.internal.math.FDBigInteger (java.base@11.0.12)
+   4:         65173        1564152  java.lang.String (java.base@11.0.12)
+   5:         25880        1060800  [C (java.base@11.0.12)
+   6:         20564        1053080  [F (java.base@11.0.12)
+   7:         31242         999744  java.util.HashMap$Node (java.base@11.0.12)
+   8:         12568         904896  java.awt.geom.AffineTransform (java.desktop@11.0.12)
+   9:         31124         746976  java.lang.StringBuilder (java.base@11.0.12)
+  10:          1049         708432  [D (java.base@11.0.12)
+  11:          8672         671600  [Ljava.lang.Object; (java.base@11.0.12)
+  12:         12431         497240  java.math.BigDecimal (java.base@11.0.12)
+  13:         14708         470656  jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer (java.base@11.0.12)
+  14:             3         401608  [[B (java.base@11.0.12)
+  15:         11565         370080  org.apache.pdfbox.cos.COSInteger
+  16:           706         334128  [Ljava.util.HashMap$Node; (java.base@11.0.12)
+  17:          2601         319456  java.lang.Class (java.base@11.0.12)
+  18:         12403         297672  org.apache.pdfbox.cos.COSFloat
+  19:          4794         153408  java.util.concurrent.ConcurrentHashMap$Node (java.base@11.0.12)
+  20:          6952         111232  java.lang.Float (java.base@11.0.12)
+  21:          6897         110352  java.lang.Integer (java.base@11.0.12)
+  22:           100         105440  [Ljava.util.concurrent.ConcurrentHashMap$Node; (java.base@11.0.12)
+  23:          1647          92232  java.util.HashMap$TreeNode (java.base@11.0.12)
+  24:          3406          81744  org.apache.fontbox.ttf.GlyphRenderer$Point
+  25:          1478          70944  sun.util.locale.LocaleObjectCache$CacheEntry (java.base@11.0.12)
+  26:          2135          68320  java.lang.invoke.LambdaForm$Name (java.base@11.0.12)
+  27:          1305          52200  java.util.LinkedHashMap$Entry (java.base@11.0.12)
+  28:           751          48064  org.apache.pdfbox.io.ScratchFileBuffer
+  29:            37          48056  [J (java.base@11.0.12)
+  30:          1959          47016  java.util.ArrayList (java.base@11.0.12)
+  31:           859          41232  java.util.HashMap (java.base@11.0.12)
+  32:           972          38880  java.lang.ref.SoftReference (java.base@11.0.12)
+  33:           792          38016  java.lang.invoke.MemberName (java.base@11.0.12)
+  34:          1507          36168  org.apache.pdfbox.cos.COSObjectKey
+  35:          2070          33120  org.apache.pdfbox.util.Matrix
+  36:           234          29952  org.apache.pdfbox.pdmodel.graphics.state.PDGraphicsState
+  37:           748          29920  org.apache.pdfbox.cos.COSObject
+  38:           914          29248  java.awt.Color (java.desktop@11.0.12)
+  39:          1153          27672  java.lang.Long (java.base@11.0.12)
+  40:           842          26944  java.awt.geom.GeneralPath (java.desktop@11.0.12)
+  41:           554          25376  [Ljava.lang.String; (java.base@11.0.12)
+  42:           776          24832  java.util.ArrayList$Itr (java.base@11.0.12)
+  43:           158          24224  [S (java.base@11.0.12)
+  44:           738          23616  java.util.Locale (java.base@11.0.12)
+  45:           737          23584  sun.util.locale.BaseLocale (java.base@11.0.12)
+  46:           737          23584  sun.util.locale.BaseLocale$Key (java.base@11.0.12)
+  47:           727          23264  java.awt.geom.Path2D$Double (java.desktop@11.0.12)
+  48:           569          22760  org.apache.pdfbox.cos.COSStream
+  49:           709          22688  java.awt.geom.Path2D$Double$TxIterator (java.desktop@11.0.12)
+  50:          1416          22656  org.apache.pdfbox.util.SmallMap
+  51:           935          22440  org.apache.pdfbox.util.Vector
+  52:           633          21152  [Ljava.lang.Class; (java.base@11.0.12)
+  53:           847          20328  org.apache.pdfbox.cos.COSDictionary
+  54:           288          19584  [Ljava.lang.ref.SoftReference; (java.base@11.0.12)
+  55:          1224          19584  java.lang.Object (java.base@11.0.12)
+  56:           458          18320  java.lang.invoke.MethodType (java.base@11.0.12)
+  57:           762          18288  org.apache.pdfbox.cos.COSArray
+  58:           251          18088  [Ljava.lang.invoke.LambdaForm$Name; (java.base@11.0.12)
+  59:           727          17448  org.apache.pdfbox.cos.COSName
+  60:           511          16352  java.lang.invoke.MethodType$ConcurrentWeakInternSet$WeakEntry (java.base@11.0.12)
+  61:             2          15840  [Lorg.apache.fontbox.ttf.GlyphData;
+  62:           227          14528  java.util.zip.Inflater (java.base@11.0.12)
+  63:           406          12992  java.lang.invoke.LambdaForm$NamedFunction (java.base@11.0.12)
+  64:           538          12912  java.lang.invoke.ResolvedMethodName (java.base@11.0.12)
+  65:           269          12912  jdk.internal.ref.CleanerImpl$PhantomCleanableRef (java.base@11.0.12)
+  66:            65          12136  [Lorg.apache.fontbox.ttf.GlyphRenderer$Point;
+  67:           246          11808  java.lang.invoke.LambdaForm (java.base@11.0.12)
+  68:           234          11232  org.apache.pdfbox.pdmodel.graphics.state.PDTextState
+  69:           465          11160  java.io.ByteArrayOutputStream (java.base@11.0.12)
+  70:           164          10496  java.net.URL (java.base@11.0.12)
+  71:           209          10032  java.nio.HeapByteBuffer (java.base@11.0.12)
+  72:           209          10032  java.nio.HeapCharBuffer (java.base@11.0.12)
+  73:           398           9552  java.lang.module.ModuleDescriptor$Exports (java.base@11.0.12)
+  74:           199           9552  sun.java2d.loops.Blit (java.desktop@11.0.12)
+  75:           168           9408  java.lang.invoke.MethodTypeForm (java.base@11.0.12)
+  76:           383           9192  org.apache.pdfbox.cos.COSString
+  77:           228           9120  sun.nio.cs.UTF_8$Decoder (java.base@11.0.12)
+  78:           223           8920  java.lang.invoke.DirectMethodHandle$Accessor (java.base@11.0.12)
+  79:           150           8400  java.lang.invoke.LambdaFormEditor$Transform (java.base@11.0.12)
+  80:           163           7824  sun.java2d.loops.ScaledBlit (java.desktop@11.0.12)
+  81:           120           7680  java.util.concurrent.ConcurrentHashMap (java.base@11.0.12)
+  82:           227           7264  org.apache.pdfbox.pdfparser.PDFStreamParser
+  83:            77           6776  java.lang.reflect.Method (java.base@11.0.12)
+  84:           269           6456  java.util.ArrayDeque (java.base@11.0.12)
+  85:           263           6312  java.util.ImmutableCollections$Set12 (java.base@11.0.12)
+  86:           196           6272  java.awt.geom.Path2D$Float$CopyIterator (java.desktop@11.0.12)
+  87:           193           6176  java.awt.geom.Rectangle2D$Float (java.desktop@11.0.12)
+  88:           192           6144  java.awt.geom.Path2D$Float$TxIterator (java.desktop@11.0.12)
+  89:            76           6080  java.lang.reflect.Constructor (java.base@11.0.12)
+  90:           187           5984  java.lang.module.ModuleDescriptor$Requires (java.base@11.0.12)
+  91:           182           5824  org.apache.pdfbox.cos.COSInputStream$1
+  92:            71           5680  java.net.URI (java.base@11.0.12)
+  93:           228           5472  java.io.PushbackInputStream (java.base@11.0.12)
+  94:           228           5472  org.apache.pdfbox.cos.COSInputStream
+  95:           228           5472  org.apache.pdfbox.io.RandomAccessInputStream
+  96:           227           5448  java.util.zip.Inflater$InflaterZStreamRef (java.base@11.0.12)
+  97:           227           5448  org.apache.pdfbox.pdfparser.InputStreamSource
+  98:           226           5424  org.apache.pdfbox.pdmodel.font.PDType3CharProc
+  99:            82           5248  java.lang.Class$ReflectionData (java.base@11.0.12)
+ 100:            71           5040  [Ljava.lang.invoke.MethodHandle; (java.base@11.0.12)
+ 101:           315           5040  java.util.HashSet (java.base@11.0.12)
+ 102:           156           4992  java.lang.invoke.DirectMethodHandle (java.base@11.0.12)
+ 103:            36           4608  sun.nio.fs.UnixFileAttributes (java.base@11.0.12)
+ 104:            71           4544  java.lang.module.ModuleDescriptor (java.base@11.0.12)
+ 105:           183           4392  org.apache.pdfbox.filter.DecodeResult
+ 106:           107           4280  java.math.BigInteger (java.base@11.0.12)
+ 107:            88           4224  sun.java2d.loops.MaskBlit (java.desktop@11.0.12)
+ 108:           263           4208  java.lang.Character (java.base@11.0.12)
+ 109:             1           4112  [Ljava.nio.ByteBuffer; (java.base@11.0.12)
+ 110:           256           4096  java.lang.Byte (java.base@11.0.12)
+ 111:            85           4080  ch.qos.logback.classic.Logger
+ 112:            39           4056  java.util.jar.JarFile$JarFileEntry (java.base@11.0.12)
+ 113:           166           3984  java.util.ImmutableCollections$SetN (java.base@11.0.12)
+ 114:           166           3984  jdk.internal.module.ServicesCatalog$ServiceProvider (java.base@11.0.12)
+ 115:            71           3976  jdk.internal.module.ModuleReferenceImpl (java.base@11.0.12)
+ 116:             5           3960  [[Ljava.lang.Object; (java.base@11.0.12)
+ 117:            70           3920  sun.awt.geom.Edge (java.desktop@11.0.12)
+ 118:            67           3752  java.lang.Module (java.base@11.0.12)
+ 119:            10           3680  java.lang.Thread (java.base@11.0.12)
+ 120:           115           3680  java.util.Vector (java.base@11.0.12)
+ 121:            46           3624  [Ljava.util.WeakHashMap$Entry; (java.base@11.0.12)
+ 122:             2           3312  [Lsun.java2d.loops.GraphicsPrimitive; (java.desktop@11.0.12)
+ 123:            38           3040  org.apache.pdfbox.pdmodel.font.PDType3Font
+ 124:            75           3000  org.apache.fontbox.ttf.GlyfSimpleDescript
+ 125:            41           2952  org.apache.fontbox.cmap.CMap
+ 126:           182           2912  org.apache.pdfbox.io.RandomAccessOutputStream
+ 127:            36           2592  java.util.zip.ZipFile$Source (java.base@11.0.12)
+ 128:           152           2432  java.util.Collections$UnmodifiableSet (java.base@11.0.12)
+ 129:            38           2432  sun.awt.geom.Order1 (java.desktop@11.0.12)
+ 130:           101           2424  java.util.ImmutableCollections$List12 (java.base@11.0.12)
+ 131:            75           2400  org.apache.fontbox.ttf.GlyphData
+ 132:            75           2400  org.apache.fontbox.util.BoundingBox
+ 133:            60           2400  sun.awt.geom.CurveLink (java.desktop@11.0.12)
+ 134:            99           2376  java.util.concurrent.CopyOnWriteArrayList (java.base@11.0.12)
+ 135:            36           2304  java.util.jar.JarFile (java.base@11.0.12)
+ 136:            47           2256  sun.java2d.loops.MaskFill (java.desktop@11.0.12)
+ 137:            68           2176  java.lang.ref.ReferenceQueue (java.base@11.0.12)
+ 138:            66           2112  java.lang.invoke.LambdaForm$Kind (java.base@11.0.12)
+ 139:            88           2112  java.util.jar.Attributes$Name (java.base@11.0.12)
+ 140:            37           2072  java.io.FileCleanable (java.base@11.0.12)
+ 141:            43           2064  java.util.WeakHashMap (java.base@11.0.12)
+ 142:            60           1920  java.lang.Package (java.base@11.0.12)
+ 143:            46           1840  java.io.ObjectStreamField (java.base@11.0.12)
+ 144:            36           1728  jdk.internal.loader.URLClassPath$JarLoader (java.base@11.0.12)
+ 145:            43           1720  java.security.CodeSource (java.base@11.0.12)
+ 146:            71           1704  jdk.internal.module.SystemModuleFinders$2 (java.base@11.0.12)
+ 147:             8           1664  sun.awt.geom.Order3 (java.desktop@11.0.12)
+ 148:            41           1640  java.io.FileDescriptor (java.base@11.0.12)
+ 149:            41           1640  java.lang.Package$VersionInfo (java.base@11.0.12)
+ 150:            68           1632  java.lang.module.ModuleDescriptor$Provides (java.base@11.0.12)
+ 151:            66           1584  [Ljava.lang.reflect.Constructor; (java.base@11.0.12)
+ 152:            97           1552  java.util.ImmutableCollections$ListN (java.base@11.0.12)
+ 153:            64           1536  jdk.internal.reflect.NativeConstructorAccessorImpl (java.base@11.0.12)
+ 154:            48           1536  sun.java2d.loops.SurfaceType (java.desktop@11.0.12)
+ 155:            61           1464  java.lang.module.ResolvedModule (java.base@11.0.12)
+ 156:            61           1464  jdk.internal.module.SystemModuleFinders$SystemModuleReader (java.base@11.0.12)
+ 157:             1           1448  [Lorg.apache.pdfbox.cos.COSInteger;
+ 158:            60           1440  java.awt.geom.Point2D$Float (java.desktop@11.0.12)
+ 159:            30           1440  java.lang.invoke.BoundMethodHandle$SpeciesData (java.base@11.0.12)
+ 160:            60           1440  java.util.Vector$1 (java.base@11.0.12)
+ 161:            60           1440  jdk.internal.loader.BuiltinClassLoader$LoadedModule (java.base@11.0.12)
+ 162:            30           1440  sun.java2d.loops.DrawGlyphListAA (java.desktop@11.0.12)
+ 163:            45           1440  sun.nio.fs.UnixPath (java.base@11.0.12)
+ 164:            59           1416  java.lang.RuntimePermission (java.base@11.0.12)
+ 165:             1           1376  [Ljdk.internal.math.FDBigInteger; (java.base@11.0.12)
+ 166:            57           1368  org.apache.commons.logging.LogAdapter$Slf4jLocationAwareLog
+ 167:            55           1320  java.lang.ProcessEnvironment$Value (java.base@11.0.12)
+ 168:            55           1320  java.lang.ProcessEnvironment$Variable (java.base@11.0.12)
+ 169:            41           1312  org.apache.fontbox.cmap.CodespaceRange
+ 170:            27           1296  sun.java2d.loops.BlitBg (java.desktop@11.0.12)
+ 171:            39           1280  [Ljava.math.BigInteger; (java.base@11.0.12)
+ 172:            40           1280  org.apache.pdfbox.pdmodel.font.PDFontDescriptor
+ 173:            40           1280  sun.awt.geom.ChainEnd (java.desktop@11.0.12)
+ 174:            52           1248  java.io.ExpiringCache$Entry (java.base@11.0.12)
+ 175:            39           1248  java.lang.invoke.BoundMethodHandle$Species_L (java.base@11.0.12)
+ 176:            39           1248  org.apache.pdfbox.pdmodel.common.COSArrayList
+ 177:            38           1216  java.io.File (java.base@11.0.12)
+ 178:            38           1216  org.apache.pdfbox.pdmodel.font.encoding.DictionaryEncoding
+ 179:            30           1200  [Ljava.lang.invoke.BoundMethodHandle$SpeciesData; (java.base@11.0.12)
+ 180:            37           1184  java.io.RandomAccessFile (java.base@11.0.12)
+ 181:            37           1184  java.util.PropertyPermission (java.base@11.0.12)
+ 182:            36           1152  java.util.zip.ZipFile$CleanableResource (java.base@11.0.12)
+ 183:            12           1128  [Z (java.base@11.0.12)
+ 184:            70           1120  java.lang.ref.ReferenceQueue$Lock (java.base@11.0.12)
+ 185:            69           1104  java.util.HashMap$KeySet (java.base@11.0.12)
+ 186:            19           1064  sun.java2d.loops.GraphicsPrimitiveProxy (java.desktop@11.0.12)
+ 187:            66           1056  jdk.internal.module.SystemModuleFinders$3 (java.base@11.0.12)
+ 188:             1           1040  [Ljava.lang.Byte; (java.base@11.0.12)
+ 189:             1           1040  [Ljava.lang.Integer; (java.base@11.0.12)
+ 190:             1           1040  [Ljava.lang.Long; (java.base@11.0.12)
+ 191:            65           1040  org.apache.fontbox.ttf.GlyphRenderer
+ 192:            32           1024  java.util.LinkedList (java.base@11.0.12)
+ 193:            64           1024  jdk.internal.reflect.DelegatingConstructorAccessorImpl (java.base@11.0.12)
+ 194:            18           1008  sun.java2d.xr.XRPMTransformedBlit (java.desktop@11.0.12)
+ 195:            31            992  java.lang.invoke.VarHandle$AccessMode (java.base@11.0.12)
+ 196:            31            984  [Lsun.awt.geom.CurveLink; (java.desktop@11.0.12)
+ 197:            41            984  java.util.Collections$SetFromMap (java.base@11.0.12)
+ 198:            30            960  sun.awt.geom.Order0 (java.desktop@11.0.12)
+ 199:            20            960  sun.java2d.xr.XRMaskFill (java.desktop@11.0.12)
+ 200:             9            936  sun.awt.image.IntegerInterleavedRaster (java.desktop@11.0.12)
+ 201:            28            896  java.lang.ref.WeakReference (java.base@11.0.12)
+ 202:             6            864  java.awt.image.DirectColorModel (java.desktop@11.0.12)
+ 203:            36            864  java.util.zip.ZipFile$Source$Key (java.base@11.0.12)
+ 204:            36            864  sun.awt.SunHints$Value (java.desktop@11.0.12)
+ 205:            18            864  sun.java2d.xr.XRPMBlit (java.desktop@11.0.12)
+ 206:            18            864  sun.java2d.xr.XRPMScaledBlit (java.desktop@11.0.12)
+ 207:            15            840  java.util.LinkedHashMap (java.base@11.0.12)
+ 208:            31            824  [Lsun.awt.geom.ChainEnd; (java.desktop@11.0.12)
+ 209:            51            816  java.util.jar.JarFile$1 (java.base@11.0.12)
+ 210:            17            816  sun.java2d.loops.DrawGlyphList (java.desktop@11.0.12)
+ 211:            17            816  sun.java2d.loops.FillRect (java.desktop@11.0.12)
+ 212:            24            768  java.awt.Rectangle (java.desktop@11.0.12)
+ 213:            24            768  sun.font.EAttribute (java.desktop@11.0.12)
+ 214:            16            768  sun.java2d.loops.DrawLine (java.desktop@11.0.12)
+ 215:            16            768  sun.java2d.loops.DrawPath (java.desktop@11.0.12)
+ 216:            16            768  sun.java2d.loops.DrawPolygons (java.desktop@11.0.12)
+ 217:            16            768  sun.java2d.loops.DrawRect (java.desktop@11.0.12)
+ 218:            16            768  sun.java2d.loops.FillPath (java.desktop@11.0.12)
+ 219:            16            768  sun.java2d.loops.FillSpans (java.desktop@11.0.12)
+ 220:             8            688  [Lsun.java2d.loops.RenderCache$Entry; (java.desktop@11.0.12)
+ 221:             6            672  java.util.GregorianCalendar (java.base@11.0.12)
+ 222:            14            672  sun.java2d.loops.TransformHelper (java.desktop@11.0.12)
+ 223:            14            672  sun.java2d.xr.XrSwToPMBlit (java.desktop@11.0.12)
+ 224:            14            672  sun.java2d.xr.XrSwToPMScaledBlit (java.desktop@11.0.12)
+ 225:            14            672  sun.java2d.xr.XrSwToPMTransformedBlit (java.desktop@11.0.12)
+ 226:            28            672  sun.security.provider.PolicyFile$PolicyEntry (java.base@11.0.12)
+ 227:            12            672  sun.util.calendar.ZoneInfo (java.base@11.0.12)
+ 228:            16            640  java.lang.invoke.BoundMethodHandle$Species_LL (java.base@11.0.12)
+ 229:            16            640  java.security.ProtectionDomain (java.base@11.0.12)
+ 230:             3            624  [Ljava.lang.invoke.LambdaForm; (java.base@11.0.12)
+ 231:            39            624  java.util.WeakHashMap$KeySet (java.base@11.0.12)
+ 232:            39            624  java.util.concurrent.atomic.AtomicBoolean (java.base@11.0.12)
+ 233:            26            624  org.apache.pdfbox.contentstream.operator.Operator
+ 234:            13            624  sun.java2d.loops.DrawGlyphListLCD (java.desktop@11.0.12)
+ 235:            13            624  sun.util.resources.Bundles$BundleReference (java.base@11.0.12)
+ 236:             7            616  sun.awt.image.BufImgSurfaceData (java.desktop@11.0.12)
+ 237:            16            600  [Ljava.lang.reflect.Method; (java.base@11.0.12)
+ 238:            20            600  [Lsun.awt.geom.Edge; (java.desktop@11.0.12)
+ 239:            18            592  [[I (java.base@11.0.12)
+ 240:             4            576  [Ljava.lang.invoke.MemberName; (java.base@11.0.12)
+ 241:             4            576  java.text.DecimalFormat (java.base@11.0.12)
+ 242:            18            576  java.util.Hashtable$Entry (java.base@11.0.12)
+ 243:            36            576  sun.nio.fs.UnixFileAttributes$UnixAsBasicFileAttributes (java.base@11.0.12)
+ 244:             6            576  sun.util.calendar.Gregorian$Date (java.base@11.0.12)
+ 245:            14            560  java.security.AccessControlContext (java.base@11.0.12)
+ 246:             7            560  java.util.concurrent.TimeUnit (java.base@11.0.12)
+ 247:            14            560  org.apache.fontbox.ttf.NameRecord
+ 248:             1            528  [Ljava.lang.Character; (java.base@11.0.12)
+ 249:            13            520  java.util.WeakHashMap$Entry (java.base@11.0.12)
+ 250:            18            512  [Ljava.io.ObjectStreamField; (java.base@11.0.12)
+ 251:             8            512  java.nio.DirectByteBuffer (java.base@11.0.12)
+ 252:             7            496  [Lsun.invoke.util.Wrapper; (java.base@11.0.12)
+ 253:            10            480  [Lsun.awt.SunHints$Value; (java.desktop@11.0.12)
+ 254:            12            480  java.lang.ClassLoader$NativeLibrary (java.base@11.0.12)
+ 255:            12            480  java.lang.invoke.DirectMethodHandle$Special (java.base@11.0.12)
+ 256:            10            480  org.apache.fontbox.ttf.TTFTable
+ 257:            10            480  sun.invoke.util.Wrapper (java.base@11.0.12)
+ 258:             4            456  [Ljava.lang.ClassValue$Entry; (java.base@11.0.12)
+ 259:            19            456  java.security.SecurityPermission (java.base@11.0.12)
+ 260:            19            456  sun.java2d.loops.CompositeType (java.desktop@11.0.12)
+ 261:            14            448  java.awt.geom.Path2D$Double$CopyIterator (java.desktop@11.0.12)
+ 262:            14            448  java.lang.ThreadLocal$ThreadLocalMap$Entry (java.base@11.0.12)
+ 263:            14            448  java.security.Permissions (java.base@11.0.12)
+ 264:            11            440  java.lang.invoke.VarHandleObjects$FieldInstanceReadWrite (java.base@11.0.12)
+ 265:             9            432  java.awt.image.DataBufferInt (java.desktop@11.0.12)
+ 266:             9            432  java.awt.image.SinglePixelPackedSampleModel (java.desktop@11.0.12)
+ 267:            18            432  java.text.DateFormat$Field (java.base@11.0.12)
+ 268:             6            432  java.text.DecimalFormatSymbols (java.base@11.0.12)
+ 269:             9            432  sun.util.locale.provider.LocaleResources$ResourceReference (java.base@11.0.12)
+ 270:            13            416  sun.util.resources.Bundles$CacheKey (java.base@11.0.12)
+ 271:            17            408  java.lang.invoke.Invokers (java.base@11.0.12)
+ 272:            10            400  java.lang.OutOfMemoryError (java.base@11.0.12)
+ 273:            10            400  java.lang.invoke.MethodHandleImpl$AsVarargsCollector (java.base@11.0.12)
+ 274:             2            400  org.apache.fontbox.ttf.OS2WindowsMetricsTable
+ 275:             1            376  com.intellij.rt.execution.application.AppMainV2$1
+ 276:             1            376  java.lang.ref.Finalizer$FinalizerThread (java.base@11.0.12)
+ 277:             1            376  jdk.internal.misc.InnocuousThread (java.base@11.0.12)
+ 278:             6            368  [Ljava.util.Hashtable$Entry; (java.base@11.0.12)
+ 279:            23            368  java.awt.font.TextAttribute (java.desktop@11.0.12)
+ 280:             1            368  java.lang.ref.Reference$ReferenceHandler (java.base@11.0.12)
+ 281:             5            360  java.util.ResourceBundle$CacheKey (java.base@11.0.12)
+ 282:            11            352  java.awt.geom.AreaIterator (java.desktop@11.0.12)
+ 283:            11            352  java.security.BasicPermissionCollection (java.base@11.0.12)
+ 284:             4            352  java.util.regex.Pattern (java.base@11.0.12)
+ 285:            11            352  sun.security.util.LazyCodeSourcePermissionCollection (java.base@11.0.12)
+ 286:             3            336  [Lsun.font.EAttribute; (java.desktop@11.0.12)
+ 287:             6            336  java.nio.DirectLongBufferU (java.base@11.0.12)
+ 288:            14            336  java.util.LinkedList$Node (java.base@11.0.12)
+ 289:             6            336  java.util.Properties (java.base@11.0.12)
+ 290:             7            336  sun.java2d.pipe.PixelToParallelogramConverter (java.desktop@11.0.12)
+ 291:             4            320  java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLLLLL (java.base@11.0.12)
+ 292:             5            320  java.nio.DirectByteBufferR (java.base@11.0.12)
+ 293:            10            320  java.util.ResourceBundle$KeyElementReference (java.base@11.0.12)
+ 294:            13            312  java.awt.geom.Area (java.desktop@11.0.12)
+ 295:            13            312  java.util.Collections$UnmodifiableRandomAccessList (java.base@11.0.12)
+ 296:             3            288  com.sun.org.apache.xpath.internal.axes.AxesWalker (java.xml@11.0.12)
+ 297:            12            288  java.awt.AlphaComposite (java.desktop@11.0.12)
+ 298:             9            288  java.lang.ref.PhantomReference (java.base@11.0.12)
+ 299:            12            288  java.net.StandardSocketOptions$StdSocketOption (java.base@11.0.12)
+ 300:             6            288  java.util.Hashtable (java.base@11.0.12)
+ 301:             9            288  jdk.internal.org.objectweb.asm.Type (java.base@11.0.12)
+ 302:             9            288  sun.java2d.DefaultDisposerRecord (java.desktop@11.0.12)
+ 303:            12            288  sun.java2d.StateTrackableDelegate (java.desktop@11.0.12)
+ 304:             9            288  sun.java2d.loops.RenderCache$Entry (java.desktop@11.0.12)
+ 305:             1            280  [Ljava.lang.invoke.LambdaForm$Kind; (java.base@11.0.12)
+ 306:             7            280  java.awt.image.BufferedImage (java.desktop@11.0.12)
+ 307:             7            280  sun.java2d.pipe.Region (java.desktop@11.0.12)
+ 308:             6            272  [Ljava.lang.invoke.MethodType; (java.base@11.0.12)
+ 309:            17            272  sun.invoke.util.ValueConversions$WrapperCache (java.base@11.0.12)
+ 310:            11            264  java.lang.invoke.MethodHandleImpl$Intrinsic (java.base@11.0.12)
+ 311:            11            264  sun.java2d.cmm.lcms.LCMSProfile$TagData (java.desktop@11.0.12)
+ 312:            16            256  [Ljava.security.Principal; (java.base@11.0.12)
+ 313:             4            256  java.lang.invoke.BoundMethodHandle$Species_LLLLLLIIL (java.base@11.0.12)
+ 314:            16            256  java.security.ProtectionDomain$Key (java.base@11.0.12)
+ 315:             8            256  sun.java2d.marlin.IntArrayCache$Bucket (java.desktop@11.0.12)
+ 316:             6            240  java.io.FilePermission (java.base@11.0.12)
+ 317:             5            240  java.net.URLPermission (java.base@11.0.12)
+ 318:            10            240  java.nio.charset.CoderResult (java.base@11.0.12)
+ 319:            10            240  java.nio.file.StandardOpenOption (java.base@11.0.12)
+ 320:             5            240  java.util.ResourceBundle$BundleReference (java.base@11.0.12)
+ 321:            10            240  sun.awt.SunHints$Key (java.desktop@11.0.12)
+ 322:             5            240  sun.java2d.loops.DrawParallelogram (java.desktop@11.0.12)
+ 323:             5            240  sun.java2d.loops.FillParallelogram (java.desktop@11.0.12)
+ 324:            10            240  sun.java2d.marlin.IntArrayCache$Reference (java.desktop@11.0.12)
+ 325:             5            224  [Ljava.lang.invoke.LambdaForm$NamedFunction; (java.base@11.0.12)
+ 326:             4            224  java.lang.invoke.BoundMethodHandle$Species_LIILLL (java.base@11.0.12)
+ 327:             2            224  org.apache.fontbox.ttf.HeaderTable
+ 328:             2            224  org.apache.fontbox.ttf.MaximumProfileTable
+ 329:             9            216  java.net.NetPermission (java.base@11.0.12)
+ 330:             9            216  java.util.jar.Manifest (java.base@11.0.12)
+ 331:             9            216  sun.util.logging.PlatformLogger$Level (java.base@11.0.12)
+ 332:            13            208  java.util.Collections$SingletonSet (java.base@11.0.12)
+ 333:            13            208  org.apache.fontbox.cmap.CMapParser$Operator
+ 334:             2            208  org.apache.fontbox.ttf.PostScriptTable
+ 335:             1            208  sun.java2d.SunGraphics2D (java.desktop@11.0.12)
+ 336:             1            208  sun.java2d.marlin.DRenderer (java.desktop@11.0.12)
+ 337:             1            208  sun.java2d.marlin.DStroker (java.desktop@11.0.12)
+ 338:             2            200  [Ljava.text.DateFormat$Field; (java.base@11.0.12)
+ 339:             5            200  java.lang.ref.Finalizer (java.base@11.0.12)
+ 340:             5            200  java.util.EnumMap (java.base@11.0.12)
+ 341:             5            200  java.util.stream.StreamOpFlag (java.base@11.0.12)
+ 342:             6            192  [Ljava.lang.invoke.LambdaFormEditor$Transform; (java.base@11.0.12)
+ 343:             3            192  [[Ljava.lang.String; (java.base@11.0.12)
+ 344:             3            192  java.lang.ClassValue$ClassValueMap (java.base@11.0.12)
+ 345:             6            192  java.lang.ClassValue$Entry (java.base@11.0.12)
+ 346:             6            192  java.lang.invoke.LambdaForm$BasicType (java.base@11.0.12)
+ 347:             8            192  java.math.RoundingMode (java.base@11.0.12)
+ 348:             6            192  java.nio.file.attribute.FileTime (java.base@11.0.12)
+ 349:            12            192  java.security.SecureClassLoader$CodeSourceKey (java.base@11.0.12)
+ 350:             3            192  java.text.DateFormatSymbols (java.base@11.0.12)
+ 351:             8            192  org.apache.pdfbox.pdmodel.graphics.state.RenderingMode
+ 352:             3            192  sun.java2d.loops.RenderLoops (java.desktop@11.0.12)
+ 353:             4            192  sun.java2d.xr.XRMaskBlit (java.desktop@11.0.12)
+ 354:             6            192  sun.util.locale.provider.LocaleResources (java.base@11.0.12)
+ 355:             2            176  [[D (java.base@11.0.12)
+ 356:            11            176  java.lang.ThreadLocal (java.base@11.0.12)
+ 357:            11            176  java.text.NumberFormat$Field (java.base@11.0.12)
+ 358:             2            176  org.apache.fontbox.ttf.HorizontalHeaderTable
+ 359:             1            168  [[Ljava.math.BigInteger; (java.base@11.0.12)
+ 360:             7            168  ch.qos.logback.classic.Level
+ 361:             7            168  java.lang.System$Logger$Level (java.base@11.0.12)
+ 362:             3            168  java.net.SocketPermission (java.base@11.0.12)
+ 363:             3            168  sun.nio.cs.UTF_16BE$Decoder (java.base@11.0.12)
+ 364:             5            160  com.sun.org.apache.xpath.internal.objects.XNumber (java.xml@11.0.12)
+ 365:             5            160  java.lang.StringBuffer (java.base@11.0.12)
+ 366:             2            160  java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLIILL (java.base@11.0.12)
+ 367:             4            160  java.lang.invoke.DirectMethodHandle$Constructor (java.base@11.0.12)
+ 368:             5            160  java.lang.invoke.VarHandle$AccessType (java.base@11.0.12)
+ 369:             5            160  java.net.HostPortrange (java.base@11.0.12)
+ 370:             4            160  java.text.DigitList (java.base@11.0.12)
+ 371:            10            160  java.util.Formatter$Flags (java.base@11.0.12)
+ 372:             5            160  java.util.RegularEnumSet (java.base@11.0.12)
+ 373:             5            160  java.util.regex.Pattern$Branch (java.base@11.0.12)
+ 374:             4            160  jdk.xml.internal.JdkXmlFeatures$XmlFeature (java.xml@11.0.12)
+ 375:            10            160  org.apache.pdfbox.pdmodel.common.PDRectangle
+ 376:             2            160  org.apache.pdfbox.pdmodel.font.PDCIDFontType2
+ 377:             2            160  sun.net.www.protocol.jar.URLJarFile (java.base@11.0.12)
+ 378:             5            160  sun.util.locale.provider.LocaleProviderAdapter$Type (java.base@11.0.12)
+ 379:             1            144  [Ljava.lang.ThreadLocal$ThreadLocalMap$Entry; (java.base@11.0.12)
+ 380:             1            144  [Ljava.lang.invoke.VarHandle$AccessMode; (java.base@11.0.12)
+ 381:             2            144  [Ljava.math.BigDecimal; (java.base@11.0.12)
+ 382:             2            144  java.awt.Font (java.desktop@11.0.12)
+ 383:             3            144  java.lang.ThreadGroup (java.base@11.0.12)
+ 384:             6            144  java.lang.invoke.StringConcatFactory$Strategy (java.base@11.0.12)
+ 385:             1            144  java.util.Scanner (java.base@11.0.12)
+ 386:             9            144  java.util.jar.Attributes (java.base@11.0.12)
+ 387:             6            144  java.util.regex.Pattern$GroupHead (java.base@11.0.12)
+ 388:             6            144  java.util.regex.Pattern$GroupTail (java.base@11.0.12)
+ 389:             6            144  jdk.internal.perf.PerfCounter (java.base@11.0.12)
+ 390:             9            144  org.apache.fontbox.cmap.CMapParser$LiteralName
+ 391:             2            144  org.apache.fontbox.ttf.GlyphTable
+ 392:             2            144  org.apache.fontbox.ttf.NamingTable
+ 393:             2            144  org.apache.pdfbox.pdmodel.font.PDType0Font
+ 394:             6            144  org.apache.pdfbox.pdmodel.graphics.color.PDColor
+ 395:             6            144  sun.awt.image.BufImgSurfaceManager (java.desktop@11.0.12)
+ 396:             1            144  sun.java2d.marlin.DDasher (java.desktop@11.0.12)
+ 397:             6            144  sun.java2d.pipe.ShapeSpanIterator (java.desktop@11.0.12)
+ 398:             3            144  sun.nio.cs.UTF_8$Encoder (java.base@11.0.12)
+ 399:             4            136  [Lsun.invoke.util.ValueConversions$WrapperCache; (java.base@11.0.12)
+ 400:             1            136  org.apache.pdfbox.rendering.PageDrawer
+ 401:             2            128  [Lsun.awt.image.BufferedImageGraphicsConfig; (java.desktop@11.0.12)
+ 402:             2            128  java.awt.color.ICC_ColorSpace (java.desktop@11.0.12)
+ 403:             2            128  java.awt.image.ColorConvertOp (java.desktop@11.0.12)
+ 404:             2            128  java.io.ExpiringCache$1 (java.base@11.0.12)
+ 405:             2            128  java.text.SimpleDateFormat (java.base@11.0.12)
+ 406:             4            128  java.util.Collections$SynchronizedMap (java.base@11.0.12)
+ 407:             4            128  java.util.Collections$UnmodifiableMap (java.base@11.0.12)
+ 408:             4            128  java.util.concurrent.locks.ReentrantLock$NonfairSync (java.base@11.0.12)
+ 409:             4            128  jdk.internal.logger.LazyLoggers$LazyLoggerAccessor (java.base@11.0.12)
+ 410:             2            128  org.apache.fontbox.ttf.HorizontalMetricsTable
+ 411:             8            128  sun.awt.geom.AreaOp$NZWindOp (java.desktop@11.0.12)
+ 412:             8            128  sun.java2d.loops.RenderCache (java.desktop@11.0.12)
+ 413:             2            128  sun.java2d.marlin.DHelpers$PolyStack (java.desktop@11.0.12)
+ 414:             1            128  sun.java2d.marlin.DRendererContext (java.desktop@11.0.12)
+ 415:             3            120  [Ljava.lang.invoke.LambdaForm$BasicType; (java.base@11.0.12)
+ 416:             5            120  [Ljava.util.regex.Pattern$Node; (java.base@11.0.12)
+ 417:             3            120  ch.qos.logback.core.status.InfoStatus
+ 418:             3            120  java.lang.invoke.DirectMethodHandle$Interface (java.base@11.0.12)
+ 419:             3            120  java.util.HashMap$KeyIterator (java.base@11.0.12)
+ 420:             5            120  java.util.regex.Pattern$BmpCharProperty (java.base@11.0.12)
+ 421:             5            120  java.util.stream.StreamOpFlag$Type (java.base@11.0.12)
+ 422:             1            120  jdk.internal.loader.ClassLoaders$AppClassLoader (java.base@11.0.12)
+ 423:             3            120  jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer (java.base@11.0.12)
+ 424:             5            120  jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer (java.base@11.0.12)
+ 425:             5            120  jdk.net.ExtendedSocketOptions$ExtSocketOption (jdk.net@11.0.12)
+ 426:             5            120  jdk.xml.internal.JdkXmlFeatures$State (java.xml@11.0.12)
+ 427:             3            120  sun.awt.image.BufferedImageGraphicsConfig (java.desktop@11.0.12)
+ 428:             1            120  sun.awt.image.ByteInterleavedRaster (java.desktop@11.0.12)
+ 429:             5            120  sun.java2d.marlin.DTransformingPathConsumer2D$PathTracer (java.desktop@11.0.12)
+ 430:             3            112  [Ljava.lang.Thread; (java.base@11.0.12)
+ 431:             1            112  com.sun.org.apache.xpath.internal.axes.WalkingIterator (java.xml@11.0.12)
+ 432:             1            112  java.awt.image.ComponentColorModel (java.desktop@11.0.12)
+ 433:             2            112  java.nio.DirectIntBufferRU (java.base@11.0.12)
+ 434:             1            112  jdk.internal.loader.ClassLoaders$BootClassLoader (java.base@11.0.12)
+ 435:             1            112  jdk.internal.loader.ClassLoaders$PlatformClassLoader (java.base@11.0.12)
+ 436:             2            112  org.apache.fontbox.ttf.CmapTable
+ 437:             2            112  org.apache.fontbox.ttf.IndexToLocationTable
+ 438:             7            112  sun.awt.geom.AreaOp$IntOp (java.desktop@11.0.12)
+ 439:             1            112  sun.java2d.marlin.DCurve (java.desktop@11.0.12)
+ 440:             2            104  [Lsun.util.logging.PlatformLogger$Level; (java.base@11.0.12)
+ 441:             1            104  ch.qos.logback.classic.LoggerContext
+ 442:             1            104  sun.java2d.pipe.RegionClipSpanIterator (java.desktop@11.0.12)
+ 443:             2             96  [Lorg.apache.pdfbox.pdmodel.graphics.state.RenderingMode;
+ 444:             1             96  [[J (java.base@11.0.12)
+ 445:             3             96  java.lang.Runtime$Version (java.base@11.0.12)
+ 446:             4             96  java.lang.StringCoding$Result (java.base@11.0.12)
+ 447:             3             96  java.lang.invoke.SimpleMethodHandle (java.base@11.0.12)
+ 448:             4             96  java.lang.invoke.VarForm (java.base@11.0.12)
+ 449:             4             96  java.lang.module.ModuleDescriptor$Modifier (java.base@11.0.12)
+ 450:             4             96  java.lang.module.ModuleDescriptor$Opens (java.base@11.0.12)
+ 451:             4             96  java.lang.module.ModuleDescriptor$Requires$Modifier (java.base@11.0.12)
+ 452:             4             96  java.math.MathContext (java.base@11.0.12)
+ 453:             1             96  java.net.SocksSocketImpl (java.base@11.0.12)
+ 454:             6             96  java.util.HashMap$Values (java.base@11.0.12)
+ 455:             3             96  java.util.ImmutableCollections$MapN (java.base@11.0.12)
+ 456:             3             96  java.util.LinkedHashMap$LinkedKeyIterator (java.base@11.0.12)
+ 457:             6             96  java.util.LinkedHashMap$LinkedKeySet (java.base@11.0.12)
+ 458:             6             96  java.util.concurrent.atomic.AtomicInteger (java.base@11.0.12)
+ 459:             4             96  java.util.regex.Pattern$BmpCharPropertyGreedy (java.base@11.0.12)
+ 460:             4             96  java.util.regex.Pattern$Qtype (java.base@11.0.12)
+ 461:             4             96  java.util.regex.Pattern$Start (java.base@11.0.12)
+ 462:             4             96  java.util.stream.StreamShape (java.base@11.0.12)
+ 463:             1             96  jdk.internal.jimage.ImageReader$SharedImageReader (java.base@11.0.12)
+ 464:             4             96  jdk.internal.logger.BootstrapLogger$LoggingBackend (java.base@11.0.12)
+ 465:             4             96  jdk.internal.math.FormattedFloatingDecimal$Form (java.base@11.0.12)
+ 466:             4             96  jdk.internal.reflect.NativeMethodAccessorImpl (java.base@11.0.12)
+ 467:             4             96  org.apache.commons.logging.LogAdapter$LogApi
+ 468:             2             96  org.apache.fontbox.ttf.OpenTypeFont
+ 469:             3             96  sun.awt.image.BufferedImageDevice (java.desktop@11.0.12)
+ 470:             1             96  sun.font.AttributeValues (java.desktop@11.0.12)
+ 471:             4             96  sun.java2d.StateTrackable$State (java.desktop@11.0.12)
+ 472:             1             96  sun.java2d.marlin.DDasher$LengthIterator (java.desktop@11.0.12)
+ 473:             2             96  sun.java2d.marlin.DTransformingPathConsumer2D$DeltaTransformFilter (java.desktop@11.0.12)
+ 474:             1             96  sun.java2d.marlin.DTransformingPathConsumer2D$PathClipFilter (java.desktop@11.0.12)
+ 475:             4             96  sun.java2d.marlin.DoubleArrayCache$Reference (java.desktop@11.0.12)
+ 476:             3             96  sun.java2d.marlin.OffHeapArray (java.desktop@11.0.12)
+ 477:             6             96  sun.java2d.pipe.AAShapePipe (java.desktop@11.0.12)
+ 478:             4             96  sun.java2d.pipe.RegionIterator (java.desktop@11.0.12)
+ 479:             6             96  sun.java2d.pipe.TextRenderer (java.desktop@11.0.12)
+ 480:             3             96  sun.net.spi.DefaultProxySelector$NonProxyInfo (java.base@11.0.12)
+ 481:             2             96  sun.nio.cs.StreamDecoder (java.base@11.0.12)
+ 482:             2             96  sun.nio.cs.StreamEncoder (java.base@11.0.12)
+ 483:             1             88  [Ljava.awt.geom.AffineTransform; (java.desktop@11.0.12)
+ 484:             1             88  org.apache.pdfbox.io.RandomAccessBufferedFileInputStream
+ 485:             1             88  sun.java2d.marlin.MarlinCache (java.desktop@11.0.12)
+ 486:             2             80  [Ljava.util.stream.StreamOpFlag$Type; (java.base@11.0.12)
+ 487:             2             80  java.io.BufferedWriter (java.base@11.0.12)
+ 488:             2             80  java.io.ExpiringCache (java.base@11.0.12)
+ 489:             2             80  java.io.FileOutputStream (java.base@11.0.12)
+ 490:             2             80  java.io.PrintStream (java.base@11.0.12)
+ 491:             2             80  java.lang.ModuleLayer (java.base@11.0.12)
+ 492:             2             80  java.lang.VirtualMachineError (java.base@11.0.12)
+ 493:             1             80  java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLLLII (java.base@11.0.12)
+ 494:             2             80  java.lang.module.Configuration (java.base@11.0.12)
+ 495:             5             80  java.net.URLPermission$Authority (java.base@11.0.12)
+ 496:             2             80  java.util.IdentityHashMap (java.base@11.0.12)
+ 497:             2             80  java.util.Locale$Category (java.base@11.0.12)
+ 498:             5             80  java.util.concurrent.ConcurrentHashMap$ValuesView (java.base@11.0.12)
+ 499:             5             80  java.util.regex.Pattern$BranchConn (java.base@11.0.12)
+ 500:             1             80  sun.util.cldr.CLDRLocaleProviderAdapter (java.base@11.0.12)
+ 501:             1             80  sun.util.locale.provider.JRELocaleProviderAdapter (java.base@11.0.12)
+ 502:             1             80  sun.util.locale.provider.LocaleProviderAdapter$NonExistentAdapter (java.base@11.0.12)
+ 503:             2             72  [Ljdk.xml.internal.JdkXmlFeatures$State; (java.xml@11.0.12)
+ 504:             1             72  ch.qos.logback.core.ConsoleAppender
+ 505:             3             72  ch.qos.logback.core.spi.FilterReply
+ 506:             3             72  java.lang.NamedPackage (java.base@11.0.12)
+ 507:             3             72  java.lang.WeakPairMap (java.base@11.0.12)
+ 508:             3             72  java.lang.invoke.MethodHandles$Lookup (java.base@11.0.12)
+ 509:             3             72  java.lang.invoke.StringConcatFactory$Mode (java.base@11.0.12)
+ 510:             3             72  java.net.Proxy$Type (java.base@11.0.12)
+ 511:             3             72  java.util.Collections$UnmodifiableCollection$1 (java.base@11.0.12)
+ 512:             3             72  java.util.concurrent.atomic.AtomicLong (java.base@11.0.12)
+ 513:             3             72  java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject (java.base@11.0.12)
+ 514:             1             72  java.util.regex.Matcher (java.base@11.0.12)
+ 515:             3             72  java.util.regex.Pattern$$Lambda$19/0x0000000100065c40 (java.base@11.0.12)
+ 516:             3             72  java.util.regex.Pattern$BitClass (java.base@11.0.12)
+ 517:             3             72  java.util.stream.Collector$Characteristics (java.base@11.0.12)
+ 518:             3             72  jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer (java.base@11.0.12)
+ 519:             3             72  jdk.internal.misc.Signal (java.base@11.0.12)
+ 520:             3             72  jdk.internal.module.IllegalAccessLogger$Mode (java.base@11.0.12)
+ 521:             3             72  org.apache.pdfbox.rendering.RenderDestination
+ 522:             1             64  [Ljava.lang.invoke.MethodHandleImpl$Intrinsic; (java.base@11.0.12)
+ 523:             2             64  [Ljava.nio.charset.CoderResult; (java.base@11.0.12)
+ 524:             2             64  [Ljava.util.stream.Collector$Characteristics; (java.base@11.0.12)
+ 525:             2             64  ch.qos.logback.core.joran.spi.ConsoleTarget
+ 526:             2             64  ch.qos.logback.core.util.COWArrayList
+ 527:             2             64  ch.qos.logback.core.util.CachingDateFormatter
+ 528:             2             64  java.io.BufferedOutputStream (java.base@11.0.12)
+ 529:             1             64  java.lang.invoke.BoundMethodHandle$Species_LLLLLLLII (java.base@11.0.12)
+ 530:             2             64  java.lang.invoke.VarHandleInts$FieldInstanceReadWrite (java.base@11.0.12)
+ 531:             2             64  java.lang.ref.ReferenceQueue$Null (java.base@11.0.12)
+ 532:             4             64  java.util.concurrent.locks.ReentrantLock (java.base@11.0.12)
+ 533:             2             64  java.util.stream.FindOps$FindOp (java.base@11.0.12)
+ 534:             2             64  java.util.zip.ZipFile$CleanableResource$FinalizableResource (java.base@11.0.12)
+ 535:             4             64  jdk.internal.logger.LazyLoggers$JdkLazyLogger (java.base@11.0.12)
+ 536:             4             64  jdk.internal.reflect.DelegatingMethodAccessorImpl (java.base@11.0.12)
+ 537:             1             64  org.apache.pdfbox.cos.COSDocument
+ 538:             1             64  org.apache.pdfbox.io.RandomAccessBufferedFileInputStream$1
+ 539:             1             64  org.apache.pdfbox.pdmodel.PDDocument
+ 540:             2             64  sun.awt.SoftCache (java.desktop@11.0.12)
+ 541:             2             64  sun.java2d.ReentrantContextProviderTL$1 (java.desktop@11.0.12)
+ 542:             2             64  sun.java2d.cmm.lcms.LCMSProfile (java.desktop@11.0.12)
+ 543:             1             64  sun.java2d.marlin.DCollinearSimplifier (java.desktop@11.0.12)
+ 544:             1             64  sun.java2d.marlin.DTransformingPathConsumer2D (java.desktop@11.0.12)
+ 545:             2             64  sun.java2d.marlin.DTransformingPathConsumer2D$DeltaScaleFilter (java.desktop@11.0.12)
+ 546:             2             64  sun.java2d.marlin.IntArrayCache (java.desktop@11.0.12)
+ 547:             2             64  sun.nio.fs.UnixFileKey (java.base@11.0.12)
+ 548:             4             64  sun.util.logging.PlatformLogger (java.base@11.0.12)
+ 549:             1             56  [Ljava.nio.file.StandardOpenOption; (java.base@11.0.12)
+ 550:             1             56  [[Lsun.awt.SunHints$Value; (java.desktop@11.0.12)
+ 551:             1             56  ch.qos.logback.classic.layout.TTLLLayout
+ 552:             1             56  java.awt.image.PixelInterleavedSampleModel (java.desktop@11.0.12)
+ 553:             1             56  java.lang.invoke.BoundMethodHandle$Specializer (java.base@11.0.12)
+ 554:             1             56  java.net.SocketInputStream (java.base@11.0.12)
+ 555:             1             56  java.util.zip.ZipFile$ZipFileInflaterInputStream (java.base@11.0.12)
+ 556:             1             56  jdk.internal.ref.CleanerImpl$SoftCleanableRef (java.base@11.0.12)
+ 557:             1             56  org.apache.pdfbox.io.ScratchFile
+ 558:             1             56  sun.java2d.NullSurfaceData (java.desktop@11.0.12)
+ 559:             1             56  sun.java2d.marlin.DMarlinRenderingEngine$NormalizingPathIterator$NearestPixelCenter (java.desktop@11.0.12)
+ 560:             1             56  sun.java2d.marlin.DMarlinRenderingEngine$NormalizingPathIterator$NearestPixelQuarter (java.desktop@11.0.12)
+ 561:             1             48  [Ljava.lang.System$Logger$Level; (java.base@11.0.12)
+ 562:             1             48  [Ljava.math.RoundingMode; (java.base@11.0.12)
+ 563:             2             48  [Ljava.security.ProtectionDomain; (java.base@11.0.12)
+ 564:             1             48  [Ljava.util.concurrent.TimeUnit; (java.base@11.0.12)
+ 565:             1             48  [Lsun.java2d.marlin.IntArrayCache$Bucket; (java.desktop@11.0.12)
+ 566:             1             48  ch.qos.logback.classic.pattern.ThrowableProxyConverter
+ 567:             1             48  ch.qos.logback.core.encoder.LayoutWrappingEncoder
+ 568:             3             48  ch.qos.logback.core.spi.LogbackLock
+ 569:             2             48  java.awt.Point (java.desktop@11.0.12)
+ 570:             1             48  java.awt.geom.Rectangle2D$Double (java.desktop@11.0.12)
+ 571:             1             48  java.awt.image.DataBufferByte (java.desktop@11.0.12)
+ 572:             1             48  java.io.BufferedReader (java.base@11.0.12)
+ 573:             2             48  java.io.File$PathStatus (java.base@11.0.12)
+ 574:             2             48  java.io.FilePermissionCollection (java.base@11.0.12)
+ 575:             2             48  java.io.InputStreamReader (java.base@11.0.12)
+ 576:             2             48  java.io.OutputStreamWriter (java.base@11.0.12)
+ 577:             2             48  java.lang.ClassValue$Version (java.base@11.0.12)
+ 578:             1             48  java.lang.invoke.BoundMethodHandle$Specializer$Factory (java.base@11.0.12)
+ 579:             2             48  java.lang.reflect.ReflectPermission (java.base@11.0.12)
+ 580:             1             48  java.net.SocketCleanable (java.base@11.0.12)
+ 581:             3             48  java.nio.charset.CodingErrorAction (java.base@11.0.12)
+ 582:             3             48  java.text.AttributedCharacterIterator$Attribute (java.base@11.0.12)
+ 583:             2             48  java.util.Date (java.base@11.0.12)
+ 584:             3             48  java.util.LinkedHashSet (java.base@11.0.12)
+ 585:             3             48  java.util.Optional (java.base@11.0.12)
+ 586:             3             48  java.util.ResourceBundle$NoFallbackControl (java.base@11.0.12)
+ 587:             2             48  java.util.concurrent.ConcurrentLinkedQueue (java.base@11.0.12)
+ 588:             2             48  java.util.concurrent.ConcurrentLinkedQueue$Node (java.base@11.0.12)
+ 589:             1             48  java.util.concurrent.ConcurrentSkipListMap (java.base@11.0.12)
+ 590:             1             48  java.util.concurrent.LinkedBlockingQueue (java.base@11.0.12)
+ 591:             3             48  java.util.regex.Pattern$$Lambda$17/0x0000000100066440 (java.base@11.0.12)
+ 592:             3             48  java.util.regex.Pattern$$Lambda$29/0x0000000100092c40 (java.base@11.0.12)
+ 593:             3             48  java.util.regex.Pattern$BitClass$$Lambda$16/0x0000000100066040 (java.base@11.0.12)
+ 594:             2             48  java.util.regex.Pattern$BmpCharPredicate$$Lambda$31/0x0000000100091c40 (java.base@11.0.12)
+ 595:             2             48  java.util.regex.Pattern$CharPropertyGreedy (java.base@11.0.12)
+ 596:             1             48  java.util.zip.ZipFile$ZipFileInputStream (java.base@11.0.12)
+ 597:             1             48  jdk.internal.jimage.ImageHeader (java.base@11.0.12)
+ 598:             2             48  jdk.internal.misc.Signal$NativeHandler (java.base@11.0.12)
+ 599:             3             48  jdk.internal.module.ServicesCatalog (java.base@11.0.12)
+ 600:             1             48  jdk.internal.ref.CleanerImpl$WeakCleanableRef (java.base@11.0.12)
+ 601:             2             48  org.apache.fontbox.ttf.MemoryTTFDataStream
+ 602:             2             48  org.apache.pdfbox.cos.COSBoolean
+ 603:             2             48  org.apache.pdfbox.pdfparser.XrefTrailerResolver$XRefType
+ 604:             2             48  org.apache.pdfbox.pdmodel.PDResources
+ 605:             2             48  org.apache.pdfbox.pdmodel.font.encoding.GlyphList
+ 606:             3             48  org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState
+ 607:             1             48  org.apache.pdfbox.rendering.PDFRenderer
+ 608:             3             48  sun.awt.geom.AreaOp$AddOp (java.desktop@11.0.12)
+ 609:             1             48  sun.java2d.SurfaceData$PixelToPgramLoopConverter (java.desktop@11.0.12)
+ 610:             2             48  sun.java2d.cmm.lcms.LCMSProfile$TagCache (java.desktop@11.0.12)
+ 611:             1             48  sun.java2d.loops.Blit$GeneralMaskBlit (java.desktop@11.0.12)
+ 612:             1             48  sun.java2d.loops.TransformBlit (java.desktop@11.0.12)
+ 613:             2             48  sun.java2d.marlin.ByteArrayCache$Reference (java.desktop@11.0.12)
+ 614:             1             48  sun.java2d.marlin.DTransformingPathConsumer2D$CurveClipSplitter (java.desktop@11.0.12)
+ 615:             3             48  sun.java2d.marlin.OffHeapArray$$Lambda$73/0x000000010017f840 (java.desktop@11.0.12)
+ 616:             1             48  sun.java2d.pipe.AlphaPaintPipe$TileContext (java.desktop@11.0.12)
+ 617:             3             48  sun.java2d.pipe.SpanClipRenderer (java.desktop@11.0.12)
+ 618:             2             48  sun.util.locale.provider.LocaleServiceProviderPool (java.base@11.0.12)
+ 619:             3             48  sun.util.resources.LocaleData (java.base@11.0.12)
+ 620:             1             48  sun.util.resources.TimeZoneNames (java.base@11.0.12)
+ 621:             1             48  sun.util.resources.TimeZoneNames_en (java.base@11.0.12)
+ 622:             1             48  sun.util.resources.cldr.TimeZoneNames (java.base@11.0.12)
+ 623:             1             48  sun.util.resources.cldr.TimeZoneNames_en (java.base@11.0.12)
+ 624:             2             40  [Lch.qos.logback.core.Appender;
+ 625:             1             40  [Ljava.lang.invoke.StringConcatFactory$Strategy; (java.base@11.0.12)
+ 626:             1             40  [Ljava.lang.invoke.VarHandle$AccessType; (java.base@11.0.12)
+ 627:             1             40  [Ljava.util.stream.StreamOpFlag; (java.base@11.0.12)
+ 628:             1             40  [Lorg.apache.pdfbox.rendering.ImageType;
+ 629:             1             40  [Lsun.java2d.loops.RenderLoops; (java.desktop@11.0.12)
+ 630:             1             40  [Lsun.java2d.loops.SurfaceType; (java.desktop@11.0.12)
+ 631:             1             40  [Lsun.util.locale.provider.LocaleProviderAdapter$Type; (java.base@11.0.12)
+ 632:             1             40  [[Ljava.lang.invoke.LambdaForm$Name; (java.base@11.0.12)
+ 633:             1             40  ch.qos.logback.core.BasicStatusManager
+ 634:             1             40  com.sun.management.internal.DiagnosticCommandImpl (jdk.management@11.0.12)
+ 635:             1             40  com.sun.org.apache.xpath.internal.jaxp.XPathExpressionImpl (java.xml@11.0.12)
+ 636:             1             40  java.awt.BasicStroke (java.desktop@11.0.12)
+ 637:             1             40  java.io.BufferedInputStream (java.base@11.0.12)
+ 638:             1             40  java.io.FileInputStream (java.base@11.0.12)
+ 639:             1             40  java.lang.ArithmeticException (java.base@11.0.12)
+ 640:             1             40  java.lang.NullPointerException (java.base@11.0.12)
+ 641:             1             40  java.lang.invoke.BoundMethodHandle$Species_LLL (java.base@11.0.12)
+ 642:             1             40  java.lang.invoke.MethodHandleImpl$IntrinsicMethodHandle (java.base@11.0.12)
+ 643:             1             40  java.util.ResourceBundle$2 (java.base@11.0.12)
+ 644:             1             40  jdk.internal.loader.URLClassPath (java.base@11.0.12)
+ 645:             1             40  jdk.internal.ref.Cleaner (java.base@11.0.12)
+ 646:             1             40  jdk.internal.ref.CleanerImpl$CleanerCleanable (java.base@11.0.12)
+ 647:             1             40  org.apache.pdfbox.filter.DecodeOptions$FinalDecodeOptions
+ 648:             1             40  org.apache.pdfbox.pdmodel.DefaultResourceCache
+ 649:             1             40  org.apache.pdfbox.rendering.PageDrawerParameters
+ 650:             1             40  org.apache.pdfbox.rendering.TTFGlyph2D
+ 651:             1             40  sun.awt.resources.awt (java.desktop@11.0.12)
+ 652:             1             40  sun.awt.resources.awt_zh_CN (java.desktop@11.0.12)
+ 653:             1             40  sun.java2d.marlin.DHelpers$IndexStack (java.desktop@11.0.12)
+ 654:             1             40  sun.java2d.marlin.DTransformingPathConsumer2D$CurveBasicMonotonizer (java.desktop@11.0.12)
+ 655:             1             40  sun.java2d.marlin.MarlinTileGenerator (java.desktop@11.0.12)
+ 656:             1             40  sun.java2d.pipe.AAShapePipe$TileState (java.desktop@11.0.12)
+ 657:             1             40  sun.nio.cs.StandardCharsets$Aliases (java.base@11.0.12)
+ 658:             1             40  sun.nio.cs.StandardCharsets$Cache (java.base@11.0.12)
+ 659:             1             40  sun.nio.cs.StandardCharsets$Classes (java.base@11.0.12)
+ 660:             1             40  sun.nio.cs.US_ASCII$Decoder (java.base@11.0.12)
+ 661:             1             40  sun.text.resources.cldr.FormatData (java.base@11.0.12)
+ 662:             1             40  sun.text.resources.cldr.FormatData_en (java.base@11.0.12)
+ 663:             1             40  sun.text.resources.cldr.ext.FormatData_zh (jdk.localedata@11.0.12)
+ 664:             1             40  sun.util.resources.Bundles$1 (java.base@11.0.12)
+ 665:             1             40  sun.util.resources.cldr.CalendarData (java.base@11.0.12)
+ 666:             1             32  [Lch.qos.logback.core.spi.FilterReply;
+ 667:             2             32  [Ljava.awt.color.ICC_Profile; (java.desktop@11.0.12)
+ 668:             1             32  [Ljava.lang.OutOfMemoryError; (java.base@11.0.12)
+ 669:             2             32  [Ljava.lang.StackTraceElement; (java.base@11.0.12)
+ 670:             1             32  [Ljava.lang.ThreadGroup; (java.base@11.0.12)
+ 671:             2             32  [Ljava.lang.annotation.Annotation; (java.base@11.0.12)
+ 672:             1             32  [Ljava.lang.invoke.StringConcatFactory$Mode; (java.base@11.0.12)
+ 673:             1             32  [Ljava.lang.module.ModuleDescriptor$Modifier; (java.base@11.0.12)
+ 674:             1             32  [Ljava.lang.module.ModuleDescriptor$Requires$Modifier; (java.base@11.0.12)
+ 675:             1             32  [Ljava.net.Proxy$Type; (java.base@11.0.12)
+ 676:             2             32  [Ljava.util.regex.IntHashSet; (java.base@11.0.12)
+ 677:             1             32  [Ljava.util.regex.Pattern$Qtype; (java.base@11.0.12)
+ 678:             1             32  [Ljava.util.stream.StreamShape; (java.base@11.0.12)
+ 679:             1             32  [Ljdk.internal.logger.BootstrapLogger$LoggingBackend; (java.base@11.0.12)
+ 680:             1             32  [Ljdk.internal.math.FormattedFloatingDecimal$Form; (java.base@11.0.12)
+ 681:             1             32  [Ljdk.internal.module.IllegalAccessLogger$Mode; (java.base@11.0.12)
+ 682:             1             32  [Ljdk.xml.internal.JdkXmlFeatures$XmlFeature; (java.xml@11.0.12)
+ 683:             1             32  [Lorg.apache.commons.logging.LogAdapter$LogApi;
+ 684:             2             32  [Lorg.apache.fontbox.ttf.CmapSubtable;
+ 685:             1             32  [Lorg.apache.pdfbox.rendering.RenderDestination;
+ 686:             1             32  [Lsun.java2d.StateTrackable$State; (java.desktop@11.0.12)
+ 687:             1             32  [Lsun.java2d.marlin.DMarlinRenderingEngine$NormMode; (java.desktop@11.0.12)
+ 688:             1             32  [Lsun.nio.fs.NativeBuffer; (java.base@11.0.12)
+ 689:             1             32  ch.qos.logback.classic.spi.LoggerContextVO
+ 690:             1             32  ch.qos.logback.core.helpers.CyclicBuffer
+ 691:             2             32  java.awt.RenderingHints (java.desktop@11.0.12)
+ 692:             1             32  java.awt.color.ICC_ProfileGray (java.desktop@11.0.12)
+ 693:             1             32  java.awt.color.ICC_ProfileRGB (java.desktop@11.0.12)
+ 694:             1             32  java.io.UnixFileSystem (java.base@11.0.12)
+ 695:             2             32  java.lang.Boolean (java.base@11.0.12)
+ 696:             2             32  java.lang.ClassValue$Identity (java.base@11.0.12)
+ 697:             1             32  java.lang.invoke.VarHandle$AccessDescriptor (java.base@11.0.12)
+ 698:             1             32  java.lang.module.ModuleDescriptor$Version (java.base@11.0.12)
+ 699:             1             32  java.net.InetAddress$InetAddressHolder (java.base@11.0.12)
+ 700:             1             32  java.net.Socket (java.base@11.0.12)
+ 701:             2             32  java.nio.ByteOrder (java.base@11.0.12)
+ 702:             1             32  java.nio.DirectByteBuffer$Deallocator (java.base@11.0.12)
+ 703:             1             32  java.security.UnresolvedPermission (java.base@11.0.12)
+ 704:             1             32  java.text.DontCareFieldPosition (java.base@11.0.12)
+ 705:             2             32  java.util.HashMap$EntrySet (java.base@11.0.12)
+ 706:             2             32  java.util.ResourceBundle$SingleFormatControl (java.base@11.0.12)
+ 707:             2             32  java.util.concurrent.ConcurrentHashMap$EntrySetView (java.base@11.0.12)
+ 708:             2             32  jdk.internal.loader.ClassLoaderValue (java.base@11.0.12)
+ 709:             1             32  jdk.internal.loader.URLClassPath$JarLoader$2 (java.base@11.0.12)
+ 710:             1             32  jdk.internal.module.IllegalAccessLogger (java.base@11.0.12)
+ 711:             1             32  jdk.internal.ref.CleanerImpl (java.base@11.0.12)
+ 712:             1             32  org.apache.pdfbox.pdmodel.PDDocumentCatalog
+ 713:             1             32  org.apache.pdfbox.pdmodel.PDPage
+ 714:             2             32  org.apache.pdfbox.pdmodel.common.PDStream
+ 715:             1             32  org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject
+ 716:             2             32  sun.awt.geom.AreaOp$EOWindOp (java.desktop@11.0.12)
+ 717:             1             32  sun.instrument.InstrumentationImpl (java.instrument@11.0.12)
+ 718:             1             32  sun.java2d.ReentrantContextProvider$HardReference (java.desktop@11.0.12)
+ 719:             1             32  sun.java2d.marlin.ByteArrayCache (java.desktop@11.0.12)
+ 720:             1             32  sun.java2d.marlin.DPathSimplifier (java.desktop@11.0.12)
+ 721:             1             32  sun.java2d.marlin.DoubleArrayCache (java.desktop@11.0.12)
+ 722:             2             32  sun.java2d.pipe.PixelToShapeConverter (java.desktop@11.0.12)
+ 723:             2             32  sun.java2d.pipe.SpanShapeRenderer$Composite (java.desktop@11.0.12)
+ 724:             1             32  sun.nio.cs.StandardCharsets (java.base@11.0.12)
+ 725:             1             32  sun.nio.fs.LinuxFileSystem (java.base@11.0.12)
+ 726:             1             32  sun.nio.fs.NativeBuffer (java.base@11.0.12)
+ 727:             1             32  sun.security.provider.PolicyFile (java.base@11.0.12)
+ 728:             1             32  sun.security.provider.PolicyFile$PolicyInfo (java.base@11.0.12)
+ 729:             1             24  [Lch.qos.logback.core.joran.spi.ConsoleTarget;
+ 730:             1             24  [Ljava.io.File$PathStatus; (java.base@11.0.12)
+ 731:             1             24  [Ljava.util.Locale$Category; (java.base@11.0.12)
+ 732:             1             24  [Ljdk.internal.misc.JavaSecurityAccess$ProtectionDomainCache; (java.base@11.0.12)
+ 733:             1             24  [Lorg.apache.pdfbox.pdfparser.XrefTrailerResolver$XRefType;
+ 734:             1             24  ch.qos.logback.classic.BasicConfigurator
+ 735:             1             24  ch.qos.logback.classic.spi.TurboFilterList
+ 736:             1             24  ch.qos.logback.classic.util.ContextSelectorStaticBinder
+ 737:             1             24  ch.qos.logback.classic.util.LogbackMDCAdapter
+ 738:             1             24  ch.qos.logback.core.spi.ContextAwareBase
+ 739:             1             24  com.sun.management.internal.PlatformMBeanProviderImpl$1 (jdk.management@11.0.12)
+ 740:             1             24  com.sun.management.internal.PlatformMBeanProviderImpl$2 (jdk.management@11.0.12)
+ 741:             1             24  com.sun.management.internal.PlatformMBeanProviderImpl$3 (jdk.management@11.0.12)
+ 742:             1             24  com.sun.management.internal.PlatformMBeanProviderImpl$4 (jdk.management@11.0.12)
+ 743:             1             24  com.sun.management.internal.PlatformMBeanProviderImpl$5 (jdk.management@11.0.12)
+ 744:             1             24  com.sun.org.apache.xpath.internal.XPath (java.xml@11.0.12)
+ 745:             1             24  com.sun.org.apache.xpath.internal.axes.IteratorPool (java.xml@11.0.12)
+ 746:             1             24  com.sun.org.apache.xpath.internal.compiler.FunctionTable (java.xml@11.0.12)
+ 747:             1             24  java.awt.ColorPaintContext (java.desktop@11.0.12)
+ 748:             1             24  java.awt.Dimension (java.desktop@11.0.12)
+ 749:             1             24  java.awt.DisplayMode (java.desktop@11.0.12)
+ 750:             1             24  java.awt.image.BufferedImage$1 (java.desktop@11.0.12)
+ 751:             1             24  java.lang.Double (java.base@11.0.12)
+ 752:             1             24  java.lang.ProcessEnvironment$StringEnvironment (java.base@11.0.12)
+ 753:             1             24  java.lang.ThreadLocal$ThreadLocalMap (java.base@11.0.12)
+ 754:             1             24  java.lang.invoke.MethodType$ConcurrentWeakInternSet (java.base@11.0.12)
+ 755:             1             24  java.lang.invoke.StringConcatFactory$Stringifiers$StringifierAny (java.base@11.0.12)
+ 756:             1             24  java.lang.invoke.StringConcatFactory$Stringifiers$StringifierMost (java.base@11.0.12)
+ 757:             1             24  java.lang.management.DefaultPlatformMBeanProvider$1 (java.management@11.0.12)
+ 758:             1             24  java.lang.management.DefaultPlatformMBeanProvider$10 (java.management@11.0.12)
+ 759:             1             24  java.lang.management.DefaultPlatformMBeanProvider$11 (java.management@11.0.12)
+ 760:             1             24  java.lang.management.DefaultPlatformMBeanProvider$2 (java.management@11.0.12)
+ 761:             1             24  java.lang.management.DefaultPlatformMBeanProvider$3 (java.management@11.0.12)
+ 762:             1             24  java.lang.management.DefaultPlatformMBeanProvider$4 (java.management@11.0.12)
+ 763:             1             24  java.lang.management.DefaultPlatformMBeanProvider$5 (java.management@11.0.12)
+ 764:             1             24  java.lang.management.DefaultPlatformMBeanProvider$6 (java.management@11.0.12)
+ 765:             1             24  java.lang.management.DefaultPlatformMBeanProvider$7 (java.management@11.0.12)
+ 766:             1             24  java.lang.management.DefaultPlatformMBeanProvider$8 (java.management@11.0.12)
+ 767:             1             24  java.lang.management.DefaultPlatformMBeanProvider$9 (java.management@11.0.12)
+ 768:             1             24  java.math.BigDecimal$StringBuilderHelper (java.base@11.0.12)
+ 769:             1             24  java.net.Inet4Address (java.base@11.0.12)
+ 770:             1             24  java.net.Inet6AddressImpl (java.base@11.0.12)
+ 771:             1             24  java.net.Proxy (java.base@11.0.12)
+ 772:             1             24  java.net.SocketPermissionCollection (java.base@11.0.12)
+ 773:             1             24  java.security.AllPermissionCollection (java.base@11.0.12)
+ 774:             1             24  java.security.Policy$PolicyInfo (java.base@11.0.12)
+ 775:             1             24  java.security.Policy$UnsupportedEmptyCollection (java.base@11.0.12)
+ 776:             1             24  java.security.ProtectionDomain$JavaSecurityAccessImpl$1 (java.base@11.0.12)
+ 777:             1             24  java.security.SecureClassLoader$1 (java.base@11.0.12)
+ 778:             1             24  java.util.BitSet (java.base@11.0.12)
+ 779:             1             24  java.util.Collections$EmptyMap (java.base@11.0.12)
+ 780:             1             24  java.util.Locale$Cache (java.base@11.0.12)
+ 781:             1             24  java.util.PropertyPermissionCollection (java.base@11.0.12)
+ 782:             1             24  java.util.ResourceBundle$Control$CandidateListCache (java.base@11.0.12)
+ 783:             1             24  java.util.Scanner$PatternLRUCache (java.base@11.0.12)
+ 784:             1             24  java.util.concurrent.ConcurrentHashMap$KeySetView (java.base@11.0.12)
+ 785:             1             24  java.util.concurrent.LinkedBlockingQueue$Node (java.base@11.0.12)
+ 786:             1             24  java.util.regex.Pattern$CharPredicate$$Lambda$21/0x0000000100090840 (java.base@11.0.12)
+ 787:             1             24  java.util.regex.Pattern$CharProperty (java.base@11.0.12)
+ 788:             1             24  java.util.zip.ZipCoder$UTF8 (java.base@11.0.12)
+ 789:             1             24  java.util.zip.ZipFile$InflaterCleanupAction (java.base@11.0.12)
+ 790:             1             24  jdk.internal.jimage.ImageReader (java.base@11.0.12)
+ 791:             1             24  jdk.internal.loader.URLClassPath$FileLoader (java.base@11.0.12)
+ 792:             1             24  jdk.internal.module.ModuleBootstrap$SafeModuleFinder (java.base@11.0.12)
+ 793:             1             24  jdk.internal.module.ModuleHashes (java.base@11.0.12)
+ 794:             1             24  jdk.management.jfr.internal.FlightRecorderMXBeanProvider$SingleMBeanComponent (jdk.management.jfr@11.0.12)
+ 795:             1             24  jdk.xml.internal.JdkXmlFeatures (java.xml@11.0.12)
+ 796:             1             24  org.apache.fontbox.cmap.CIDRange
+ 797:             1             24  org.apache.fontbox.cmap.CMapParser
+ 798:             1             24  org.apache.pdfbox.contentstream.operator.graphics.AppendRectangleToPath
+ 799:             1             24  org.apache.pdfbox.contentstream.operator.graphics.BeginInlineImage
+ 800:             1             24  org.apache.pdfbox.contentstream.operator.graphics.ClipEvenOddRule
+ 801:             1             24  org.apache.pdfbox.contentstream.operator.graphics.ClipNonZeroRule
+ 802:             1             24  org.apache.pdfbox.contentstream.operator.graphics.CloseAndStrokePath
+ 803:             1             24  org.apache.pdfbox.contentstream.operator.graphics.CloseFillEvenOddAndStrokePath
+ 804:             1             24  org.apache.pdfbox.contentstream.operator.graphics.CloseFillNonZeroAndStrokePath
+ 805:             1             24  org.apache.pdfbox.contentstream.operator.graphics.ClosePath
+ 806:             1             24  org.apache.pdfbox.contentstream.operator.graphics.CurveTo
+ 807:             1             24  org.apache.pdfbox.contentstream.operator.graphics.CurveToReplicateFinalPoint
+ 808:             1             24  org.apache.pdfbox.contentstream.operator.graphics.CurveToReplicateInitialPoint
+ 809:             1             24  org.apache.pdfbox.contentstream.operator.graphics.DrawObject
+ 810:             1             24  org.apache.pdfbox.contentstream.operator.graphics.EndPath
+ 811:             1             24  org.apache.pdfbox.contentstream.operator.graphics.FillEvenOddAndStrokePath
+ 812:             1             24  org.apache.pdfbox.contentstream.operator.graphics.FillEvenOddRule
+ 813:             1             24  org.apache.pdfbox.contentstream.operator.graphics.FillNonZeroAndStrokePath
+ 814:             1             24  org.apache.pdfbox.contentstream.operator.graphics.FillNonZeroRule
+ 815:             1             24  org.apache.pdfbox.contentstream.operator.graphics.LegacyFillNonZeroRule
+ 816:             1             24  org.apache.pdfbox.contentstream.operator.graphics.LineTo
+ 817:             1             24  org.apache.pdfbox.contentstream.operator.graphics.MoveTo
+ 818:             1             24  org.apache.pdfbox.contentstream.operator.graphics.ShadingFill
+ 819:             1             24  org.apache.pdfbox.contentstream.operator.graphics.StrokePath
+ 820:             1             24  org.apache.pdfbox.pdmodel.PDPageTree
+ 821:             1             24  org.apache.pdfbox.pdmodel.font.encoding.MacExpertEncoding
+ 822:             1             24  org.apache.pdfbox.pdmodel.font.encoding.MacRomanEncoding
+ 823:             1             24  org.apache.pdfbox.pdmodel.font.encoding.SymbolEncoding
+ 824:             1             24  org.apache.pdfbox.pdmodel.font.encoding.WinAnsiEncoding
+ 825:             1             24  org.apache.pdfbox.pdmodel.font.encoding.ZapfDingbatsEncoding
+ 826:             1             24  org.apache.pdfbox.pdmodel.graphics.PDLineDashPattern
+ 827:             1             24  org.apache.pdfbox.pdmodel.graphics.color.PDDeviceGray
+ 828:             1             24  org.apache.pdfbox.pdmodel.graphics.color.PDDeviceRGB
+ 829:             1             24  org.apache.pdfbox.pdmodel.graphics.form.PDTransparencyGroup
+ 830:             1             24  org.apache.pdfbox.pdmodel.graphics.form.PDTransparencyGroupAttributes
+ 831:             1             24  org.apache.pdfbox.rendering.ImageType$1
+ 832:             1             24  org.apache.pdfbox.rendering.ImageType$2
+ 833:             1             24  org.apache.pdfbox.rendering.ImageType$3
+ 834:             1             24  org.apache.pdfbox.rendering.ImageType$4
+ 835:             1             24  org.apache.pdfbox.rendering.ImageType$5
+ 836:             1             24  org.apache.pdfbox.rendering.TilingPaintFactory
+ 837:             1             24  org.slf4j.helpers.SubstituteLoggerFactory
+ 838:             1             24  org.slf4j.impl.StaticLoggerBinder
+ 839:             1             24  sun.awt.SunHints$LCDContrastKey (java.desktop@11.0.12)
+ 840:             1             24  sun.awt.WeakIdentityHashMap (java.desktop@11.0.12)
+ 841:             1             24  sun.awt.X11GraphicsEnvironment (java.desktop@11.0.12)
+ 842:             1             24  sun.awt.util.PerformanceLogger$TimeData (java.desktop@11.0.12)
+ 843:             1             24  sun.instrument.TransformerManager (java.instrument@11.0.12)
+ 844:             1             24  sun.java2d.marlin.DMarlinRenderingEngine$1 (java.desktop@11.0.12)
+ 845:             1             24  sun.java2d.marlin.DMarlinRenderingEngine$NormMode$1 (java.desktop@11.0.12)
+ 846:             1             24  sun.java2d.marlin.DMarlinRenderingEngine$NormMode$2 (java.desktop@11.0.12)
+ 847:             1             24  sun.java2d.marlin.DMarlinRenderingEngine$NormMode$3 (java.desktop@11.0.12)
+ 848:             1             24  sun.java2d.marlin.DTransformingPathConsumer2D$ClosedPathDetector (java.desktop@11.0.12)
+ 849:             1             24  sun.java2d.pipe.AAShapePipe$1 (java.desktop@11.0.12)
+ 850:             1             24  sun.management.MemoryImpl (java.management@11.0.12)
+ 851:             1             24  sun.management.VMManagementImpl (java.management@11.0.12)
+ 852:             1             24  sun.net.sdp.SdpProvider (java.base@11.0.12)
+ 853:             1             24  sun.nio.ch.Util$BufferCache (java.base@11.0.12)
+ 854:             1             24  sun.nio.cs.ISO_8859_1 (java.base@11.0.12)
+ 855:             1             24  sun.nio.cs.MS1252 (java.base@11.0.12)
+ 856:             1             24  sun.nio.cs.US_ASCII (java.base@11.0.12)
+ 857:             1             24  sun.nio.cs.UTF_16 (java.base@11.0.12)
+ 858:             1             24  sun.nio.cs.UTF_16BE (java.base@11.0.12)
+ 859:             1             24  sun.nio.cs.UTF_16LE (java.base@11.0.12)
+ 860:             1             24  sun.nio.cs.UTF_8 (java.base@11.0.12)
+ 861:             1             24  sun.nio.fs.NativeBuffer$Deallocator (java.base@11.0.12)
+ 862:             1             24  sun.util.cldr.CLDRCalendarDataProviderImpl (java.base@11.0.12)
+ 863:             1             24  sun.util.cldr.CLDRTimeZoneNameProviderImpl (java.base@11.0.12)
+ 864:             1             24  sun.util.locale.BaseLocale$Cache (java.base@11.0.12)
+ 865:             1             24  sun.util.locale.provider.CalendarProviderImpl (java.base@11.0.12)
+ 866:             1             24  sun.util.locale.provider.DateFormatSymbolsProviderImpl (java.base@11.0.12)
+ 867:             1             24  sun.util.locale.provider.DecimalFormatSymbolsProviderImpl (java.base@11.0.12)
+ 868:             1             24  sun.util.locale.provider.NumberFormatProviderImpl (java.base@11.0.12)
+ 869:             1             24  sun.util.locale.provider.TimeZoneNameProviderImpl (java.base@11.0.12)
+ 870:             1             16  [Lch.qos.logback.core.filter.Filter;
+ 871:             1             16  [Ljava.lang.Throwable; (java.base@11.0.12)
+ 872:             1             16  [Ljava.nio.file.attribute.FileAttribute; (java.base@11.0.12)
+ 873:             1             16  [Ljava.security.cert.Certificate; (java.base@11.0.12)
+ 874:             1             16  [Ljava.text.FieldPosition; (java.base@11.0.12)
+ 875:             1             16  [Lsun.instrument.TransformerManager$TransformerInfo; (java.instrument@11.0.12)
+ 876:             1             16  ch.qos.logback.classic.selector.DefaultContextSelector
+ 877:             1             16  ch.qos.logback.core.joran.spi.ConsoleTarget$1
+ 878:             1             16  ch.qos.logback.core.joran.spi.ConsoleTarget$2
+ 879:             1             16  ch.qos.logback.core.spi.AppenderAttachableImpl
+ 880:             1             16  ch.qos.logback.core.spi.FilterAttachableImpl
+ 881:             1             16  com.sun.management.internal.PlatformMBeanProviderImpl (jdk.management@11.0.12)
+ 882:             1             16  com.sun.management.internal.PlatformMBeanProviderImpl$$Lambda$35/0x00000001000c8440 (jdk.management@11.0.12)
+ 883:             1             16  java.awt.Font$FontAccessImpl (java.desktop@11.0.12)
+ 884:             1             16  java.awt.GraphicsEnvironment$$Lambda$56/0x00000001000cc840 (java.desktop@11.0.12)
+ 885:             1             16  java.awt.Image$1 (java.desktop@11.0.12)
+ 886:             1             16  java.awt.ImageCapabilities (java.desktop@11.0.12)
+ 887:             1             16  java.awt.Toolkit$4 (java.desktop@11.0.12)
+ 888:             1             16  java.awt.font.JavaAWTFontAccessImpl (java.desktop@11.0.12)
+ 889:             1             16  java.awt.image.DataBuffer$1 (java.desktop@11.0.12)
+ 890:             1             16  java.io.FileDescriptor$1 (java.base@11.0.12)
+ 891:             1             16  java.io.FilePermission$1 (java.base@11.0.12)
+ 892:             1             16  java.io.RandomAccessFile$2 (java.base@11.0.12)
+ 893:             1             16  java.lang.CharacterDataLatin1 (java.base@11.0.12)
+ 894:             1             16  java.lang.Runtime (java.base@11.0.12)
+ 895:             1             16  java.lang.String$CaseInsensitiveComparator (java.base@11.0.12)
+ 896:             1             16  java.lang.StringCoding$1 (java.base@11.0.12)
+ 897:             1             16  java.lang.System$2 (java.base@11.0.12)
+ 898:             1             16  java.lang.Terminator$1 (java.base@11.0.12)
+ 899:             1             16  java.lang.invoke.ClassSpecializer$1 (java.base@11.0.12)
+ 900:             1             16  java.lang.invoke.MemberName$Factory (java.base@11.0.12)
+ 901:             1             16  java.lang.invoke.MethodHandleImpl$1 (java.base@11.0.12)
+ 902:             1             16  java.lang.invoke.StringConcatFactory$MethodHandleInlineCopyStrategy$1 (java.base@11.0.12)
+ 903:             1             16  java.lang.invoke.StringConcatFactory$MethodHandleInlineCopyStrategy$2 (java.base@11.0.12)
+ 904:             1             16  java.lang.invoke.StringConcatFactory$MethodHandleInlineCopyStrategy$3 (java.base@11.0.12)
+ 905:             1             16  java.lang.invoke.VarHandle$1 (java.base@11.0.12)
+ 906:             1             16  java.lang.management.DefaultPlatformMBeanProvider (java.management@11.0.12)
+ 907:             1             16  java.lang.management.ManagementFactory$$Lambda$32/0x0000000100091040 (java.management@11.0.12)
+ 908:             1             16  java.lang.management.ManagementFactory$PlatformMBeanFinder$$Lambda$33/0x0000000100091440 (java.management@11.0.12)
+ 909:             1             16  java.lang.management.ManagementFactory$PlatformMBeanFinder$$Lambda$36/0x00000001000c8840 (java.management@11.0.12)
+ 910:             1             16  java.lang.management.ManagementFactory$PlatformMBeanFinder$$Lambda$37/0x00000001000c8c40 (java.management@11.0.12)
+ 911:             1             16  java.lang.management.ManagementFactory$PlatformMBeanFinder$$Lambda$39/0x00000001000c9840 (java.management@11.0.12)
+ 912:             1             16  java.lang.management.ManagementFactory$PlatformMBeanFinder$$Lambda$43/0x00000001000cac40 (java.management@11.0.12)
+ 913:             1             16  java.lang.management.ManagementFactory$PlatformMBeanFinder$$Lambda$44/0x00000001000cb040 (java.management@11.0.12)
+ 914:             1             16  java.lang.module.ModuleDescriptor$1 (java.base@11.0.12)
+ 915:             1             16  java.lang.ref.Cleaner (java.base@11.0.12)
+ 916:             1             16  java.lang.ref.Cleaner$1 (java.base@11.0.12)
+ 917:             1             16  java.lang.ref.Reference$1 (java.base@11.0.12)
+ 918:             1             16  java.lang.reflect.ReflectAccess (java.base@11.0.12)
+ 919:             1             16  java.math.BigDecimal$1 (java.base@11.0.12)
+ 920:             1             16  java.net.InetAddress$2 (java.base@11.0.12)
+ 921:             1             16  java.net.InetAddress$PlatformNameService (java.base@11.0.12)
+ 922:             1             16  java.net.URI$1 (java.base@11.0.12)
+ 923:             1             16  java.net.URL$3 (java.base@11.0.12)
+ 924:             1             16  java.net.URL$DefaultFactory (java.base@11.0.12)
+ 925:             1             16  java.nio.Bits$1 (java.base@11.0.12)
+ 926:             1             16  java.nio.Buffer$1 (java.base@11.0.12)
+ 927:             1             16  java.security.AllPermission (java.base@11.0.12)
+ 928:             1             16  java.security.ProtectionDomain$JavaSecurityAccessImpl (java.base@11.0.12)
+ 929:             1             16  java.text.DontCareFieldPosition$1 (java.base@11.0.12)
+ 930:             1             16  java.util.Collections$EmptyEnumeration (java.base@11.0.12)
+ 931:             1             16  java.util.Collections$EmptyIterator (java.base@11.0.12)
+ 932:             1             16  java.util.Collections$EmptyList (java.base@11.0.12)
+ 933:             1             16  java.util.Collections$EmptySet (java.base@11.0.12)
+ 934:             1             16  java.util.EnumMap$1 (java.base@11.0.12)
+ 935:             1             16  java.util.IdentityHashMap$KeySet (java.base@11.0.12)
+ 936:             1             16  java.util.ResourceBundle$1 (java.base@11.0.12)
+ 937:             1             16  java.util.ResourceBundle$Control (java.base@11.0.12)
+ 938:             1             16  java.util.Spliterators$EmptySpliterator$OfDouble (java.base@11.0.12)
+ 939:             1             16  java.util.Spliterators$EmptySpliterator$OfInt (java.base@11.0.12)
+ 940:             1             16  java.util.Spliterators$EmptySpliterator$OfLong (java.base@11.0.12)
+ 941:             1             16  java.util.Spliterators$EmptySpliterator$OfRef (java.base@11.0.12)
+ 942:             1             16  java.util.concurrent.ConcurrentSkipListSet (java.base@11.0.12)
+ 943:             1             16  java.util.function.Function$$Lambda$38/0x00000001000c9040 (java.base@11.0.12)
+ 944:             1             16  java.util.jar.JavaUtilJarAccessImpl (java.base@11.0.12)
+ 945:             1             16  java.util.regex.CharPredicates$$Lambda$14/0x0000000100066840 (java.base@11.0.12)
+ 946:             1             16  java.util.regex.CharPredicates$$Lambda$18/0x0000000100065840 (java.base@11.0.12)
+ 947:             1             16  java.util.regex.CharPredicates$$Lambda$30/0x0000000100091840 (java.base@11.0.12)
+ 948:             1             16  java.util.regex.CharPredicates$$Lambda$63/0x0000000100127c40 (java.base@11.0.12)
+ 949:             1             16  java.util.regex.Pattern$$Lambda$15/0x0000000100066c40 (java.base@11.0.12)
+ 950:             1             16  java.util.regex.Pattern$$Lambda$62/0x0000000100127840 (java.base@11.0.12)
+ 951:             1             16  java.util.regex.Pattern$1 (java.base@11.0.12)
+ 952:             1             16  java.util.regex.Pattern$CharPredicate$$Lambda$20/0x0000000100090440 (java.base@11.0.12)
+ 953:             1             16  java.util.regex.Pattern$LastNode (java.base@11.0.12)
+ 954:             1             16  java.util.regex.Pattern$Node (java.base@11.0.12)
+ 955:             1             16  java.util.stream.Collectors$$Lambda$40/0x00000001000c9c40 (java.base@11.0.12)
+ 956:             1             16  java.util.stream.Collectors$$Lambda$49/0x00000001000cfc40 (java.base@11.0.12)
+ 957:             1             16  java.util.stream.Collectors$$Lambda$5/0x0000000100061440 (java.base@11.0.12)
+ 958:             1             16  java.util.stream.Collectors$$Lambda$50/0x00000001000cf040 (java.base@11.0.12)
+ 959:             1             16  java.util.stream.Collectors$$Lambda$51/0x00000001000cf440 (java.base@11.0.12)
+ 960:             1             16  java.util.stream.Collectors$$Lambda$6/0x0000000100061840 (java.base@11.0.12)
+ 961:             1             16  java.util.stream.Collectors$$Lambda$7/0x0000000100061c40 (java.base@11.0.12)
+ 962:             1             16  java.util.stream.Collectors$$Lambda$8/0x0000000100062040 (java.base@11.0.12)
+ 963:             1             16  java.util.stream.FindOps$FindSink$OfRef$$Lambda$10/0x0000000100062840 (java.base@11.0.12)
+ 964:             1             16  java.util.stream.FindOps$FindSink$OfRef$$Lambda$11/0x0000000100062c40 (java.base@11.0.12)
+ 965:             1             16  java.util.stream.FindOps$FindSink$OfRef$$Lambda$12/0x0000000100063040 (java.base@11.0.12)
+ 966:             1             16  java.util.stream.FindOps$FindSink$OfRef$$Lambda$13/0x0000000100063440 (java.base@11.0.12)
+ 967:             1             16  java.util.zip.ZipFile$1 (java.base@11.0.12)
+ 968:             1             16  javax.xml.xpath.XPathFactoryFinder$$Lambda$67/0x000000010017a440 (java.xml@11.0.12)
+ 969:             1             16  javax.xml.xpath.XPathFactoryFinder$$Lambda$70/0x000000010017b040 (java.xml@11.0.12)
+ 970:             1             16  jdk.internal.jimage.ImageReaderFactory$1 (java.base@11.0.12)
+ 971:             1             16  jdk.internal.jimage.ImageStringsReader (java.base@11.0.12)
+ 972:             1             16  jdk.internal.jimage.decompressor.Decompressor (java.base@11.0.12)
+ 973:             1             16  jdk.internal.logger.LazyLoggers$1 (java.base@11.0.12)
+ 974:             1             16  jdk.internal.logger.LazyLoggers$LazyLoggerFactories (java.base@11.0.12)
+ 975:             1             16  jdk.internal.math.FloatingDecimal$1 (java.base@11.0.12)
+ 976:             1             16  jdk.internal.math.FormattedFloatingDecimal$1 (java.base@11.0.12)
+ 977:             1             16  jdk.internal.misc.TerminatingThreadLocal$1 (java.base@11.0.12)
+ 978:             1             16  jdk.internal.misc.Unsafe (java.base@11.0.12)
+ 979:             1             16  jdk.internal.module.DefaultRoots$$Lambda$1/0x0000000100060040 (java.base@11.0.12)
+ 980:             1             16  jdk.internal.module.DefaultRoots$$Lambda$2/0x0000000100060840 (java.base@11.0.12)
+ 981:             1             16  jdk.internal.module.DefaultRoots$$Lambda$4/0x0000000100061040 (java.base@11.0.12)
+ 982:             1             16  jdk.internal.module.DefaultRoots$$Lambda$9/0x0000000100062440 (java.base@11.0.12)
+ 983:             1             16  jdk.internal.module.ModulePatcher (java.base@11.0.12)
+ 984:             1             16  jdk.internal.module.ModuleTarget (java.base@11.0.12)
+ 985:             1             16  jdk.internal.perf.Perf (java.base@11.0.12)
+ 986:             1             16  jdk.internal.reflect.ReflectionFactory (java.base@11.0.12)
+ 987:             1             16  jdk.internal.util.Preconditions$1 (java.base@11.0.12)
+ 988:             1             16  jdk.net.ExtendedSocketOptions$1 (jdk.net@11.0.12)
+ 989:             1             16  jdk.net.LinuxSocketOptions (jdk.net@11.0.12)
+ 990:             1             16  jdk.net.LinuxSocketOptions$$Lambda$22/0x0000000100090c40 (jdk.net@11.0.12)
+ 991:             1             16  jdk.xml.internal.SecuritySupport$$Lambda$64/0x000000010015b840 (java.xml@11.0.12)
+ 992:             1             16  org.apache.pdfbox.contentstream.operator.color.SetNonStrokingColor
+ 993:             1             16  org.apache.pdfbox.contentstream.operator.color.SetNonStrokingColorN
+ 994:             1             16  org.apache.pdfbox.contentstream.operator.color.SetNonStrokingColorSpace
+ 995:             1             16  org.apache.pdfbox.contentstream.operator.color.SetNonStrokingDeviceCMYKColor
+ 996:             1             16  org.apache.pdfbox.contentstream.operator.color.SetNonStrokingDeviceGrayColor
+ 997:             1             16  org.apache.pdfbox.contentstream.operator.color.SetNonStrokingDeviceRGBColor
+ 998:             1             16  org.apache.pdfbox.contentstream.operator.color.SetStrokingColor
+ 999:             1             16  org.apache.pdfbox.contentstream.operator.color.SetStrokingColorN
+1000:             1             16  org.apache.pdfbox.contentstream.operator.color.SetStrokingColorSpace
+1001:             1             16  org.apache.pdfbox.contentstream.operator.color.SetStrokingDeviceCMYKColor
+1002:             1             16  org.apache.pdfbox.contentstream.operator.color.SetStrokingDeviceGrayColor
+1003:             1             16  org.apache.pdfbox.contentstream.operator.color.SetStrokingDeviceRGBColor
+1004:             1             16  org.apache.pdfbox.contentstream.operator.markedcontent.BeginMarkedContentSequence
+1005:             1             16  org.apache.pdfbox.contentstream.operator.markedcontent.BeginMarkedContentSequenceWithProperties
+1006:             1             16  org.apache.pdfbox.contentstream.operator.markedcontent.EndMarkedContentSequence
+1007:             1             16  org.apache.pdfbox.contentstream.operator.state.Concatenate
+1008:             1             16  org.apache.pdfbox.contentstream.operator.state.Restore
+1009:             1             16  org.apache.pdfbox.contentstream.operator.state.Save
+1010:             1             16  org.apache.pdfbox.contentstream.operator.state.SetFlatness
+1011:             1             16  org.apache.pdfbox.contentstream.operator.state.SetGraphicsStateParameters
+1012:             1             16  org.apache.pdfbox.contentstream.operator.state.SetLineCapStyle
+1013:             1             16  org.apache.pdfbox.contentstream.operator.state.SetLineDashPattern
+1014:             1             16  org.apache.pdfbox.contentstream.operator.state.SetLineJoinStyle
+1015:             1             16  org.apache.pdfbox.contentstream.operator.state.SetLineMiterLimit
+1016:             1             16  org.apache.pdfbox.contentstream.operator.state.SetLineWidth
+1017:             1             16  org.apache.pdfbox.contentstream.operator.state.SetMatrix
+1018:             1             16  org.apache.pdfbox.contentstream.operator.state.SetRenderingIntent
+1019:             1             16  org.apache.pdfbox.contentstream.operator.text.BeginText
+1020:             1             16  org.apache.pdfbox.contentstream.operator.text.EndText
+1021:             1             16  org.apache.pdfbox.contentstream.operator.text.MoveText
+1022:             1             16  org.apache.pdfbox.contentstream.operator.text.MoveTextSetLeading
+1023:             1             16  org.apache.pdfbox.contentstream.operator.text.NextLine
+1024:             1             16  org.apache.pdfbox.contentstream.operator.text.SetCharSpacing
+1025:             1             16  org.apache.pdfbox.contentstream.operator.text.SetFontAndSize
+1026:             1             16  org.apache.pdfbox.contentstream.operator.text.SetTextHorizontalScaling
+1027:             1             16  org.apache.pdfbox.contentstream.operator.text.SetTextLeading
+1028:             1             16  org.apache.pdfbox.contentstream.operator.text.SetTextRenderingMode
+1029:             1             16  org.apache.pdfbox.contentstream.operator.text.SetTextRise
+1030:             1             16  org.apache.pdfbox.contentstream.operator.text.SetWordSpacing
+1031:             1             16  org.apache.pdfbox.contentstream.operator.text.ShowText
+1032:             1             16  org.apache.pdfbox.contentstream.operator.text.ShowTextAdjusted
+1033:             1             16  org.apache.pdfbox.contentstream.operator.text.ShowTextLine
+1034:             1             16  org.apache.pdfbox.contentstream.operator.text.ShowTextLineAndSpace
+1035:             1             16  org.apache.pdfbox.filter.ASCII85Filter
+1036:             1             16  org.apache.pdfbox.filter.ASCIIHexFilter
+1037:             1             16  org.apache.pdfbox.filter.CCITTFaxFilter
+1038:             1             16  org.apache.pdfbox.filter.CryptFilter
+1039:             1             16  org.apache.pdfbox.filter.DCTFilter
+1040:             1             16  org.apache.pdfbox.filter.FilterFactory
+1041:             1             16  org.apache.pdfbox.filter.FlateFilter
+1042:             1             16  org.apache.pdfbox.filter.JBIG2Filter
+1043:             1             16  org.apache.pdfbox.filter.JPXFilter
+1044:             1             16  org.apache.pdfbox.filter.LZWFilter
+1045:             1             16  org.apache.pdfbox.filter.RunLengthDecodeFilter
+1046:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$1
+1047:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$10
+1048:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$11
+1049:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$12
+1050:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$13
+1051:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$14
+1052:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$15
+1053:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$16
+1054:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$2
+1055:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$3
+1056:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$4
+1057:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$5
+1058:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$6
+1059:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$7
+1060:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$8
+1061:             1             16  org.apache.pdfbox.pdmodel.graphics.blend.BlendMode$9
+1062:             1             16  org.apache.pdfbox.rendering.PDFRenderer$1
+1063:             1             16  org.apache.pdfbox.rendering.PageDrawer$1
+1064:             1             16  org.slf4j.helpers.NOPLoggerFactory
+1065:             1             16  org.slf4j.impl.StaticMDCBinder
+1066:             1             16  sun.awt.SunDisplayChanger (java.desktop@11.0.12)
+1067:             1             16  sun.awt.geom.AreaOp$1 (java.desktop@11.0.12)
+1068:             1             16  sun.awt.image.PixelConverter (java.desktop@11.0.12)
+1069:             1             16  sun.awt.image.PixelConverter$Argb (java.desktop@11.0.12)
+1070:             1             16  sun.awt.image.PixelConverter$ArgbBm (java.desktop@11.0.12)
+1071:             1             16  sun.awt.image.PixelConverter$ArgbPre (java.desktop@11.0.12)
+1072:             1             16  sun.awt.image.PixelConverter$Bgrx (java.desktop@11.0.12)
+1073:             1             16  sun.awt.image.PixelConverter$ByteGray (java.desktop@11.0.12)
+1074:             1             16  sun.awt.image.PixelConverter$Rgba (java.desktop@11.0.12)
+1075:             1             16  sun.awt.image.PixelConverter$RgbaPre (java.desktop@11.0.12)
+1076:             1             16  sun.awt.image.PixelConverter$Rgbx (java.desktop@11.0.12)
+1077:             1             16  sun.awt.image.PixelConverter$Ushort4444Argb (java.desktop@11.0.12)
+1078:             1             16  sun.awt.image.PixelConverter$Ushort555Rgb (java.desktop@11.0.12)
+1079:             1             16  sun.awt.image.PixelConverter$Ushort555Rgbx (java.desktop@11.0.12)
+1080:             1             16  sun.awt.image.PixelConverter$Ushort565Rgb (java.desktop@11.0.12)
+1081:             1             16  sun.awt.image.PixelConverter$UshortGray (java.desktop@11.0.12)
+1082:             1             16  sun.awt.image.PixelConverter$Xbgr (java.desktop@11.0.12)
+1083:             1             16  sun.awt.image.PixelConverter$Xrgb (java.desktop@11.0.12)
+1084:             1             16  sun.java2d.Disposer (java.desktop@11.0.12)
+1085:             1             16  sun.java2d.Disposer$$Lambda$61/0x0000000100125c40 (java.desktop@11.0.12)
+1086:             1             16  sun.java2d.SurfaceData$PixelToShapeLoopConverter (java.desktop@11.0.12)
+1087:             1             16  sun.java2d.UnixSurfaceManagerFactory (java.desktop@11.0.12)
+1088:             1             16  sun.java2d.cmm.lcms.LCMS (java.desktop@11.0.12)
+1089:             1             16  sun.java2d.loops.GraphicsPrimitiveMgr$1 (java.desktop@11.0.12)
+1090:             1             16  sun.java2d.loops.GraphicsPrimitiveMgr$2 (java.desktop@11.0.12)
+1091:             1             16  sun.java2d.loops.GraphicsPrimitiveMgr$PrimitiveSpec (java.desktop@11.0.12)
+1092:             1             16  sun.java2d.marlin.DMarlinRenderingEngine (java.desktop@11.0.12)
+1093:             1             16  sun.java2d.marlin.DRendererContext$PathConsumer2DAdapter (java.desktop@11.0.12)
+1094:             1             16  sun.java2d.marlin.DTransformingPathConsumer2D$Path2DWrapper (java.desktop@11.0.12)
+1095:             1             16  sun.java2d.pipe.AATextRenderer (java.desktop@11.0.12)
+1096:             1             16  sun.java2d.pipe.AlphaColorPipe (java.desktop@11.0.12)
+1097:             1             16  sun.java2d.pipe.AlphaPaintPipe (java.desktop@11.0.12)
+1098:             1             16  sun.java2d.pipe.DrawImage (java.desktop@11.0.12)
+1099:             1             16  sun.java2d.pipe.GeneralCompositePipe (java.desktop@11.0.12)
+1100:             1             16  sun.java2d.pipe.LCDTextRenderer (java.desktop@11.0.12)
+1101:             1             16  sun.java2d.pipe.LoopPipe (java.desktop@11.0.12)
+1102:             1             16  sun.java2d.pipe.NullPipe (java.desktop@11.0.12)
+1103:             1             16  sun.java2d.pipe.OutlineTextRenderer (java.desktop@11.0.12)
+1104:             1             16  sun.java2d.pipe.SolidTextRenderer (java.desktop@11.0.12)
+1105:             1             16  sun.java2d.pipe.ValidatePipe (java.desktop@11.0.12)
+1106:             1             16  sun.net.spi.DefaultProxySelector (java.base@11.0.12)
+1107:             1             16  sun.net.www.protocol.file.Handler (java.base@11.0.12)
+1108:             1             16  sun.net.www.protocol.jar.Handler (java.base@11.0.12)
+1109:             1             16  sun.net.www.protocol.jar.JarFileFactory (java.base@11.0.12)
+1110:             1             16  sun.net.www.protocol.jrt.Handler (java.base@11.0.12)
+1111:             1             16  sun.nio.ch.Util$1 (java.base@11.0.12)
+1112:             1             16  sun.nio.fs.LinuxFileSystemProvider (java.base@11.0.12)
+1113:             1             16  sun.nio.fs.NativeBuffers$1 (java.base@11.0.12)
+1114:             1             16  sun.util.calendar.Gregorian (java.base@11.0.12)
+1115:             1             16  sun.util.cldr.CLDRBaseLocaleDataMetaInfo (java.base@11.0.12)
+1116:             1             16  sun.util.locale.InternalLocaleBuilder$CaseInsensitiveChar (java.base@11.0.12)
+1117:             1             16  sun.util.locale.provider.CalendarDataUtility$CalendarWeekParameterGetter (java.base@11.0.12)
+1118:             1             16  sun.util.locale.provider.TimeZoneNameUtility$TimeZoneNameGetter (java.base@11.0.12)
+1119:             1             16  sun.util.resources.LocaleData$LocaleDataStrategy (java.base@11.0.12)
+1120:             1             16  sun.util.resources.cldr.provider.CLDRLocaleDataMetaInfo (jdk.localedata@11.0.12)
+Total        534574      113960728
