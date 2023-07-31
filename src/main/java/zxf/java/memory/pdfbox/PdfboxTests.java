@@ -41,7 +41,7 @@ public class PdfboxTests {
             for (int pageIndex = 0; pageIndex < pdfDocument.getNumberOfPages(); pageIndex++){
                 BufferedImage image = pdfRenderer.renderImageWithDPI(pageIndex, 200);
                 results.add(image);
-                waitInputFromKeyboard("Please press any key for loadPdf.each");
+                waitInputFromKeyboard("Please press any key for loadPdf.each." + pageIndex);
             }
         }
         DebugUtils.printMemInfoFromRuntime("loadPdf.end");
