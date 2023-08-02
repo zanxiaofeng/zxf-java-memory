@@ -18,15 +18,6 @@ public class PdfboxTests {
         DebugUtils.printMemInfoFromRuntime("main.1");
         System.gc();
         waitInputFromKeyboard("Please press any key for end");
-//        DebugUtils.printMemInfoFromRuntime("main.2");
-//        loadPdf();
-//        DebugUtils.printMemInfoFromRuntime("main.3");
-//        System.gc();
-//        DebugUtils.printMemInfoFromRuntime("main.4");
-//        loadPdf();
-//        DebugUtils.printMemInfoFromRuntime("main.5");
-//        System.gc();
-//        DebugUtils.printMemInfoFromRuntime("main.6");
     }
 
     private static void loadPdf() throws IOException, InterruptedException {
