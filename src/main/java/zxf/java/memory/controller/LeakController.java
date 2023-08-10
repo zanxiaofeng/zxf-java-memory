@@ -52,15 +52,16 @@ public class LeakController {
 
     /**
      * jmap -histo:live <pid>|grep MyThreadLocalBean
+     *
      * @param release
      * @return
      * @throws InterruptedException
      */
     @GetMapping("/byThreadLocal")
     public Integer byThreadLocal(@RequestParam(defaultValue = "false") Boolean release) throws InterruptedException {
-        DebugUtils.printMemInfoFromRuntime("byThreadLocal.before");
+        DebugUtils.printMemInfoFromRuntime("byThreadLocal.before, release=" + release);
         Integer result = ThreadLocalsLeak.test(release);
-        DebugUtils.printMemInfoFromRuntime("byThreadLocal.after");
+        DebugUtils.printMemInfoFromRuntime("byThreadLocal.after, release=" + release);
         return result;
     }
 }
