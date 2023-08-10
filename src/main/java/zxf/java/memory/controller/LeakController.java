@@ -3,9 +3,9 @@ package zxf.java.memory.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import zxf.java.memory.leak.*;
-import zxf.java.memory.service.ObjectSizeFetcher;
 import zxf.java.memory.util.DebugUtils;
 
 import java.io.IOException;
@@ -50,19 +50,17 @@ public class LeakController {
         return 1024;
     }
 
+    /**
+     * jmap -histo:live <pid>|grep MyThreadLocalBean
+     * @param release
+     * @return
+     * @throws InterruptedException
+     */
     @GetMapping("/byThreadLocal")
-    public Integer byThreadLocal() throws IOException {
+    public Integer byThreadLocal(@RequestParam(defaultValue = "false") Boolean release) throws InterruptedException {
         DebugUtils.printMemInfoFromRuntime("byThreadLocal.before");
-        for (int i = 0; i < 1024; i++) {
-            new Thread(() -> {
-                try {
-                    new ThreadLocalsLeak().test();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }).run();
-        }
+        Integer result = ThreadLocalsLeak.test(release);
         DebugUtils.printMemInfoFromRuntime("byThreadLocal.after");
-        return 1024;
+        return result;
     }
 }
