@@ -50,6 +50,7 @@ public class JdbcClobTests {
         for (int i = 0; i < entities.size(); i++) {
             JdbcEntity entity = entities.get(i);
             if (i == 0) {
+                //oracle.sql.CLOB
                 System.out.println(entity.getData().getClass().getName());
             }
             //String xmlFromData = entity.getData().getSubString(1, (int)entity.getData().length());
