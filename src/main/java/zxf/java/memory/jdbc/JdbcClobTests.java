@@ -60,6 +60,10 @@ public class JdbcClobTests {
             entity.getData().free();
             entity.clearData();
             System.out.println(i + "::ID: " + entity.getId() + ", DATA: " + xmlFromData.length());
+            if (i % 1000 == 0) {
+                System.gc();
+                DebugUtils.printMemInfoFromRuntime("In Process");
+            }
         }
 
         System.gc();
