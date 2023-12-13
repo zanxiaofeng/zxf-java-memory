@@ -1,15 +1,16 @@
 package zxf.java.memory.jdbc;
 
-import org.apache.pdfbox.io.IOUtils;
+import org.apache.commons.io.IOUtils;
 import zxf.java.memory.util.DebugUtils;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcClobTests {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         System.gc();
         DebugUtils.printMemInfoFromRuntime("Start");
 
@@ -19,7 +20,7 @@ public class JdbcClobTests {
         DebugUtils.printMemInfoFromRuntime("End");
     }
 
-    public static void testJdbcClob() throws SQLException {
+    public static void testJdbcClob() throws SQLException, IOException {
         Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@host:port/service", "***", "***");
         List<JdbcEntity> entities = queryJdbcClob(connection);
         processJdbcClob(entities);
@@ -29,6 +30,7 @@ public class JdbcClobTests {
     public static List<JdbcEntity> queryJdbcClob(Connection connection) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID, DATA FROM MY_TEST_TABLE");
         ResultSet resultSet = preparedStatement.executeQuery();
+
         List<JdbcEntity> result = new ArrayList<>();
         while (resultSet.next()) {
             String id = resultSet.getString("ID");
@@ -38,19 +40,23 @@ public class JdbcClobTests {
 
         System.gc();
         DebugUtils.printMemInfoFromRuntime("After Query");
-
         return result;
     }
 
-    public static List<JdbcEntity> processJdbcClob(List<JdbcEntity> entities) throws SQLException {
+    public static void processJdbcClob(List<JdbcEntity> entities) throws SQLException, IOException {
         System.gc();
         DebugUtils.printMemInfoFromRuntime("Before Process");
 
-        for (JdbcEntity entity: entities) {
+        for (int i = 0; i < entities.size(); i++) {
+            JdbcEntity entity = entities.get(i);
+            if (i == 0) {
+                System.out.println(entity.getData().getClass().getName());
+            }
             //String xmlFromData = entity.getData().getSubString(1, (int)entity.getData().length());
             Reader reader = entity.getData().getCharacterStream();
-            String xmlFromData = (reader);
-            System.out.println("ID: " + entity.getId()+  ", DATA: " + xmlFromData.length());
+            String xmlFromData = IOUtils.toString(reader);
+            entity.getData().free();
+            System.out.println(i + "::ID: " + entity.getId() + ", DATA: " + xmlFromData.length());
         }
 
         System.gc();
