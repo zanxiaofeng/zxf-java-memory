@@ -1,21 +1,21 @@
 # How to get java process info
-- jinfo <pid> #Print all info(Java System Properties, VM Flags, VM Arguments)
+- `jinfo <pid> #Print all info(Java System Properties, VM Flags, VM Arguments)`
 
 
 # How to enable/disable the named VM flag
-- jinfo -flag <+|-> <name>
+- `jinfo -flag <+|-> <name>`
 
 
 # How to get Heap info
-- jmap -heap <pid>
-- jmap -histo <pid>
+- `jmap -heap <pid>`
+- `jmap -histo <pid>`
 
 
 # How to trigger full gc
-- jcmd <pid> GC.run
-- jmap -histo:live <pid>
-- jmap -dump:live,format=b,file=/path/to/dumpfile.hprof <pid>
-- jconsole
+- `jcmd <pid> GC.run`
+- `jmap -histo:live <pid>`
+- `jmap -dump:live,format=b,file=/path/to/dumpfile.hprof <pid>`
+- `jconsole`
 
 
 # How to monitor GCs
@@ -60,6 +60,9 @@
 - IBM HEAP Analyzer
 - jhat <options> <heap-dump-file>(http://localhost:7000)
 
+
+# Get Default HeapSize
+- `java -XX:+PrintFlagsFinal -version | grep HeapSize`
 
 # Type of Memory Leaks in Java
 ## Memory Leak Through static Fields
