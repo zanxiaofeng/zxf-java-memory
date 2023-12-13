@@ -56,7 +56,9 @@ public class JdbcClobTests {
             //String xmlFromData = entity.getData().getSubString(1, (int)entity.getData().length());
             Reader reader = entity.getData().getCharacterStream();
             String xmlFromData = IOUtils.toString(reader);
+            reader.close();
             entity.getData().free();
+            entity.clearData();
             System.out.println(i + "::ID: " + entity.getId() + ", DATA: " + xmlFromData.length());
         }
 

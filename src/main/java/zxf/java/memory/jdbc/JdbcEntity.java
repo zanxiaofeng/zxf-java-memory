@@ -18,4 +18,8 @@ public class JdbcEntity {
     public Clob getData() {
         return data;
     }
+
+    public void clearData() {
+        this.data = null;
+    }
 }
