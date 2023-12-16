@@ -31,12 +31,15 @@ public class JdbcClobTests {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID, DATA FROM MY_TEST_TABLE");
         ResultSet resultSet = preparedStatement.executeQuery();
 
+        Long totalSize = 0l;
         List<JdbcEntity> result = new ArrayList<>();
         while (resultSet.next()) {
             String id = resultSet.getString("ID");
             Clob data = resultSet.getClob("DATA");
             result.add(new JdbcEntity(id, data));
+            totalSize += id.length() + data.length();
         }
+        System.out.println("totalSize: " + DebugUtils.formatSize(totalSize));
 
         System.gc();
         DebugUtils.printMemInfoFromRuntime("After Query");
@@ -47,6 +50,7 @@ public class JdbcClobTests {
         System.gc();
         DebugUtils.printMemInfoFromRuntime("Before Process");
 
+        Long totalSize = 0l;
         for (int i = 0; i < entities.size(); i++) {
             JdbcEntity entity = entities.get(i);
             if (i == 0) {
@@ -56,6 +60,7 @@ public class JdbcClobTests {
             //String xmlFromData = entity.getData().getSubString(1, (int)entity.getData().length());
             Reader reader = entity.getData().getCharacterStream();
             String xmlFromData = IOUtils.toString(reader);
+            totalSize += entity.getId().length() + xmlFromData.length();
             reader.close();
             entity.getData().free();
             entity.clearData();
@@ -65,6 +70,7 @@ public class JdbcClobTests {
                 DebugUtils.printMemInfoFromRuntime("In Process");
             }
         }
+        System.out.println("totalSize: " + DebugUtils.formatSize(totalSize));
 
         System.gc();
         DebugUtils.printMemInfoFromRuntime("After Process");

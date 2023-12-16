@@ -58,7 +58,15 @@ public class DebugUtils {
         }
     }
 
-    private static String formatSize(long v) {
+    public static void main(String[] args) {
+        System.out.println(formatSize(888));
+        System.out.println(formatSize(888 * 1024));
+        System.out.println(formatSize(888 * 1024 + 512)) ;
+        System.out.println(formatSize(888 * 1024 * 1024 + 512 * 1024));
+        System.out.println(formatSize(888 * 1024 * 1024 * 1024l + 512 * 1024 * 1024l));
+    }
+
+    public static String formatSize(long v) {
         if (v < 1024) return v + " B";
         int z = (63 - Long.numberOfLeadingZeros(v)) / 10;
         return String.format("%.1f %sB", (double) v / (1L << (z * 10)), " KMGTPE".charAt(z));
