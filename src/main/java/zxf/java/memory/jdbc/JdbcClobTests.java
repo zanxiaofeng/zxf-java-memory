@@ -11,6 +11,7 @@ import java.io.Reader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 
 import static oracle.jdbc.OracleConnection.CONNECTION_PROPERTY_DEFAULT_LOB_PREFETCH_SIZE;
@@ -43,6 +44,7 @@ public class JdbcClobTests {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID, DATA FROM MY_TEST_TABLE");
         // SELECT Length(ID) * 2, DBMS_LOB.GetLength(DATA) * 2 FROM MY_TEST_TABLE
         //((OracleStatement)preparedStatement).setLobPrefetchSize(4000);
+        System.out.println("OracleStatement.LobPrefetchSize, " + ((OracleStatement) preparedStatement).getLobPrefetchSize());
         ResultSet resultSet = preparedStatement.executeQuery();
 
         Long totalSizeOfId = 0l;
