@@ -12,5 +12,7 @@ public class ClassLayoutTests {
         System.out.println(ClassLayout.parseInstance(foo).toPrintable());
         System.out.println(ClassLayout.parseInstance(foo.getStr()).toPrintable());
         System.out.println(ClassLayout.parseInstance(foo.getBar().getIds()).toPrintable());
+        System.out.println(ClassLayout.parseInstance(foo.getBar().getIds().get(0)).toPrintable());
+        System.out.println(ClassLayout.parseInstance(foo.getBar().getIds().get(1)).toPrintable());
     }
 }
