@@ -15,7 +15,7 @@ public class Foo {
     private String str;
     private Bar bar;
 
-    public static Foo create() {
+    public static Foo create(List<String> ids) {
         Foo foo = new Foo();
         foo.setB((byte) 123);
         foo.setS((short) 234);
@@ -28,7 +28,7 @@ public class Foo {
         foo.setStr("1234567890");
         foo.setBar(new Bar());
         foo.getBar().setCh('b');
-        foo.getBar().setIds(Arrays.asList("12345", "67890"));
+        foo.getBar().setIds(ids);
         return foo;
     }
 
