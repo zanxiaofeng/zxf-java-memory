@@ -70,7 +70,7 @@ public class JdbcTimeTests {
 
     private static <T> void testDateToClass(ResultSet resultSet, Connection connection, Class<T> klass) throws SQLException {
         T date = resultSet.getObject("CL_DATE", klass);
-        System.out.println("$DATE=> " + klass + ", value=" + date.toString());
+        System.out.println("$DATE => " + klass + ", value=" + date.toString());
     }
 
     private static void testTimestampOriginal(ResultSet resultSet, Connection connection) throws SQLException {
