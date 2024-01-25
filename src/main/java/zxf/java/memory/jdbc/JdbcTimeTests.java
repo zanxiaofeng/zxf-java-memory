@@ -64,7 +64,7 @@ public class JdbcTimeTests {
     }
 
     private static void testDateOriginal(ResultSet resultSet, Connection connection) throws SQLException {
-        Object date = resultSet.getObject("CL_DATE");
+        Object date = (Timestamp) resultSet.getObject("CL_DATE");
         System.out.println("#TIMESTAMP (6) => class=" + date.getClass() + ", value=" + date.toString());
     }
 
