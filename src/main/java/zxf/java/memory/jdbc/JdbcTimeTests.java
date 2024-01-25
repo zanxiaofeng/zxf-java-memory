@@ -37,9 +37,9 @@ public class JdbcTimeTests {
         ResultSet resultSet = preparedStatement1.executeQuery();
         if (resultSet.next()) {
             String dbTimezone = resultSet.getString("DBTIMEZONE");
-            System.out.println("DBTIMEZONE=> " + dbTimezone.toString());
+            System.out.println("DBTIMEZONE => " + dbTimezone.toString());
             String sessionTimezone = resultSet.getString("SESSIONTIMEZONE");
-            System.out.println("SESSIONTIMEZONE=> " + sessionTimezone.toString());
+            System.out.println("SESSIONTIMEZONE => " + sessionTimezone.toString());
         }
     }
 
@@ -65,7 +65,7 @@ public class JdbcTimeTests {
 
     private static void testDateOriginal(ResultSet resultSet, Connection connection) throws SQLException {
         Object date = (Timestamp) resultSet.getObject("CL_DATE");
-        System.out.println("#TIMESTAMP (6) => class=" + date.getClass() + ", value=" + date.toString());
+        System.out.println("#TIMESTAMP (6) => " + date.getClass() + ", value=" + date.toString());
     }
 
     private static void testTimestampOriginal(ResultSet resultSet, Connection connection) throws SQLException {
