@@ -1,3 +1,7 @@
+# JVM Timezone
+- TimeZone.setDefault(timezone);
+- TimeZone.getDefault();
+
 # Oracle中TimeZone相关的系统变量
 - DBTIMEZONE
 - SESSIONTIMEZONE

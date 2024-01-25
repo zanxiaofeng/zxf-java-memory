@@ -9,9 +9,11 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Properties;
+import java.util.TimeZone;
 
 public class JdbcTimeTests {
     public static void main(String[] args) throws SQLException, IOException {
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT+7"));
         testJdbcTime();
     }
 
