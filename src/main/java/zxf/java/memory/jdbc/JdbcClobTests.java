@@ -11,7 +11,6 @@ import java.io.Reader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Properties;
 
 import static oracle.jdbc.OracleConnection.CONNECTION_PROPERTY_DEFAULT_LOB_PREFETCH_SIZE;

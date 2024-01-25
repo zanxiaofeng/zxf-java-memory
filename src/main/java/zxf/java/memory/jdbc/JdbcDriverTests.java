@@ -3,13 +3,14 @@ package zxf.java.memory.jdbc;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class JdbcDriverTests {
     public static void main(String[] args) {
         AtomicReference<Driver> oracleDriver = new AtomicReference();
         //classpath:/META-INF/services/java.sql.Driver
-        DriverManager.drivers().forEach(driver -> {
+        Collections.list(DriverManager.getDrivers()).forEach(driver -> {
             System.out.println("Driver: " + driver.getClass().getName());
             try {
                 if (driver.acceptsURL("jdbc:oracle:thin:@")) {

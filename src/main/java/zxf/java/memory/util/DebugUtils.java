@@ -47,15 +47,16 @@ public class DebugUtils {
     }
 
     public static void callJmap(String title) throws IOException, InterruptedException {
-        System.out.println("Call jmap: " + title + " - " + ProcessHandle.current().pid());
-        Process process = Runtime.getRuntime().exec("jmap -histo " + ProcessHandle.current().pid());
-        logOutput(process.getInputStream(), "");
-        logOutput(process.getErrorStream(), "ERROR - ");
-        if (process.waitFor(30, TimeUnit.MINUTES)) {
-            System.out.println("Call jmap: exit code=" + process.exitValue());
-        } else {
-            System.out.println("Call jmap: timeout");
-        }
+        // Need JDK 9
+//        System.out.println("Call jmap: " + title + " - " + ProcessHandle.current().pid());
+//        Process process = Runtime.getRuntime().exec("jmap -histo " + ProcessHandle.current().pid());
+//        logOutput(process.getInputStream(), "");
+//        logOutput(process.getErrorStream(), "ERROR - ");
+//        if (process.waitFor(30, TimeUnit.MINUTES)) {
+//            System.out.println("Call jmap: exit code=" + process.exitValue());
+//        } else {
+//            System.out.println("Call jmap: timeout");
+//        }
     }
 
     public static void main(String[] args) {
