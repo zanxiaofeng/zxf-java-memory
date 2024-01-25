@@ -65,7 +65,12 @@ public class JdbcTimeTests {
 
     private static void testDateOriginal(ResultSet resultSet, Connection connection) throws SQLException {
         Object date = (Timestamp) resultSet.getObject("CL_DATE");
-        System.out.println("#TIMESTAMP (6) => " + date.getClass() + ", value=" + date.toString());
+        System.out.println("#DATE => " + date.getClass() + ", value=" + date.toString());
+    }
+
+    private static <T> void testDateToClass(ResultSet resultSet, Connection connection, Class<T> klass) throws SQLException {
+        T date = resultSet.getObject("CL_DATE", klass);
+        System.out.println("$DATE=> " + klass + ", value=" + date.toString());
     }
 
     private static void testTimestampOriginal(ResultSet resultSet, Connection connection) throws SQLException {
@@ -77,11 +82,6 @@ public class JdbcTimeTests {
 
         Object timestampLtz = (TIMESTAMPLTZ) resultSet.getObject("CL_TIMESTAMP_LTZ");
         System.out.println("#TIMESTAMP (6) WITH LOCAL TIME ZONE => " + timestampLtz.getClass() + ", value=" + timestampLtz.toString());
-    }
-
-    private static <T> void testDateToClass(ResultSet resultSet, Connection connection, Class<T> klass) throws SQLException {
-        T date = resultSet.getObject("CL_DATE", klass);
-        System.out.println("$TIMESTAMP (6) => " + klass + ", value=" + date.toString());
     }
 
     private static <T> void testTimestampToClass(ResultSet resultSet, Connection connection, Class<T> klass) throws SQLException {
