@@ -49,48 +49,70 @@ public class JdbcTimeTests {
         //oracle.jdbc.driver.ForwardOnlyResultSet
         System.out.println(resultSet.getClass());
         while (resultSet.next()) {
-            testDateOriginal(resultSet, connection);
-            testDateToClass(resultSet, connection, String.class);
-            testDateToClass(resultSet, connection, Date.class);
-            testDateToClass(resultSet, connection, LocalDate.class);
+            testDateOriginal(resultSet);
+            testDateToClass(resultSet, String.class);
+            testDateToClass(resultSet, Date.class);
+            testDateToClass(resultSet, LocalDate.class);
 
-            testTimestampOriginal(resultSet, connection);
-            testTimestampToClass(resultSet, connection, String.class);
-            testTimestampToClass(resultSet, connection, Date.class);
-            testTimestampToClass(resultSet, connection, Timestamp.class);
-            testTimestampToClass(resultSet, connection, LocalDateTime.class);
-            testTimestampToClass(resultSet, connection, ZonedDateTime.class);
+            testTimestampOriginal(resultSet);
+            testTimestampToClass(resultSet, String.class);
+            testTimestampToClass(resultSet, Date.class);
+            testTimestampToClass(resultSet, Timestamp.class);
+            testTimestampToClass(resultSet, LocalDateTime.class);
+            testTimestampToClass(resultSet, ZonedDateTime.class);
+
+            testTimestampTzOriginal(resultSet);
+            testTimestampTzToClass(resultSet, String.class);
+            testTimestampTzToClass(resultSet, Date.class);
+            testTimestampTzToClass(resultSet, Timestamp.class);
+            testTimestampTzToClass(resultSet, LocalDateTime.class);
+            testTimestampTzToClass(resultSet, ZonedDateTime.class);
+
+            testTimestampLtzOriginal(resultSet);
+            testTimestampLtzToClass(resultSet, String.class);
+            testTimestampLtzToClass(resultSet, Date.class);
+            testTimestampLtzToClass(resultSet, Timestamp.class);
+            testTimestampLtzToClass(resultSet, LocalDateTime.class);
+            testTimestampLtzToClass(resultSet, ZonedDateTime.class);
         }
     }
 
-    private static void testDateOriginal(ResultSet resultSet, Connection connection) throws SQLException {
+    private static void testDateOriginal(ResultSet resultSet) throws SQLException {
         Object date = (Timestamp) resultSet.getObject("CL_DATE");
         System.out.println("#DATE => " + date.getClass() + ", value=" + date.toString());
     }
 
-    private static <T> void testDateToClass(ResultSet resultSet, Connection connection, Class<T> klass) throws SQLException {
+    private static <T> void testDateToClass(ResultSet resultSet, Class<T> klass) throws SQLException {
         T date = resultSet.getObject("CL_DATE", klass);
         System.out.println("$DATE => " + klass + ", value=" + date.toString());
     }
 
-    private static void testTimestampOriginal(ResultSet resultSet, Connection connection) throws SQLException {
+    private static void testTimestampOriginal(ResultSet resultSet) throws SQLException {
         Object timestamp = (TIMESTAMP) resultSet.getObject("CL_TIMESTAMP");
         System.out.println("#TIMESTAMP (6) => " + timestamp.getClass() + ", value=" + timestamp.toString());
+    }
 
+    private static void testTimestampTzOriginal(ResultSet resultSet) throws SQLException {
         Object timestampTz = (TIMESTAMPTZ) resultSet.getObject("CL_TIMESTAMP_TZ");
         System.out.println("#TIMESTAMP (6) WITH TIME ZONE => " + timestampTz.getClass() + ", value=" + timestampTz.toString());
+    }
 
+    private static void testTimestampLtzOriginal(ResultSet resultSet) throws SQLException {
         Object timestampLtz = (TIMESTAMPLTZ) resultSet.getObject("CL_TIMESTAMP_LTZ");
         System.out.println("#TIMESTAMP (6) WITH LOCAL TIME ZONE => " + timestampLtz.getClass() + ", value=" + timestampLtz.toString());
     }
 
-    private static <T> void testTimestampToClass(ResultSet resultSet, Connection connection, Class<T> klass) throws SQLException {
+    private static <T> void testTimestampToClass(ResultSet resultSet, Class<T> klass) throws SQLException {
         T timestamp = resultSet.getObject("CL_TIMESTAMP", klass);
         System.out.println("$TIMESTAMP (6) => " + klass + ", value=" + timestamp.toString());
+    }
 
+    private static <T> void testTimestampTzToClass(ResultSet resultSet, Class<T> klass) throws SQLException {
         T timestampTz = resultSet.getObject("CL_TIMESTAMP_TZ", klass);
         System.out.println("$TIMESTAMP (6) WITH TIME ZONE => " + klass + ", value=" + timestampTz.toString());
+    }
 
+    private static <T> void testTimestampLtzToClass(ResultSet resultSet, Class<T> klass) throws SQLException {
         T timestampLtz = resultSet.getObject("CL_TIMESTAMP_LTZ", klass);
         System.out.println("$TIMESTAMP (6) WITH LOCAL TIME ZONE => " + klass + ", value=" + timestampLtz.toString());
     }
