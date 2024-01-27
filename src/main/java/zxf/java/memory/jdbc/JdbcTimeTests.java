@@ -30,10 +30,10 @@ public class JdbcTimeTests {
     }
 
     private static void setupSessionTimezone(Connection connection) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = '+7:0'");
-        preparedStatement.execute();
+        //PreparedStatement preparedStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = '+7:0'");
+        //preparedStatement.execute();
 
-        PreparedStatement preparedStatement1 = connection.prepareStatement("SELECT DBTIMEZONE,SESSIONTIMEZONE FROM DUAL");
+        PreparedStatement preparedStatement1 = connection.prepareStatement("SELECT DBTIMEZONE, SESSIONTIMEZONE FROM DUAL");
         ResultSet resultSet = preparedStatement1.executeQuery();
         if (resultSet.next()) {
             String dbTimezone = resultSet.getString("DBTIMEZONE");
@@ -56,8 +56,8 @@ public class JdbcTimeTests {
 
             testTimestampOriginal(resultSet);
             testTimestampToClass(resultSet, String.class);
-            testTimestampToClass(resultSet, Date.class);
             testTimestampToClass(resultSet, Timestamp.class);
+            testTimestampToClass(resultSet, LocalDate.class);
             testTimestampToClass(resultSet, LocalDateTime.class);
             testTimestampToClass(resultSet, ZonedDateTime.class);
 
@@ -92,24 +92,25 @@ public class JdbcTimeTests {
         System.out.println("#TIMESTAMP (6) => " + timestamp.getClass() + ", value=" + timestamp.toString());
     }
 
-    private static void testTimestampTzOriginal(ResultSet resultSet) throws SQLException {
-        Object timestampTz = (TIMESTAMPTZ) resultSet.getObject("CL_TIMESTAMP_TZ");
-        System.out.println("#TIMESTAMP (6) WITH TIME ZONE => " + timestampTz.getClass() + ", value=" + timestampTz.toString());
-    }
-
-    private static void testTimestampLtzOriginal(ResultSet resultSet) throws SQLException {
-        Object timestampLtz = (TIMESTAMPLTZ) resultSet.getObject("CL_TIMESTAMP_LTZ");
-        System.out.println("#TIMESTAMP (6) WITH LOCAL TIME ZONE => " + timestampLtz.getClass() + ", value=" + timestampLtz.toString());
-    }
-
     private static <T> void testTimestampToClass(ResultSet resultSet, Class<T> klass) throws SQLException {
         T timestamp = resultSet.getObject("CL_TIMESTAMP", klass);
         System.out.println("$TIMESTAMP (6) => " + klass + ", value=" + timestamp.toString());
     }
 
+    private static void testTimestampTzOriginal(ResultSet resultSet) throws SQLException {
+        Object timestampTz = (TIMESTAMPTZ) resultSet.getObject("CL_TIMESTAMP_TZ");
+        System.out.println("#TIMESTAMP (6) WITH TIME ZONE => " + timestampTz.getClass() + ", value=" + timestampTz.toString());
+    }
+
+
     private static <T> void testTimestampTzToClass(ResultSet resultSet, Class<T> klass) throws SQLException {
         T timestampTz = resultSet.getObject("CL_TIMESTAMP_TZ", klass);
         System.out.println("$TIMESTAMP (6) WITH TIME ZONE => " + klass + ", value=" + timestampTz.toString());
+    }
+
+    private static void testTimestampLtzOriginal(ResultSet resultSet) throws SQLException {
+        Object timestampLtz = (TIMESTAMPLTZ) resultSet.getObject("CL_TIMESTAMP_LTZ");
+        System.out.println("#TIMESTAMP (6) WITH LOCAL TIME ZONE => " + timestampLtz.getClass() + ", value=" + timestampLtz.toString());
     }
 
     private static <T> void testTimestampLtzToClass(ResultSet resultSet, Class<T> klass) throws SQLException {
