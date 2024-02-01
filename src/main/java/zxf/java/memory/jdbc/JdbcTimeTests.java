@@ -1,5 +1,6 @@
 package zxf.java.memory.jdbc;
 
+import oracle.jdbc.OracleType;
 import oracle.sql.TIMESTAMP;
 import oracle.sql.TIMESTAMPLTZ;
 import oracle.sql.TIMESTAMPTZ;
@@ -30,11 +31,11 @@ public class JdbcTimeTests {
     }
 
     private static void setupSessionTimezone(Connection connection) throws SQLException {
-        //PreparedStatement preparedStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = '+7:0'");
-        //preparedStatement.execute();
+        //PreparedStatement setupStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = '+7:0'");
+        //setupStatement.execute();
 
-        PreparedStatement preparedStatement1 = connection.prepareStatement("SELECT DBTIMEZONE, SESSIONTIMEZONE FROM DUAL");
-        ResultSet resultSet = preparedStatement1.executeQuery();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT DBTIMEZONE, SESSIONTIMEZONE FROM DUAL");
+        ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
             String dbTimezone = resultSet.getString("DBTIMEZONE");
             System.out.println("DBTIMEZONE => " + dbTimezone.toString());
@@ -44,7 +45,8 @@ public class JdbcTimeTests {
     }
 
     private static void queryJdbcTime(Connection connection) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT CL_DATE, CL_TIMESTAMP, CL_TIMESTAMP_TZ, CL_TIMESTAMP_LTZ FROM MY_TEST_TABLE");
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT CL_DATE, CL_TIMESTAMP, CL_TIMESTAMP_TZ, CL_TIMESTAMP_LTZ FROM MY_TEST_TABLE WHERE CL_TIMESTAMP_LTZ > ?");
+        preparedStatement.setObject(1, LocalDateTime.now().minusDays(15), OracleType.TIMESTAMP_WITH_LOCAL_TIME_ZONE);
         ResultSet resultSet = preparedStatement.executeQuery();
         //oracle.jdbc.driver.ForwardOnlyResultSet
         System.out.println(resultSet.getClass());

@@ -47,4 +47,5 @@
 - BFILE = new Representation("BFILE", new Class[]{BFILE.class, OracleBfile.class, InputStream.class, byte[].class});
 - JSON = new Representation("JSON", (Class[])var0.toArray(new Class[var0.size()]));
 
-
+# Type Mapping from Java to Oracle
+- oracle.jdbc.driver.JavaToJavaConverter<S, T>
