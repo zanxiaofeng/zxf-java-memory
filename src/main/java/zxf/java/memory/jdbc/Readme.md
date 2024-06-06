@@ -49,3 +49,9 @@
 
 # Type Mapping from Java to Oracle
 - oracle.jdbc.driver.JavaToJavaConverter<S, T>
+
+# JDBC transaction
+## Auto transaction
+- In JDBC, when the auto-commit mode is set to true, it means that each individual SQL statement is treated as a transaction and will be automatically committed right after it is executed.
+## Manual transaction
+- If your need combine multiple JDBC executions or JDBC executions and other executions(Local file I/O, Network I/0), you need a manual transaction.
