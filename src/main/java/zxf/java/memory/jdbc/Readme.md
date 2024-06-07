@@ -12,6 +12,18 @@
 - TIMESTAMP (6) WITH TIME ZONE
 - TIMESTAMP (6) WITH LOCAL TIME ZONE
 
+# JDBC core classes
+- java.sql.Driver;
+- java.sql.DriverManager;
+- java.sql.SQLException;
+- java.sql.Connection;
+- java.sql.Statement;
+- javax.sql.DataSource
+- javax.sql.PooledConnection
+- oracle.jdbc.pool.OraclePooledConnection[oracle]
+- javax.sql.ConnectionPoolDataSource
+- oracle.jdbc.pool.OracleConnectionPoolDataSource[oracle]
+
 # Oracle中Date和Time相关的系统变量
 - SYSDATE(DATE, OS level)
 - SYSTIMESTAMP(TIMESTAMP (6) WITH TIME ZONE, OS level)
@@ -49,6 +61,13 @@
 
 # Type Mapping from Java to Oracle
 - oracle.jdbc.driver.JavaToJavaConverter<S, T>
+
+# Auto commit
+- If a connection is in auto-commit mode, then all its SQL statements will be executed and committed as individual transactions. Otherwise, its SQL statements are grouped into transactions that are terminated by a call to either the method commit or the method rollback. By default, new connections are in auto-commit mode.
+- The commit occurs when the statement completes. The time when the statement completes depends on the type of SQL Statement:
+- For DML statements, such as Insert, Update or Delete, and DDL statements, the statement is complete as soon as it has finished executing.
+- For Select statements, the statement is complete when the associated result set is closed.
+- For CallableStatement objects or for statements that return multiple results, the statement is complete when all of the associated result sets have been closed, and all update counts and output parameters have been retrieved.
 
 # JDBC transaction
 ## Auto transaction

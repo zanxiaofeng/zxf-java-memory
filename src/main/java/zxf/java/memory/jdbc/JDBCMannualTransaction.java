@@ -19,9 +19,8 @@ public class JDBCMannualTransaction {
             } catch (Exception ex) {
                 connection.rollback();
                 System.out.println("Transaction rolled back due to error: " + ex.getMessage());
-            } finally {
-                connection.setAutoCommit(true);
             }
         }
+        // Assumption: the autoCommit will be set to true when the connection's close method is called.
     }
 }

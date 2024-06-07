@@ -1,5 +1,7 @@
 package zxf.java.memory.jdbc;
 
+import oracle.jdbc.pool.OracleDataSourceFactory;
+
 import java.sql.*;
 
 public class JDBCBatchInsert {
@@ -23,8 +25,6 @@ public class JDBCBatchInsert {
             } catch (Exception ex) {
                 connection.rollback();
                 System.out.println("Transaction rolled back due to error: " + ex.getMessage());
-            } finally {
-                connection.setAutoCommit(true);
             }
         }
     }
