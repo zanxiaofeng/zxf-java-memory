@@ -18,6 +18,9 @@
 - java.sql.SQLException;
 - java.sql.Connection;
 - java.sql.Statement;
+- java.sql.PreparedStatement
+- java.sql.ResultSet
+- java.sql.ResultSetMetaData
 - javax.sql.DataSource
 - javax.sql.PooledConnection
 - oracle.jdbc.pool.OraclePooledConnection[oracle]
