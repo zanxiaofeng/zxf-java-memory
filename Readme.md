@@ -19,7 +19,7 @@
 
 
 # How to monitor GCs
-## jstat -gcutil <pid> 1000
+## `jstat -gcutil <pid> 1000`
 - S0, Survivor0使用百分比
 - S1, Survivor1使用百分比
 - E, Eden区使用百分比
@@ -31,7 +31,7 @@
 - FGC, Full GC垃圾回收次数
 - FGCT, Full GC垃圾回收收消耗时间
 - GCT, 垃圾回收收消耗时间
-## jstat -gc <pid> 1000
+## `jstat -gc <pid> 1000`
 - S0C, Survivor0大小
 - S0U, Survivor0已使用大小
 - S1C, Survivor1大小
