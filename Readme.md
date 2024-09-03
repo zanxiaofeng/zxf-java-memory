@@ -80,9 +80,9 @@
 ## Memory parameters of JVM
 - Initial heap size
 - Maximum heap size
-- Eden zone size(-Xmn<size>)
-- Metaspace size(-XX:MetaspaceSize, -XX:MaxMetaspaceSize)
-- Stack size(-Xss)
+- Eden zone size
+- Metaspace size
+- Stack size
 
 ## How to set mem size of java
 ### Option 1
