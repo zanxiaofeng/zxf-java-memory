@@ -5,10 +5,7 @@ import oracle.jdbc.OracleType;
 
 import java.io.IOException;
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.OffsetTime;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.util.Date;
 import java.util.Properties;
 import java.util.TimeZone;
@@ -17,6 +14,7 @@ public class JdbcTimeTests {
     public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
         TimeZone.setDefault(TimeZone.getTimeZone("GMT+10:00"));
         System.setProperty("log4jdbc.drivers", "oracle.jdbc.driver.OracleDriver");
+        Class.forName("oracle.jdbc.driver.OracleDriver");
         Class.forName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
         testJdbcTime();
     }
@@ -28,18 +26,23 @@ public class JdbcTimeTests {
 
         Connection connection = DriverManager.getConnection("jdbc:log4jdbc:oracle:thin:@host:port/service", jdbcProperties);
         setupSessionTimezone(connection);
-        queryJdbcTime(connection);
+
+        testJdbcTimeFromOracleToJava(connection);
+
+        testJdbcTimeFromJavaToOracle(connection, LocalDateTime.now());
+        testJdbcTimeFromJavaToOracle(connection, ZonedDateTime.now(ZoneId.of("GMT+06:00")));
+
         connection.close();
     }
 
     private static void setupSessionTimezone(Connection connection) throws SQLException {
-        String sessionTimeZoneBeforeSetup = ((OracleConnection)connection).getSessionTimeZone();
+        String sessionTimeZoneBeforeSetup = ((OracleConnection) connection).getSessionTimeZone();
         System.out.println("SessionTimeZoneBeforeSetup=" + sessionTimeZoneBeforeSetup);
 
         PreparedStatement setupStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = '+07:00'");
         setupStatement.execute();
 
-        String sessionTimeZoneAfterSetup = ((OracleConnection)connection).getSessionTimeZone();
+        String sessionTimeZoneAfterSetup = ((OracleConnection) connection).getSessionTimeZone();
         System.out.println("SessionTimeZoneAfterSetup=" + sessionTimeZoneAfterSetup);
 
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT DBTIMEZONE, SESSIONTIMEZONE FROM DUAL");
@@ -52,14 +55,28 @@ public class JdbcTimeTests {
         }
     }
 
-    private static void queryJdbcTime(Connection connection) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT CL_DATE, CL_TIMESTAMP, CL_TIMESTAMP_TZ, CL_TIMESTAMP_LTZ FROM MY_TEST_TABLE WHERE CL_TIMESTAMP_LTZ > ?");
-        preparedStatement.setObject(1, LocalDateTime.now().minusDays(15), OracleType.TIMESTAMP_WITH_LOCAL_TIME_ZONE);
+    private static void testJdbcTimeFromOracleToJava(Connection connection) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID, CL_DATE, CL_TIMESTAMP, CL_TIMESTAMP_TZ, CL_TIMESTAMP_LTZ FROM MY_TEST_TABLE WHERE ID = ?");
+        preparedStatement.setString(1, "id-1");
         ResultSet resultSet = preparedStatement.executeQuery();
+        showQueryResult(resultSet);
+    }
+
+    private static void testJdbcTimeFromJavaToOracle(Connection connection, Object now) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT ? AS CL_DATE, ? AS CL_TIMESTAMP, ? AS CL_TIMESTAMP_TZ, ? AS CL_TIMESTAMP_LTZ FROM DUAL");
+        preparedStatement.setObject(1, now, OracleType.DATE);
+        preparedStatement.setObject(2, now, OracleType.TIMESTAMP);
+        preparedStatement.setObject(3, now, OracleType.TIMESTAMP_WITH_TIME_ZONE);
+        preparedStatement.setObject(4, now, OracleType.TIMESTAMP_WITH_LOCAL_TIME_ZONE);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        showQueryResult(resultSet);
+    }
+
+    private static void showQueryResult(ResultSet resultSet) throws SQLException {
         //oracle.jdbc.driver.ForwardOnlyResultSet
         System.out.println(resultSet.getClass());
 
-        while (resultSet.next()) {
+        if (resultSet.next()) {
             testDateOriginal(resultSet);
             testDateToClass(resultSet, String.class);
             testDateToClass(resultSet, Date.class);
