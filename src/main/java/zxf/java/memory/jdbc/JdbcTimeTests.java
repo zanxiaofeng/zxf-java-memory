@@ -17,7 +17,7 @@ import java.util.TimeZone;
 
 public class JdbcTimeTests {
     public static void main(String[] args) throws SQLException, IOException {
-        TimeZone.setDefault(TimeZone.getTimeZone("GMT+08:00"));
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT+10:00"));
         System.setProperty("log4jdbc.drivers", "oracle.jdbc.driver.OracleDriver");
         testJdbcTime();
     }
