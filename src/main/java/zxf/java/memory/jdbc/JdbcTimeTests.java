@@ -14,9 +14,10 @@ import java.util.Properties;
 import java.util.TimeZone;
 
 public class JdbcTimeTests {
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
         TimeZone.setDefault(TimeZone.getTimeZone("GMT+10:00"));
         System.setProperty("log4jdbc.drivers", "oracle.jdbc.driver.OracleDriver");
+        Class.forName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
         testJdbcTime();
     }
 
