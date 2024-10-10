@@ -4,6 +4,7 @@ import oracle.jdbc.OracleConnection;
 import oracle.jdbc.OracleType;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.*;
 import java.time.*;
 import java.util.Date;
@@ -13,9 +14,7 @@ import java.util.TimeZone;
 public class JdbcTimeTests {
     public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
         TimeZone.setDefault(TimeZone.getTimeZone("GMT+10:00"));
-        System.setProperty("log4jdbc.drivers", "oracle.jdbc.driver.OracleDriver");
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        Class.forName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+
         testJdbcTime();
     }
 
@@ -24,6 +23,7 @@ public class JdbcTimeTests {
         jdbcProperties.setProperty("oracle.jdbc.user", "***");
         jdbcProperties.setProperty("oracle.jdbc.password", "***");
 
+        DriverManager.setLogWriter(new PrintWriter(System.out));
         Connection connection = DriverManager.getConnection("jdbc:log4jdbc:oracle:thin:@host:port/service", jdbcProperties);
         setupSessionTimezone(connection);
 
