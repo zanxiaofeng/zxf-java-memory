@@ -17,7 +17,7 @@ import java.util.TimeZone;
 
 public class JdbcTimeTests {
     public static void main(String[] args) throws SQLException, IOException {
-        TimeZone.setDefault(TimeZone.getTimeZone("GMT+7"));
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT+08:00"));
         System.setProperty("log4jdbc.drivers", "oracle.jdbc.driver.OracleDriver");
         testJdbcTime();
     }
@@ -33,7 +33,7 @@ public class JdbcTimeTests {
     }
 
     private static void setupSessionTimezone(Connection connection) throws SQLException {
-        //PreparedStatement setupStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = '+7:0'");
+        //PreparedStatement setupStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = '+07:00'");
         //setupStatement.execute();
 
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT DBTIMEZONE, SESSIONTIMEZONE FROM DUAL");
