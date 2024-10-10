@@ -1,5 +1,6 @@
 package zxf.java.memory.jdbc;
 
+import oracle.jdbc.OracleConnection;
 import oracle.jdbc.OracleType;
 import oracle.sql.TIMESTAMP;
 import oracle.sql.TIMESTAMPLTZ;
@@ -26,6 +27,7 @@ public class JdbcTimeTests {
         Properties jdbcProperties = new Properties();
         jdbcProperties.setProperty("oracle.jdbc.user", "***");
         jdbcProperties.setProperty("oracle.jdbc.password", "***");
+        jdbcProperties.setProperty("oracle.jdbc.sessionTimeZone", "GMT+09:00");
         Connection connection = DriverManager.getConnection("jdbc:log4jdbc:oracle:thin:@host:port/service", jdbcProperties);
         setupSessionTimezone(connection);
         queryJdbcTime(connection);
@@ -33,8 +35,14 @@ public class JdbcTimeTests {
     }
 
     private static void setupSessionTimezone(Connection connection) throws SQLException {
-        //PreparedStatement setupStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = '+07:00'");
-        //setupStatement.execute();
+        String sessionTimeZoneBeforeSetup = ((OracleConnection)connection).getSessionTimeZone();
+        System.out.println("SessionTimeZoneBeforeSetup=" + sessionTimeZoneBeforeSetup);
+
+        PreparedStatement setupStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = 'GMT+07:00'");
+        setupStatement.execute();
+
+        String sessionTimeZoneAfterSetup = ((OracleConnection)connection).getSessionTimeZone();
+        System.out.println("SessionTimeZoneAfterSetup=" + sessionTimeZoneAfterSetup);
 
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT DBTIMEZONE, SESSIONTIMEZONE FROM DUAL");
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -50,6 +58,7 @@ public class JdbcTimeTests {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT CL_DATE, CL_TIMESTAMP, CL_TIMESTAMP_TZ, CL_TIMESTAMP_LTZ FROM MY_TEST_TABLE WHERE CL_TIMESTAMP_LTZ > ?");
         preparedStatement.setObject(1, LocalDateTime.now().minusDays(15), OracleType.TIMESTAMP_WITH_LOCAL_TIME_ZONE);
         ResultSet resultSet = preparedStatement.executeQuery();
+
         //oracle.jdbc.driver.ForwardOnlyResultSet
         System.out.println(resultSet.getClass());
         while (resultSet.next()) {
