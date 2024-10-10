@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.OffsetTime;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Properties;
@@ -17,6 +18,7 @@ import java.util.TimeZone;
 public class JdbcTimeTests {
     public static void main(String[] args) throws SQLException, IOException {
         TimeZone.setDefault(TimeZone.getTimeZone("GMT+7"));
+        System.setProperty("log4jdbc.drivers", "oracle.jdbc.driver.OracleDriver");
         testJdbcTime();
     }
 
@@ -24,7 +26,7 @@ public class JdbcTimeTests {
         Properties jdbcProperties = new Properties();
         jdbcProperties.setProperty("oracle.jdbc.user", "***");
         jdbcProperties.setProperty("oracle.jdbc.password", "***");
-        Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@host:port/service", jdbcProperties);
+        Connection connection = DriverManager.getConnection("jdbc:log4jdbc:oracle:thin:@host:port/service", jdbcProperties);
         setupSessionTimezone(connection);
         queryJdbcTime(connection);
         connection.close();
@@ -62,6 +64,7 @@ public class JdbcTimeTests {
             testTimestampToClass(resultSet, LocalDate.class);
             testTimestampToClass(resultSet, LocalDateTime.class);
             testTimestampToClass(resultSet, ZonedDateTime.class);
+            testTimestampToClass(resultSet, OffsetTime.class);
 
             testTimestampTzOriginal(resultSet);
             testTimestampTzToClass(resultSet, String.class);
@@ -69,6 +72,7 @@ public class JdbcTimeTests {
             testTimestampTzToClass(resultSet, Timestamp.class);
             testTimestampTzToClass(resultSet, LocalDateTime.class);
             testTimestampTzToClass(resultSet, ZonedDateTime.class);
+            testTimestampTzToClass(resultSet, OffsetTime.class);
 
             testTimestampLtzOriginal(resultSet);
             testTimestampLtzToClass(resultSet, String.class);
@@ -76,6 +80,7 @@ public class JdbcTimeTests {
             testTimestampLtzToClass(resultSet, Timestamp.class);
             testTimestampLtzToClass(resultSet, LocalDateTime.class);
             testTimestampLtzToClass(resultSet, ZonedDateTime.class);
+            testTimestampLtzToClass(resultSet, OffsetTime.class);
         }
     }
 
