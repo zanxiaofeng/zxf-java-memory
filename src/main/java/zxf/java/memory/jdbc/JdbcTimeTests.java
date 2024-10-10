@@ -2,9 +2,6 @@ package zxf.java.memory.jdbc;
 
 import oracle.jdbc.OracleConnection;
 import oracle.jdbc.OracleType;
-import oracle.sql.TIMESTAMP;
-import oracle.sql.TIMESTAMPLTZ;
-import oracle.sql.TIMESTAMPTZ;
 
 import java.io.IOException;
 import java.sql.*;
@@ -27,7 +24,7 @@ public class JdbcTimeTests {
         Properties jdbcProperties = new Properties();
         jdbcProperties.setProperty("oracle.jdbc.user", "***");
         jdbcProperties.setProperty("oracle.jdbc.password", "***");
-        jdbcProperties.setProperty("oracle.jdbc.sessionTimeZone", "GMT+09:00");
+
         Connection connection = DriverManager.getConnection("jdbc:log4jdbc:oracle:thin:@host:port/service", jdbcProperties);
         setupSessionTimezone(connection);
         queryJdbcTime(connection);
@@ -38,7 +35,7 @@ public class JdbcTimeTests {
         String sessionTimeZoneBeforeSetup = ((OracleConnection)connection).getSessionTimeZone();
         System.out.println("SessionTimeZoneBeforeSetup=" + sessionTimeZoneBeforeSetup);
 
-        PreparedStatement setupStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = 'GMT+07:00'");
+        PreparedStatement setupStatement = connection.prepareStatement("ALTER SESSION SET TIME_ZONE = '+07:00'");
         setupStatement.execute();
 
         String sessionTimeZoneAfterSetup = ((OracleConnection)connection).getSessionTimeZone();
@@ -58,9 +55,9 @@ public class JdbcTimeTests {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT CL_DATE, CL_TIMESTAMP, CL_TIMESTAMP_TZ, CL_TIMESTAMP_LTZ FROM MY_TEST_TABLE WHERE CL_TIMESTAMP_LTZ > ?");
         preparedStatement.setObject(1, LocalDateTime.now().minusDays(15), OracleType.TIMESTAMP_WITH_LOCAL_TIME_ZONE);
         ResultSet resultSet = preparedStatement.executeQuery();
-
         //oracle.jdbc.driver.ForwardOnlyResultSet
         System.out.println(resultSet.getClass());
+
         while (resultSet.next()) {
             testDateOriginal(resultSet);
             testDateToClass(resultSet, String.class);
@@ -94,7 +91,8 @@ public class JdbcTimeTests {
     }
 
     private static void testDateOriginal(ResultSet resultSet) throws SQLException {
-        Object date = (Timestamp) resultSet.getObject("CL_DATE");
+        //java.sql.Timestamp
+        Object date = resultSet.getObject("CL_DATE");
         System.out.println("#DATE => " + date.getClass() + ", value=" + date.toString());
     }
 
@@ -104,7 +102,8 @@ public class JdbcTimeTests {
     }
 
     private static void testTimestampOriginal(ResultSet resultSet) throws SQLException {
-        Object timestamp = (TIMESTAMP) resultSet.getObject("CL_TIMESTAMP");
+        //oracle.sql.TIMESTAMP
+        Object timestamp = resultSet.getObject("CL_TIMESTAMP");
         System.out.println("#TIMESTAMP (6) => " + timestamp.getClass() + ", value=" + timestamp.toString());
     }
 
@@ -114,7 +113,8 @@ public class JdbcTimeTests {
     }
 
     private static void testTimestampTzOriginal(ResultSet resultSet) throws SQLException {
-        Object timestampTz = (TIMESTAMPTZ) resultSet.getObject("CL_TIMESTAMP_TZ");
+        //oracle.sql.TIMESTAMPTZ
+        Object timestampTz = resultSet.getObject("CL_TIMESTAMP_TZ");
         System.out.println("#TIMESTAMP (6) WITH TIME ZONE => " + timestampTz.getClass() + ", value=" + timestampTz.toString());
     }
 
@@ -125,7 +125,8 @@ public class JdbcTimeTests {
     }
 
     private static void testTimestampLtzOriginal(ResultSet resultSet) throws SQLException {
-        Object timestampLtz = (TIMESTAMPLTZ) resultSet.getObject("CL_TIMESTAMP_LTZ");
+        //oracle.sql.TIMESTAMPLTZ
+        Object timestampLtz = resultSet.getObject("CL_TIMESTAMP_LTZ");
         System.out.println("#TIMESTAMP (6) WITH LOCAL TIME ZONE => " + timestampLtz.getClass() + ", value=" + timestampLtz.toString());
     }
 
