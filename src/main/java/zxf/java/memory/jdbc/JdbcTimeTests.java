@@ -2,6 +2,10 @@ package zxf.java.memory.jdbc;
 
 import oracle.jdbc.OracleConnection;
 import oracle.jdbc.OracleType;
+import oracle.sql.TIMESTAMP;
+import oracle.sql.TIMESTAMPTZ;
+import oracle.sql.TIMESTAMPLTZ;
+import org.springframework.util.Assert;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -59,7 +63,7 @@ public class JdbcTimeTests {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID, CL_DATE, CL_TIMESTAMP, CL_TIMESTAMP_TZ, CL_TIMESTAMP_LTZ FROM MY_TEST_TABLE WHERE ID = ?");
         preparedStatement.setString(1, "id-1");
         ResultSet resultSet = preparedStatement.executeQuery();
-        showQueryResult(resultSet);
+        showQueryResult(resultSet, connection);
     }
 
     private static void testJdbcTimeFromJavaToOracle(Connection connection, Object now) throws SQLException {
@@ -69,10 +73,10 @@ public class JdbcTimeTests {
         preparedStatement.setObject(3, now, OracleType.TIMESTAMP_WITH_TIME_ZONE);
         preparedStatement.setObject(4, now, OracleType.TIMESTAMP_WITH_LOCAL_TIME_ZONE);
         ResultSet resultSet = preparedStatement.executeQuery();
-        showQueryResult(resultSet);
+        showQueryResult(resultSet, connection);
     }
 
-    private static void showQueryResult(ResultSet resultSet) throws SQLException {
+    private static void showQueryResult(ResultSet resultSet, Connection connection) throws SQLException {
         //oracle.jdbc.driver.ForwardOnlyResultSet
         System.out.println(resultSet.getClass());
 
@@ -90,7 +94,7 @@ public class JdbcTimeTests {
             testTimestampToClass(resultSet, ZonedDateTime.class);
             testTimestampToClass(resultSet, OffsetTime.class);
 
-            testTimestampTzOriginal(resultSet);
+            testTimestampTzOriginal(resultSet, connection);
             testTimestampTzToClass(resultSet, String.class);
             testTimestampTzToClass(resultSet, Date.class);
             testTimestampTzToClass(resultSet, Timestamp.class);
@@ -98,7 +102,7 @@ public class JdbcTimeTests {
             testTimestampTzToClass(resultSet, ZonedDateTime.class);
             testTimestampTzToClass(resultSet, OffsetTime.class);
 
-            testTimestampLtzOriginal(resultSet);
+            testTimestampLtzOriginal(resultSet, connection);
             testTimestampLtzToClass(resultSet, String.class);
             testTimestampLtzToClass(resultSet, Date.class);
             testTimestampLtzToClass(resultSet, Timestamp.class);
@@ -109,7 +113,7 @@ public class JdbcTimeTests {
     }
 
     private static void testDateOriginal(ResultSet resultSet) throws SQLException {
-        //java.sql.Timestamp
+        Assert.isInstanceOf(Timestamp.class, resultSet);
         Object date = resultSet.getObject("CL_DATE");
         System.out.println("#DATE => " + date.getClass() + ", value=" + date.toString());
     }
@@ -120,8 +124,8 @@ public class JdbcTimeTests {
     }
 
     private static void testTimestampOriginal(ResultSet resultSet) throws SQLException {
-        //oracle.sql.TIMESTAMP
-        Object timestamp = resultSet.getObject("CL_TIMESTAMP");
+        Assert.isInstanceOf(TIMESTAMP.class, resultSet);
+        TIMESTAMP timestamp = (TIMESTAMP) resultSet.getObject("CL_TIMESTAMP");
         System.out.println("#TIMESTAMP (6) => " + timestamp.getClass() + ", value=" + timestamp.toString());
     }
 
@@ -130,10 +134,10 @@ public class JdbcTimeTests {
         System.out.println("$TIMESTAMP (6) => " + klass + ", value=" + timestamp.toString());
     }
 
-    private static void testTimestampTzOriginal(ResultSet resultSet) throws SQLException {
-        //oracle.sql.TIMESTAMPTZ
-        Object timestampTz = resultSet.getObject("CL_TIMESTAMP_TZ");
-        System.out.println("#TIMESTAMP (6) WITH TIME ZONE => " + timestampTz.getClass() + ", value=" + timestampTz.toString());
+    private static void testTimestampTzOriginal(ResultSet resultSet, Connection connection) throws SQLException {
+        Assert.isInstanceOf(TIMESTAMPTZ.class, resultSet);
+        TIMESTAMPTZ timestampTz = (TIMESTAMPTZ) resultSet.getObject("CL_TIMESTAMP_TZ");
+        System.out.println("#TIMESTAMP (6) WITH TIME ZONE => " + timestampTz.getClass() + ", value=" + timestampTz.stringValue(connection));
     }
 
 
@@ -142,10 +146,10 @@ public class JdbcTimeTests {
         System.out.println("$TIMESTAMP (6) WITH TIME ZONE => " + klass + ", value=" + timestampTz.toString());
     }
 
-    private static void testTimestampLtzOriginal(ResultSet resultSet) throws SQLException {
-        //oracle.sql.TIMESTAMPLTZ
-        Object timestampLtz = resultSet.getObject("CL_TIMESTAMP_LTZ");
-        System.out.println("#TIMESTAMP (6) WITH LOCAL TIME ZONE => " + timestampLtz.getClass() + ", value=" + timestampLtz.toString());
+    private static void testTimestampLtzOriginal(ResultSet resultSet, Connection connection) throws SQLException {
+        Assert.isInstanceOf(TIMESTAMPLTZ.class, resultSet);
+        TIMESTAMPLTZ timestampLtz = (TIMESTAMPLTZ) resultSet.getObject("CL_TIMESTAMP_LTZ");
+        System.out.println("#TIMESTAMP (6) WITH LOCAL TIME ZONE => " + timestampLtz.getClass() + ", value=" + timestampLtz.stringValue(connection));
     }
 
     private static <T> void testTimestampLtzToClass(ResultSet resultSet, Class<T> klass) throws SQLException {
