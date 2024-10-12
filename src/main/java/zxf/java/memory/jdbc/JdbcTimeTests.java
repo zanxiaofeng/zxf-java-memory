@@ -137,7 +137,9 @@ public class JdbcTimeTests {
     private static void testTimestampTzOriginal(ResultSet resultSet, Connection connection) throws SQLException {
         Assert.isInstanceOf(TIMESTAMPTZ.class, resultSet);
         TIMESTAMPTZ timestampTz = (TIMESTAMPTZ) resultSet.getObject("CL_TIMESTAMP_TZ");
-        System.out.println("#TIMESTAMP (6) WITH TIME ZONE => " + timestampTz.getClass() + ", value=" + timestampTz.stringValue(connection));
+        String stringValue = timestampTz.stringValue(connection);
+        ZonedDateTime zonedDateTime = timestampTz.zonedDateTimeValue();
+        System.out.println("#TIMESTAMP (6) WITH TIME ZONE => " + timestampTz.getClass() + ", string=" + stringValue + ", zoned=" + zonedDateTime);
     }
 
 
@@ -149,7 +151,9 @@ public class JdbcTimeTests {
     private static void testTimestampLtzOriginal(ResultSet resultSet, Connection connection) throws SQLException {
         Assert.isInstanceOf(TIMESTAMPLTZ.class, resultSet);
         TIMESTAMPLTZ timestampLtz = (TIMESTAMPLTZ) resultSet.getObject("CL_TIMESTAMP_LTZ");
-        System.out.println("#TIMESTAMP (6) WITH LOCAL TIME ZONE => " + timestampLtz.getClass() + ", value=" + timestampLtz.stringValue(connection));
+        String stringValue = timestampLtz.stringValue(connection);
+        ZonedDateTime zonedDateTime = timestampLtz.zonedDateTimeValue(connection);
+        System.out.println("#TIMESTAMP (6) WITH LOCAL TIME ZONE => " + timestampLtz.getClass() + ", string=" + stringValue + ", zoned=" + zonedDateTime);
     }
 
     private static <T> void testTimestampLtzToClass(ResultSet resultSet, Class<T> klass) throws SQLException {
