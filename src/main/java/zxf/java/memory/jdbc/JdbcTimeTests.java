@@ -15,13 +15,9 @@ import java.util.Properties;
 import java.util.TimeZone;
 
 public class JdbcTimeTests {
-    public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
+    public static void main(String[] args) throws SQLException, IOException {
         TimeZone.setDefault(TimeZone.getTimeZone("GMT+10:00"));
 
-        testJdbcTime();
-    }
-
-    public static void testJdbcTime() throws SQLException, IOException {
         Properties jdbcProperties = new Properties();
         jdbcProperties.setProperty("oracle.jdbc.user", "***");
         jdbcProperties.setProperty("oracle.jdbc.password", "***");
@@ -62,15 +58,13 @@ public class JdbcTimeTests {
         preparedStatement.setString(1, "id-1");
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        //oracle.jdbc.driver.ForwardOnlyResultSet
-        System.out.println(resultSet.getClass());
-
         if (resultSet.next()) {
             testDateOriginal(resultSet);
             testDateToClass(resultSet, String.class);
             testDateToClass(resultSet, java.util.Date.class);
             testDateToClass(resultSet, java.sql.Date.class);
             testDateToClass(resultSet, LocalDate.class);
+            testDateToClass(resultSet, LocalDateTime.class);
 
             testTimestampOriginal(resultSet);
             testTimestampToClass(resultSet, String.class);
@@ -82,7 +76,8 @@ public class JdbcTimeTests {
 
             testTimestampTzOriginal(resultSet, connection);
             testTimestampTzToClass(resultSet, String.class);
-            testTimestampTzToClass(resultSet, Date.class);
+            testTimestampTzToClass(resultSet, java.util.Date.class);
+            testTimestampTzToClass(resultSet, java.sql.Date.class);
             testTimestampTzToClass(resultSet, Timestamp.class);
             testTimestampTzToClass(resultSet, LocalDateTime.class);
             testTimestampTzToClass(resultSet, ZonedDateTime.class);
@@ -90,7 +85,8 @@ public class JdbcTimeTests {
 
             testTimestampLtzOriginal(resultSet, connection);
             testTimestampLtzToClass(resultSet, String.class);
-            testTimestampLtzToClass(resultSet, Date.class);
+            testTimestampLtzToClass(resultSet, java.util.Date.class);
+            testTimestampLtzToClass(resultSet, java.sql.Date.class);
             testTimestampLtzToClass(resultSet, Timestamp.class);
             testTimestampLtzToClass(resultSet, LocalDateTime.class);
             testTimestampLtzToClass(resultSet, ZonedDateTime.class);
@@ -106,7 +102,6 @@ public class JdbcTimeTests {
         preparedStatement.setObject(4, ZonedDateTime.now());
         preparedStatement.setObject(5, OffsetDateTime.now());
         ResultSet resultSet = preparedStatement.executeQuery();
-
         //oracle.jdbc.driver.ForwardOnlyResultSet
         System.out.println(resultSet.getClass());
 
@@ -141,18 +136,18 @@ public class JdbcTimeTests {
         preparedStatement.setObject(4, now, OracleType.TIMESTAMP_WITH_LOCAL_TIME_ZONE);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        //oracle.jdbc.driver.ForwardOnlyResultSet
-        System.out.println(resultSet.getClass());
-
         if (resultSet.next()) {
             testDateOriginal(resultSet);
             testDateToClass(resultSet, String.class);
             testDateToClass(resultSet, java.util.Date.class);
             testDateToClass(resultSet, java.sql.Date.class);
             testDateToClass(resultSet, LocalDate.class);
+            testDateToClass(resultSet, LocalDateTime.class);
 
             testTimestampOriginal(resultSet);
             testTimestampToClass(resultSet, String.class);
+            testTimestampToClass(resultSet, java.util.Date.class);
+            testTimestampToClass(resultSet, java.sql.Date.class);
             testTimestampToClass(resultSet, Timestamp.class);
             testTimestampToClass(resultSet, LocalDate.class);
             testTimestampToClass(resultSet, LocalDateTime.class);
@@ -161,7 +156,8 @@ public class JdbcTimeTests {
 
             testTimestampTzOriginal(resultSet, connection);
             testTimestampTzToClass(resultSet, String.class);
-            testTimestampTzToClass(resultSet, Date.class);
+            testTimestampTzToClass(resultSet, java.util.Date.class);
+            testTimestampTzToClass(resultSet, java.sql.Date.class);
             testTimestampTzToClass(resultSet, Timestamp.class);
             testTimestampTzToClass(resultSet, LocalDateTime.class);
             testTimestampTzToClass(resultSet, ZonedDateTime.class);
@@ -169,16 +165,13 @@ public class JdbcTimeTests {
 
             testTimestampLtzOriginal(resultSet, connection);
             testTimestampLtzToClass(resultSet, String.class);
-            testTimestampLtzToClass(resultSet, Date.class);
+            testTimestampLtzToClass(resultSet, java.util.Date.class);
+            testTimestampLtzToClass(resultSet, java.sql.Date.class);
             testTimestampLtzToClass(resultSet, Timestamp.class);
             testTimestampLtzToClass(resultSet, LocalDateTime.class);
             testTimestampLtzToClass(resultSet, ZonedDateTime.class);
             testTimestampLtzToClass(resultSet, OffsetTime.class);
         }
-    }
-
-    private static void showQueryResult(ResultSet resultSet, Connection connection) throws SQLException {
-
     }
 
     private static void testDateOriginal(ResultSet resultSet) throws SQLException {
