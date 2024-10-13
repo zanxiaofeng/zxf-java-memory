@@ -115,7 +115,6 @@ public class JdbcTimeTests {
             Assert.isInstanceOf(Timestamp.class, sqlDate);
             System.out.println("#CL_SQL_DATE => " + sqlDate.getClass() + ", value=" + sqlDate.toString());
 
-
             Object localDate = resultSet.getObject("CL_LOCAL_DATE");
             Assert.isInstanceOf(TIMESTAMP.class, localDate);
             System.out.println("#CL_LOCAL_DATE => " + localDate.getClass() + ", value=" + localDate.toString());
