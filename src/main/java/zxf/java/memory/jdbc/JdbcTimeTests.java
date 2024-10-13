@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 import java.time.*;
-import java.util.Date;
 import java.util.Properties;
 import java.util.TimeZone;
 
@@ -32,7 +31,6 @@ public class JdbcTimeTests {
         setupSessionTimezone(connection);
 
         testJdbcTimeFromOracleToJava(connection);
-
         testJdbcTimeFromJavaToOracle(connection, LocalDateTime.now());
         testJdbcTimeFromJavaToOracle(connection, ZonedDateTime.now(ZoneId.of("GMT+06:00")));
 
@@ -63,27 +61,15 @@ public class JdbcTimeTests {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID, CL_DATE, CL_TIMESTAMP, CL_TIMESTAMP_TZ, CL_TIMESTAMP_LTZ FROM MY_TEST_TABLE WHERE ID = ?");
         preparedStatement.setString(1, "id-1");
         ResultSet resultSet = preparedStatement.executeQuery();
-        showQueryResult(resultSet, connection);
-    }
 
-    private static void testJdbcTimeFromJavaToOracle(Connection connection, Object now) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT ? AS CL_DATE, ? AS CL_TIMESTAMP, ? AS CL_TIMESTAMP_TZ, ? AS CL_TIMESTAMP_LTZ FROM DUAL");
-        preparedStatement.setObject(1, now, OracleType.DATE);
-        preparedStatement.setObject(2, now, OracleType.TIMESTAMP);
-        preparedStatement.setObject(3, now, OracleType.TIMESTAMP_WITH_TIME_ZONE);
-        preparedStatement.setObject(4, now, OracleType.TIMESTAMP_WITH_LOCAL_TIME_ZONE);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        showQueryResult(resultSet, connection);
-    }
-
-    private static void showQueryResult(ResultSet resultSet, Connection connection) throws SQLException {
         //oracle.jdbc.driver.ForwardOnlyResultSet
         System.out.println(resultSet.getClass());
 
         if (resultSet.next()) {
             testDateOriginal(resultSet);
             testDateToClass(resultSet, String.class);
-            testDateToClass(resultSet, Date.class);
+            testDateToClass(resultSet, java.util.Date.class);
+            testDateToClass(resultSet, java.sql.Date.class);
             testDateToClass(resultSet, LocalDate.class);
 
             testTimestampOriginal(resultSet);
@@ -110,6 +96,90 @@ public class JdbcTimeTests {
             testTimestampLtzToClass(resultSet, ZonedDateTime.class);
             testTimestampLtzToClass(resultSet, OffsetTime.class);
         }
+    }
+
+    private static void testJdbcTimeFromJavaToOracleDefault(Connection connection) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT ? AS CL_SQL_DATE, ? AS CL_LOCAL_DATE, ? AS CL_LOCAL_DATETIME, ? AS CL_ZONED_DATETIME, ? AS CL_OFFSET_DATETIME FROM DUAL");
+        preparedStatement.setObject(1, new java.sql.Date(System.currentTimeMillis()));
+        preparedStatement.setObject(2, LocalDate.now());
+        preparedStatement.setObject(3, LocalDateTime.now());
+        preparedStatement.setObject(4, ZonedDateTime.now());
+        preparedStatement.setObject(5, OffsetDateTime.now());
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        //oracle.jdbc.driver.ForwardOnlyResultSet
+        System.out.println(resultSet.getClass());
+
+        if (resultSet.next()) {
+            Object sqlDate = resultSet.getObject("CL_SQL_DATE");
+            Assert.isInstanceOf(Timestamp.class, sqlDate);
+            System.out.println("#CL_SQL_DATE => " + sqlDate.getClass() + ", value=" + sqlDate.toString());
+
+
+            Object localDate = resultSet.getObject("CL_LOCAL_DATE");
+            Assert.isInstanceOf(TIMESTAMP.class, localDate);
+            System.out.println("#CL_LOCAL_DATE => " + localDate.getClass() + ", value=" + localDate.toString());
+
+            Object localDatetime = resultSet.getObject("CL_LOCAL_DATETIME");
+            Assert.isInstanceOf(TIMESTAMP.class, localDatetime);
+            System.out.println("#CL_LOCAL_DATETIME => " + localDatetime.getClass() + ", value=" + localDatetime.toString());
+
+            Object zonedDatetime = resultSet.getObject("CL_ZONED_DATETIME");
+            Assert.isInstanceOf(TIMESTAMPTZ.class, zonedDatetime);
+            System.out.println("#CL_ZONED_DATETIME => " + zonedDatetime.getClass() + ", value=" + zonedDatetime.toString());
+
+            Object offsetDatetime = resultSet.getObject("CL_OFFSET_DATETIME");
+            Assert.isInstanceOf(TIMESTAMPTZ.class, offsetDatetime);
+            System.out.println("#CL_OFFSET_DATETIME => " + offsetDatetime.getClass() + ", value=" + offsetDatetime.toString());
+        }
+    }
+
+    private static void testJdbcTimeFromJavaToOracle(Connection connection, Object now) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT ? AS CL_DATE, ? AS CL_TIMESTAMP, ? AS CL_TIMESTAMP_TZ, ? AS CL_TIMESTAMP_LTZ FROM DUAL");
+        preparedStatement.setObject(1, now, OracleType.DATE);
+        preparedStatement.setObject(2, now, OracleType.TIMESTAMP);
+        preparedStatement.setObject(3, now, OracleType.TIMESTAMP_WITH_TIME_ZONE);
+        preparedStatement.setObject(4, now, OracleType.TIMESTAMP_WITH_LOCAL_TIME_ZONE);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        //oracle.jdbc.driver.ForwardOnlyResultSet
+        System.out.println(resultSet.getClass());
+
+        if (resultSet.next()) {
+            testDateOriginal(resultSet);
+            testDateToClass(resultSet, String.class);
+            testDateToClass(resultSet, java.util.Date.class);
+            testDateToClass(resultSet, java.sql.Date.class);
+            testDateToClass(resultSet, LocalDate.class);
+
+            testTimestampOriginal(resultSet);
+            testTimestampToClass(resultSet, String.class);
+            testTimestampToClass(resultSet, Timestamp.class);
+            testTimestampToClass(resultSet, LocalDate.class);
+            testTimestampToClass(resultSet, LocalDateTime.class);
+            testTimestampToClass(resultSet, ZonedDateTime.class);
+            testTimestampToClass(resultSet, OffsetTime.class);
+
+            testTimestampTzOriginal(resultSet, connection);
+            testTimestampTzToClass(resultSet, String.class);
+            testTimestampTzToClass(resultSet, Date.class);
+            testTimestampTzToClass(resultSet, Timestamp.class);
+            testTimestampTzToClass(resultSet, LocalDateTime.class);
+            testTimestampTzToClass(resultSet, ZonedDateTime.class);
+            testTimestampTzToClass(resultSet, OffsetTime.class);
+
+            testTimestampLtzOriginal(resultSet, connection);
+            testTimestampLtzToClass(resultSet, String.class);
+            testTimestampLtzToClass(resultSet, Date.class);
+            testTimestampLtzToClass(resultSet, Timestamp.class);
+            testTimestampLtzToClass(resultSet, LocalDateTime.class);
+            testTimestampLtzToClass(resultSet, ZonedDateTime.class);
+            testTimestampLtzToClass(resultSet, OffsetTime.class);
+        }
+    }
+
+    private static void showQueryResult(ResultSet resultSet, Connection connection) throws SQLException {
+
     }
 
     private static void testDateOriginal(ResultSet resultSet) throws SQLException {
