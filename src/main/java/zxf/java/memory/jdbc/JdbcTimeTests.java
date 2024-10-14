@@ -61,6 +61,7 @@ public class JdbcTimeTests {
         if (resultSet.next()) {
             testDateOriginal(resultSet);
             testDateToClass(resultSet, String.class);
+            testDateToClass(resultSet, Timestamp.class);
             testDateToClass(resultSet, java.util.Date.class);
             testDateToClass(resultSet, java.sql.Date.class);
             testDateToClass(resultSet, LocalDate.class);
@@ -69,43 +70,47 @@ public class JdbcTimeTests {
             testTimestampOriginal(resultSet);
             testTimestampToClass(resultSet, String.class);
             testTimestampToClass(resultSet, Timestamp.class);
-            testTimestampToClass(resultSet, LocalDate.class);
+            testTimestampToClass(resultSet, java.util.Date.class);
+            testTimestampToClass(resultSet, java.sql.Date.class);
             testTimestampToClass(resultSet, LocalDateTime.class);
-            testTimestampToClass(resultSet, ZonedDateTime.class);
-            testTimestampToClass(resultSet, OffsetTime.class);
 
             testTimestampTzOriginal(resultSet, connection);
             testTimestampTzToClass(resultSet, String.class);
+            testTimestampTzToClass(resultSet, Timestamp.class);
             testTimestampTzToClass(resultSet, java.util.Date.class);
             testTimestampTzToClass(resultSet, java.sql.Date.class);
-            testTimestampTzToClass(resultSet, Timestamp.class);
             testTimestampTzToClass(resultSet, LocalDateTime.class);
             testTimestampTzToClass(resultSet, ZonedDateTime.class);
-            testTimestampTzToClass(resultSet, OffsetTime.class);
+            testTimestampTzToClass(resultSet, OffsetDateTime.class);
 
             testTimestampLtzOriginal(resultSet, connection);
             testTimestampLtzToClass(resultSet, String.class);
+            testTimestampLtzToClass(resultSet, Timestamp.class);
             testTimestampLtzToClass(resultSet, java.util.Date.class);
             testTimestampLtzToClass(resultSet, java.sql.Date.class);
-            testTimestampLtzToClass(resultSet, Timestamp.class);
             testTimestampLtzToClass(resultSet, LocalDateTime.class);
             testTimestampLtzToClass(resultSet, ZonedDateTime.class);
-            testTimestampLtzToClass(resultSet, OffsetTime.class);
+            testTimestampLtzToClass(resultSet, OffsetDateTime.class);
         }
     }
 
     private static void testJdbcTimeFromJavaToOracleDefault(Connection connection) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT ? AS CL_SQL_DATE, ? AS CL_LOCAL_DATE, ? AS CL_LOCAL_DATETIME, ? AS CL_ZONED_DATETIME, ? AS CL_OFFSET_DATETIME FROM DUAL");
-        preparedStatement.setObject(1, new java.sql.Date(System.currentTimeMillis()));
-        preparedStatement.setObject(2, LocalDate.now());
-        preparedStatement.setObject(3, LocalDateTime.now());
-        preparedStatement.setObject(4, ZonedDateTime.now());
-        preparedStatement.setObject(5, OffsetDateTime.now());
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT ? AS CL_SQL_TIMESTAMP, ? AS CL_SQL_DATE, ? AS CL_LOCAL_DATE, ? AS CL_LOCAL_DATETIME, ? AS CL_ZONED_DATETIME, ? AS CL_OFFSET_DATETIME FROM DUAL");
+        preparedStatement.setObject(1, new java.sql.Timestamp(System.currentTimeMillis()));
+        preparedStatement.setObject(2, new java.sql.Date(System.currentTimeMillis()));
+        preparedStatement.setObject(3, LocalDate.now());
+        preparedStatement.setObject(4, LocalDateTime.now());
+        preparedStatement.setObject(5, ZonedDateTime.now());
+        preparedStatement.setObject(6, OffsetDateTime.now());
         ResultSet resultSet = preparedStatement.executeQuery();
         //oracle.jdbc.driver.ForwardOnlyResultSet
         System.out.println(resultSet.getClass());
 
         if (resultSet.next()) {
+            Object sqlTimestamp = resultSet.getObject("CL_SQL_TIMESTAMP");
+            Assert.isInstanceOf(TIMESTAMP.class, sqlTimestamp);
+            System.out.println("#CL_SQL_TIMESTAMP => " + sqlTimestamp.getClass() + ", value=" + sqlTimestamp.toString());
+
             Object sqlDate = resultSet.getObject("CL_SQL_DATE");
             Assert.isInstanceOf(Timestamp.class, sqlDate);
             System.out.println("#CL_SQL_DATE => " + sqlDate.getClass() + ", value=" + sqlDate.toString());
@@ -120,11 +125,15 @@ public class JdbcTimeTests {
 
             Object zonedDatetime = resultSet.getObject("CL_ZONED_DATETIME");
             Assert.isInstanceOf(TIMESTAMPTZ.class, zonedDatetime);
-            System.out.println("#CL_ZONED_DATETIME => " + zonedDatetime.getClass() + ", value=" + zonedDatetime.toString());
+            String zonedDatetimeStringValue = ((TIMESTAMPTZ) zonedDatetime).stringValue(connection);
+            ZonedDateTime zonedDatetimZonedDateTime = ((TIMESTAMPTZ) zonedDatetime).zonedDateTimeValue();
+            System.out.println("#CL_ZONED_DATETIME => " + zonedDatetime.getClass() + ", string=" + zonedDatetimeStringValue + ", zoned=" + zonedDatetimZonedDateTime);
 
             Object offsetDatetime = resultSet.getObject("CL_OFFSET_DATETIME");
             Assert.isInstanceOf(TIMESTAMPTZ.class, offsetDatetime);
-            System.out.println("#CL_OFFSET_DATETIME => " + offsetDatetime.getClass() + ", value=" + offsetDatetime.toString());
+            String offsetDatetimeStringValue = ((TIMESTAMPTZ) offsetDatetime).stringValue(connection);
+            ZonedDateTime offsetDatetimZonedDateTime = ((TIMESTAMPTZ) offsetDatetime).zonedDateTimeValue();
+            System.out.println("#CL_OFFSET_DATETIME => " + offsetDatetime.getClass() + ", string=" + offsetDatetimeStringValue + ", zoned=" + offsetDatetimZonedDateTime);
         }
     }
 
@@ -138,45 +147,15 @@ public class JdbcTimeTests {
 
         if (resultSet.next()) {
             testDateOriginal(resultSet);
-            testDateToClass(resultSet, String.class);
-            testDateToClass(resultSet, java.util.Date.class);
-            testDateToClass(resultSet, java.sql.Date.class);
-            testDateToClass(resultSet, LocalDate.class);
-            testDateToClass(resultSet, LocalDateTime.class);
-
             testTimestampOriginal(resultSet);
-            testTimestampToClass(resultSet, String.class);
-            testTimestampToClass(resultSet, java.util.Date.class);
-            testTimestampToClass(resultSet, java.sql.Date.class);
-            testTimestampToClass(resultSet, Timestamp.class);
-            testTimestampToClass(resultSet, LocalDate.class);
-            testTimestampToClass(resultSet, LocalDateTime.class);
-            testTimestampToClass(resultSet, ZonedDateTime.class);
-            testTimestampToClass(resultSet, OffsetTime.class);
-
             testTimestampTzOriginal(resultSet, connection);
-            testTimestampTzToClass(resultSet, String.class);
-            testTimestampTzToClass(resultSet, java.util.Date.class);
-            testTimestampTzToClass(resultSet, java.sql.Date.class);
-            testTimestampTzToClass(resultSet, Timestamp.class);
-            testTimestampTzToClass(resultSet, LocalDateTime.class);
-            testTimestampTzToClass(resultSet, ZonedDateTime.class);
-            testTimestampTzToClass(resultSet, OffsetTime.class);
-
             testTimestampLtzOriginal(resultSet, connection);
-            testTimestampLtzToClass(resultSet, String.class);
-            testTimestampLtzToClass(resultSet, java.util.Date.class);
-            testTimestampLtzToClass(resultSet, java.sql.Date.class);
-            testTimestampLtzToClass(resultSet, Timestamp.class);
-            testTimestampLtzToClass(resultSet, LocalDateTime.class);
-            testTimestampLtzToClass(resultSet, ZonedDateTime.class);
-            testTimestampLtzToClass(resultSet, OffsetTime.class);
         }
     }
 
     private static void testDateOriginal(ResultSet resultSet) throws SQLException {
-        Assert.isInstanceOf(Timestamp.class, resultSet);
         Object date = resultSet.getObject("CL_DATE");
+        Assert.isInstanceOf(Timestamp.class, date);
         System.out.println("#DATE => " + date.getClass() + ", value=" + date.toString());
     }
 
@@ -186,8 +165,8 @@ public class JdbcTimeTests {
     }
 
     private static void testTimestampOriginal(ResultSet resultSet) throws SQLException {
-        Assert.isInstanceOf(TIMESTAMP.class, resultSet);
-        TIMESTAMP timestamp = (TIMESTAMP) resultSet.getObject("CL_TIMESTAMP");
+        Object timestamp = resultSet.getObject("CL_TIMESTAMP");
+        Assert.isInstanceOf(TIMESTAMP.class, timestamp);
         System.out.println("#TIMESTAMP (6) => " + timestamp.getClass() + ", value=" + timestamp.toString());
     }
 
@@ -197,10 +176,10 @@ public class JdbcTimeTests {
     }
 
     private static void testTimestampTzOriginal(ResultSet resultSet, Connection connection) throws SQLException {
-        Assert.isInstanceOf(TIMESTAMPTZ.class, resultSet);
-        TIMESTAMPTZ timestampTz = (TIMESTAMPTZ) resultSet.getObject("CL_TIMESTAMP_TZ");
-        String stringValue = timestampTz.stringValue(connection);
-        ZonedDateTime zonedDateTime = timestampTz.zonedDateTimeValue();
+        Object timestampTz = resultSet.getObject("CL_TIMESTAMP_TZ");
+        Assert.isInstanceOf(TIMESTAMPTZ.class, timestampTz);
+        String stringValue = ((TIMESTAMPTZ) timestampTz).stringValue(connection);
+        ZonedDateTime zonedDateTime = ((TIMESTAMPTZ) timestampTz).zonedDateTimeValue();
         System.out.println("#TIMESTAMP (6) WITH TIME ZONE => " + timestampTz.getClass() + ", string=" + stringValue + ", zoned=" + zonedDateTime);
     }
 
@@ -211,10 +190,10 @@ public class JdbcTimeTests {
     }
 
     private static void testTimestampLtzOriginal(ResultSet resultSet, Connection connection) throws SQLException {
-        Assert.isInstanceOf(TIMESTAMPLTZ.class, resultSet);
-        TIMESTAMPLTZ timestampLtz = (TIMESTAMPLTZ) resultSet.getObject("CL_TIMESTAMP_LTZ");
-        String stringValue = timestampLtz.stringValue(connection);
-        ZonedDateTime zonedDateTime = timestampLtz.zonedDateTimeValue(connection);
+        Object timestampLtz = resultSet.getObject("CL_TIMESTAMP_LTZ");
+        Assert.isInstanceOf(TIMESTAMPLTZ.class, timestampLtz);
+        String stringValue = ((TIMESTAMPLTZ) timestampLtz).stringValue(connection);
+        ZonedDateTime zonedDateTime = ((TIMESTAMPLTZ) timestampLtz).zonedDateTimeValue(connection);
         System.out.println("#TIMESTAMP (6) WITH LOCAL TIME ZONE => " + timestampLtz.getClass() + ", string=" + stringValue + ", zoned=" + zonedDateTime);
     }
 
