@@ -107,22 +107,27 @@ public class JdbcTimeTests {
         ResultSet resultSet1 = preparedStatement1.executeQuery();
         if (resultSet1.next()) {
             Object sqlTimestampT = resultSet1.getObject("CL_SQL_TIMESTAMP_T");
-            //
+            //180, TIMESTAMP
             System.out.println("#CL_SQL_TIMESTAMP_T => " + sqlTimestampT.getClass() + ", value=" + sqlTimestampT);
 
             Object sqlDateT = resultSet1.getObject("CL_SQL_DATE_T");
+            //12, DATE
             System.out.println("#CL_SQL_DATE_T => " + sqlDateT.getClass() + ", value=" + sqlDateT);
 
             Object localDateT = resultSet1.getObject("CL_LOCAL_DATE_T");
+            //180, TIMESTAMP
             System.out.println("#CL_LOCAL_DATE_T => " + localDateT.getClass() + ", value=" + localDateT);
 
             Object localDatetimeT = resultSet1.getObject("CL_LOCAL_DATETIME_T");
+            //180, TIMESTAMP
             System.out.println("#CL_LOCAL_DATETIME => " + localDatetimeT.getClass() + ", value=" + localDatetimeT);
 
             Object zonedDatetimeT = resultSet1.getObject("CL_ZONED_DATETIME_T");
+            //181, TIMESTAMP WITH TIME ZONE
             System.out.println("#CL_ZONED_DATETIME_T => " + zonedDatetimeT.getClass() + ", value=" + zonedDatetimeT);
 
             Object offsetDatetimeT = resultSet1.getObject("CL_OFFSET_DATETIME_T");
+            //181, TIMESTAMP WITH TIME ZONE
             System.out.println("#CL_OFFSET_DATETIME_T => " + offsetDatetimeT.getClass() + ", value=" + offsetDatetimeT);
         }
 
