@@ -57,6 +57,8 @@ public class JdbcTimeTests {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID, CL_DATE, CL_TIMESTAMP, CL_TIMESTAMP_TZ, CL_TIMESTAMP_LTZ FROM MY_TEST_TABLE WHERE ID = ?");
         preparedStatement.setString(1, "id-1");
         ResultSet resultSet = preparedStatement.executeQuery();
+        //oracle.jdbc.driver.ForwardOnlyResultSet
+        System.out.println(resultSet.getClass());
 
         if (resultSet.next()) {
             testDateOriginal(resultSet);
@@ -95,41 +97,68 @@ public class JdbcTimeTests {
     }
 
     private static void testJdbcTimeFromJavaToOracleDefault(Connection connection) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT ? AS CL_SQL_TIMESTAMP, ? AS CL_SQL_DATE, ? AS CL_LOCAL_DATE, ? AS CL_LOCAL_DATETIME, ? AS CL_ZONED_DATETIME, ? AS CL_OFFSET_DATETIME FROM DUAL");
-        preparedStatement.setObject(1, new java.sql.Timestamp(System.currentTimeMillis()));
-        preparedStatement.setObject(2, new java.sql.Date(System.currentTimeMillis()));
-        preparedStatement.setObject(3, LocalDate.now());
-        preparedStatement.setObject(4, LocalDateTime.now());
-        preparedStatement.setObject(5, ZonedDateTime.now());
-        preparedStatement.setObject(6, OffsetDateTime.now());
-        ResultSet resultSet = preparedStatement.executeQuery();
-        //oracle.jdbc.driver.ForwardOnlyResultSet
-        System.out.println(resultSet.getClass());
+        PreparedStatement preparedStatement1 = connection.prepareStatement("SELECT DUMP(?) AS CL_SQL_TIMESTAMP_T, DUMP(?) AS CL_SQL_DATE_T, DUMP(?) AS CL_LOCAL_DATE_T, DUMP(?) AS CL_LOCAL_DATETIME_T, DUMP(?) AS CL_ZONED_DATETIME_T, DUMP(?) AS CL_OFFSET_DATETIME_T FROM DUAL");
+        preparedStatement1.setObject(1, new java.sql.Timestamp(System.currentTimeMillis()));
+        preparedStatement1.setObject(2, new java.sql.Date(System.currentTimeMillis()));
+        preparedStatement1.setObject(3, LocalDate.now());
+        preparedStatement1.setObject(4, LocalDateTime.now());
+        preparedStatement1.setObject(5, ZonedDateTime.now());
+        preparedStatement1.setObject(6, OffsetDateTime.now());
+        ResultSet resultSet1 = preparedStatement1.executeQuery();
+        if (resultSet1.next()) {
+            Object sqlTimestampT = resultSet1.getObject("CL_SQL_TIMESTAMP_T");
+            //
+            System.out.println("#CL_SQL_TIMESTAMP_T => " + sqlTimestampT.getClass() + ", value=" + sqlTimestampT);
 
-        if (resultSet.next()) {
-            Object sqlTimestamp = resultSet.getObject("CL_SQL_TIMESTAMP");
+            Object sqlDateT = resultSet1.getObject("CL_SQL_DATE_T");
+            System.out.println("#CL_SQL_DATE_T => " + sqlDateT.getClass() + ", value=" + sqlDateT);
+
+            Object localDateT = resultSet1.getObject("CL_LOCAL_DATE_T");
+            System.out.println("#CL_LOCAL_DATE_T => " + localDateT.getClass() + ", value=" + localDateT);
+
+            Object localDatetimeT = resultSet1.getObject("CL_LOCAL_DATETIME_T");
+            System.out.println("#CL_LOCAL_DATETIME => " + localDatetimeT.getClass() + ", value=" + localDatetimeT);
+
+            Object zonedDatetimeT = resultSet1.getObject("CL_ZONED_DATETIME_T");
+            System.out.println("#CL_ZONED_DATETIME_T => " + zonedDatetimeT.getClass() + ", value=" + zonedDatetimeT);
+
+            Object offsetDatetimeT = resultSet1.getObject("CL_OFFSET_DATETIME_T");
+            System.out.println("#CL_OFFSET_DATETIME_T => " + offsetDatetimeT.getClass() + ", value=" + offsetDatetimeT);
+        }
+
+        PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT ? AS CL_SQL_TIMESTAMP, ? AS CL_SQL_DATE, ? AS CL_LOCAL_DATE, ? AS CL_LOCAL_DATETIME, ? AS CL_ZONED_DATETIME, ? AS CL_OFFSET_DATETIME FROM DUAL");
+        preparedStatement2.setObject(1, new java.sql.Timestamp(System.currentTimeMillis()));
+        preparedStatement2.setObject(2, new java.sql.Date(System.currentTimeMillis()));
+        preparedStatement2.setObject(3, LocalDate.now());
+        preparedStatement2.setObject(4, LocalDateTime.now());
+        preparedStatement2.setObject(5, ZonedDateTime.now());
+        preparedStatement2.setObject(6, OffsetDateTime.now());
+
+        ResultSet resultSet2 = preparedStatement2.executeQuery();
+        if (resultSet2.next()) {
+            Object sqlTimestamp = resultSet2.getObject("CL_SQL_TIMESTAMP");
             Assert.isInstanceOf(TIMESTAMP.class, sqlTimestamp);
             System.out.println("#CL_SQL_TIMESTAMP => " + sqlTimestamp.getClass() + ", value=" + sqlTimestamp.toString());
 
-            Object sqlDate = resultSet.getObject("CL_SQL_DATE");
+            Object sqlDate = resultSet2.getObject("CL_SQL_DATE");
             Assert.isInstanceOf(Timestamp.class, sqlDate);
             System.out.println("#CL_SQL_DATE => " + sqlDate.getClass() + ", value=" + sqlDate.toString());
 
-            Object localDate = resultSet.getObject("CL_LOCAL_DATE");
+            Object localDate = resultSet2.getObject("CL_LOCAL_DATE");
             Assert.isInstanceOf(TIMESTAMP.class, localDate);
             System.out.println("#CL_LOCAL_DATE => " + localDate.getClass() + ", value=" + localDate.toString());
 
-            Object localDatetime = resultSet.getObject("CL_LOCAL_DATETIME");
+            Object localDatetime = resultSet2.getObject("CL_LOCAL_DATETIME");
             Assert.isInstanceOf(TIMESTAMP.class, localDatetime);
             System.out.println("#CL_LOCAL_DATETIME => " + localDatetime.getClass() + ", value=" + localDatetime.toString());
 
-            Object zonedDatetime = resultSet.getObject("CL_ZONED_DATETIME");
+            Object zonedDatetime = resultSet2.getObject("CL_ZONED_DATETIME");
             Assert.isInstanceOf(TIMESTAMPTZ.class, zonedDatetime);
             String zonedDatetimeStringValue = ((TIMESTAMPTZ) zonedDatetime).stringValue(connection);
             ZonedDateTime zonedDatetimZonedDateTime = ((TIMESTAMPTZ) zonedDatetime).zonedDateTimeValue();
             System.out.println("#CL_ZONED_DATETIME => " + zonedDatetime.getClass() + ", string=" + zonedDatetimeStringValue + ", zoned=" + zonedDatetimZonedDateTime);
 
-            Object offsetDatetime = resultSet.getObject("CL_OFFSET_DATETIME");
+            Object offsetDatetime = resultSet2.getObject("CL_OFFSET_DATETIME");
             Assert.isInstanceOf(TIMESTAMPTZ.class, offsetDatetime);
             String offsetDatetimeStringValue = ((TIMESTAMPTZ) offsetDatetime).stringValue(connection);
             ZonedDateTime offsetDatetimZonedDateTime = ((TIMESTAMPTZ) offsetDatetime).zonedDateTimeValue();
