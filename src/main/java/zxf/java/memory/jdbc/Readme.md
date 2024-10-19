@@ -60,6 +60,13 @@
 - oracle.jdbc.OracleType
 
 # Type Mapping from Java to Oracle
+## Abstract
+- java.sql.PreparedStatement.setObject(int parameterIndex, Object x):void
+- java.sql.PreparedStatement.setObject(int parameterIndex, Object x, int targetSqlType):void
+- java.sql.PreparedStatement.setObject(int parameterIndex, Object x, int targetSqlType, int scaleOrLength):void
+- java.sql.PreparedStatement.setObject(int parameterIndex, Object x, SQLType targetSqlType):void
+- java.sql.PreparedStatement.setObject(int parameterIndex, Object x, SQLType targetSqlType, int scaleOrLength):void
+
 ## Flow by object and targetSqlType
 - oracle.jdbc.driver.OraclePreparedStatement.setObject(int paramIndex, Object x, int targetSqlType):void
 - oracle.jdbc.driver.OraclePreparedStatement.setObjectInternal(int paramIndex, Object x, int targetSqlType, int scale):void
@@ -76,6 +83,13 @@
 - oracle.jdbc.driver.OraclePreparedStatement.set******Internal(int paramIndex, ***** x)
 
 # Type Mapping from Oracle to Java
+## Abstract
+- java.sql.ResultSet.getObject(int columnIndex):Object
+- java.sql.ResultSet.getObject(int columnIndex, java.util.Map<String,Class<?>> map):Object
+- java.sql.ResultSet.getObject(int columnIndex, Class<T> type):T
+- java.sql.ResultSet.getObject(String columnLabel):Object
+- java.sql.ResultSet.getObject(String columnLabel, java.util.Map<String,Class<?>> map):Object
+- java.sql.ResultSet.getObject(String columnLabel, Class<T> type):T
 ## Read Object
 - oracle.jdbc.driver.OraclePreparedStatement.executeQuery():ResultSet
 - oracle.jdbc.driver.OracleStatement.createResultSet():OracleResultSet
