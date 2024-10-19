@@ -50,7 +50,57 @@
 - oracle.sql.TIMESTAMPLTZ;
 - oracle.sql.TIMESTAMPTZ;
 
+# Type Definition
+## Types
+- java.sql.SQLType
+### JDBC Types
+- java.sql.JDBCType
+- java.sql.Types
+### ORACLE Types
+- oracle.jdbc.OracleType
+
+# Type Mapping from Java to Oracle
+## Flow by object and targetSqlType
+- oracle.jdbc.driver.OraclePreparedStatement.setObject(int paramIndex, Object x, int targetSqlType):void
+- oracle.jdbc.driver.OraclePreparedStatement.setObjectInternal(int paramIndex, Object x, int targetSqlType, int scale):void
+- *oracle.jdbc.driver.OraclePreparedStatement.setObjectCritical(int paramIndex, Object x, int targetSqlType, int scale):void
+- oracle.jdbc.driver.JavaToJavaConverter.convert(S src, Class<T> target, OracleConnection conn, Object srcExtra, Object targetExtra)：T
+- oracle.jdbc.driver.OraclePreparedStatement.set******Internal(int paramIndex, ***** x)
+## Flow by object
+- oracle.jdbc.driver.OraclePreparedStatement.setObject(int paramIndex, Object x):void
+- oracle.jdbc.driver.OraclePreparedStatement.setObjectInternal(int, java.lang.Object):void
+- *oracle.jdbc.driver.OraclePreparedStatement.sqlTypeForObject(Object x):int
+- oracle.jdbc.driver.OraclePreparedStatement.setObjectInternal(int paramIndex, Object x, int targetSqlType, int scale):void
+- *oracle.jdbc.driver.OraclePreparedStatement.setObjectCritical(int paramIndex, Object x, int targetSqlType, int scale):void
+- oracle.jdbc.driver.JavaToJavaConverter.convert(S src, Class<T> target, OracleConnection conn, Object srcExtra, Object targetExtra)：T
+- oracle.jdbc.driver.OraclePreparedStatement.set******Internal(int paramIndex, ***** x)
+
 # Type Mapping from Oracle to Java
+## Read Object
+- oracle.jdbc.driver.OraclePreparedStatement.executeQuery():ResultSet
+- oracle.jdbc.driver.OracleStatement.createResultSet():OracleResultSet
+- oracle.jdbc.driver.OracleResultSet.createResultSet(OracleStatement stmt):OracleResultSet
+- oracle.jdbc.driver.OracleResultSet.ResultSetType.createResultSet(OracleStatement stmt):OracleResultSet
+- oracle.jdbc.driver.ForwardOnlyResultSet.ForwardOnlyResultSet(PhysicalConnection conn, OracleStatement stmt)
+- oracle.jdbc.driver.InsensitiveScrollableResultSet.getObject(int columnIndex, Class<T> type):T
+- oracle.jdbc.driver.OracleStatement.getObject(long rowIndex, int columnIndex, Class<T> type):T
+- this.accessors[columnIndex + this.offsetOfFirstUserColumn].getObject(this.physicalRowIndex(rowIndex), type);
+- 
+## Setup Accessors
+- oracle.jdbc.driver.T4CPreparedStatement.doDescribe():void
+- oracle.jdbc.driver.T4CConnection.describe:T4C8Odscrarr
+- oracle.jdbc.driver.T4C8Odscrarr.getAccessors():Accessor[]
+- oracle.jdbc.driver.T4CTTIdcb.fillupAccessors(Accessor[] accessors, Accessor[] oldAccessors, int oldAccessorIndex, int accessorIndex, T4C8TTIuds ud, String colnames, long localCheckSum):Long
+
+## Accessors
+- oracle.jdbc.driver.Accessor(Representation _representation, OracleStatement _statement, int _representationMaxLength, boolean isStoredInBindData)
+- oracle.jdbc.driver.TimestampAccessor
+- oracle.jdbc.driver.TimestampltzAccessor
+- oracle.jdbc.driver.TimestamptzAccessor
+- oracle.jdbc.driver.BlobAccessor
+- oracle.jdbc.driver.ClobAccessor
+
+## Mappings
 - oracle.jdbc.driver.Representation
 - DATE = new Representation("DATE", new Class[]{Timestamp.class, Date.class, LocalDate.class, LocalDateTime.class, LocalTime.class, OffsetDateTime.class, OffsetTime.class, ZonedDateTime.class, Calendar.class, DATE.class, TIMESTAMP.class, String.class, java.sql.Date.class, Time.class});
 - TIMESTAMP = new Representation("TIMESTAMP", new Class[]{Timestamp.class, TIMESTAMP.class, LocalDate.class, LocalDateTime.class, LocalTime.class, OffsetDateTime.class, OffsetTime.class, ZonedDateTime.class, Calendar.class, Date.class, DATE.class, String.class, java.sql.Date.class, Time.class, byte[].class});
@@ -62,8 +112,7 @@
 - BFILE = new Representation("BFILE", new Class[]{BFILE.class, OracleBfile.class, InputStream.class, byte[].class});
 - JSON = new Representation("JSON", (Class[])var0.toArray(new Class[var0.size()]));
 
-# Type Mapping from Java to Oracle
-- oracle.jdbc.driver.JavaToJavaConverter<S, T>
+
 
 # Auto commit
 - If a connection is in auto-commit mode, then all its SQL statements will be executed and committed as individual transactions. Otherwise, its SQL statements are grouped into transactions that are terminated by a call to either the method commit or the method rollback. By default, new connections are in auto-commit mode.
