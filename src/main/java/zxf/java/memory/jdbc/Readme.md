@@ -14,6 +14,7 @@
 
 # JDBC core classes
 - java.sql.Driver;
+- java.sql.DriverAction;
 - java.sql.DriverManager;
 - java.sql.SQLException;
 - java.sql.Connection;
@@ -26,6 +27,24 @@
 - oracle.jdbc.pool.OraclePooledConnection[oracle]
 - javax.sql.ConnectionPoolDataSource
 - oracle.jdbc.pool.OracleConnectionPoolDataSource[oracle]
+
+# Usage of Jdbc by DriverManager
+- java.sql.DriverManager::getConnection(String url, ***):Connection --> oracle.jdbc.driver.T4CConnection
+- java.sql.Connection::prepareStatement(String sql):PreparedStatement --> oracle.jdbc.driver.OraclePreparedStatementWrapper
+- java.sql.PreparedStatement::set****(int, ***):void
+- java.sql.PreparedStatement::executeQuery():ResultSet --> oracle.jdbc.driver.ForwardOnlyResultSet
+- java.sql.ResultSet::get****(int columnIndex ****)
+- java.sql.ResultSet::get****(String columnLabel ****)
+
+# Usage of Jdbc by DataSource
+- Create DataSource
+- javax.sql.DataSource::getConnection():Connection
+- javax.sql.DataSource::getConnection(String username, String password):Connection
+- java.sql.Connection::prepareStatement(String sql):PreparedStatement --> 
+- java.sql.PreparedStatement::set****(int, ***):void
+- java.sql.PreparedStatement::executeQuery():ResultSet --> 
+- java.sql.ResultSet::get****(int columnIndex ****)
+- java.sql.ResultSet::get****(String columnLabel ****)
 
 # Oracle中Date和Time相关的系统变量
 - SYSDATE(DATE, OS level)
@@ -66,7 +85,6 @@
 - java.sql.PreparedStatement.setObject(int parameterIndex, Object x, int targetSqlType, int scaleOrLength):void
 - java.sql.PreparedStatement.setObject(int parameterIndex, Object x, SQLType targetSqlType):void
 - java.sql.PreparedStatement.setObject(int parameterIndex, Object x, SQLType targetSqlType, int scaleOrLength):void
-
 ## Flow by object and targetSqlType
 - oracle.jdbc.driver.OraclePreparedStatement.setObject(int paramIndex, Object x, int targetSqlType):void
 - oracle.jdbc.driver.OraclePreparedStatement.setObjectInternal(int paramIndex, Object x, int targetSqlType, int scale):void
@@ -99,13 +117,11 @@
 - oracle.jdbc.driver.InsensitiveScrollableResultSet.getObject(int columnIndex, Class<T> type):T
 - oracle.jdbc.driver.OracleStatement.getObject(long rowIndex, int columnIndex, Class<T> type):T
 - this.accessors[columnIndex + this.offsetOfFirstUserColumn].getObject(this.physicalRowIndex(rowIndex), type);
-- 
 ## Setup Accessors
 - oracle.jdbc.driver.T4CPreparedStatement.doDescribe():void
 - oracle.jdbc.driver.T4CConnection.describe:T4C8Odscrarr
 - oracle.jdbc.driver.T4C8Odscrarr.getAccessors():Accessor[]
 - oracle.jdbc.driver.T4CTTIdcb.fillupAccessors(Accessor[] accessors, Accessor[] oldAccessors, int oldAccessorIndex, int accessorIndex, T4C8TTIuds ud, String colnames, long localCheckSum):Long
-
 ## Accessors
 - oracle.jdbc.driver.Accessor(Representation _representation, OracleStatement _statement, int _representationMaxLength, boolean isStoredInBindData)
 - oracle.jdbc.driver.TimestampAccessor
