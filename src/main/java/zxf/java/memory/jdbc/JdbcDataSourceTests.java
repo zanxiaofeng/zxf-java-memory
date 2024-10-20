@@ -1,18 +1,19 @@
 package zxf.java.memory.jdbc;
 
 import oracle.jdbc.pool.OracleDataSource;
+import oracle.ucp.jdbc.PoolDataSource;
 import oracle.ucp.jdbc.PoolDataSourceFactory;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class JdbcDataSourceTests {
     public static void main(String[] args) throws SQLException {
         testOracleDataSource();
-
+        testPoolOracleDataSource();
     }
 
     private static void testOracleDataSource() throws SQLException {
@@ -43,10 +44,31 @@ public class JdbcDataSourceTests {
     }
 
     private static void testPoolOracleDataSource() throws SQLException {
-        DataSource dataSource = PoolDataSourceFactory.getPoolDataSource();
-        System.out.println("DataSource->" + dataSource.getClass());
+        PoolDataSource poolDataSource = PoolDataSourceFactory.getPoolDataSource();
+        System.out.println("DataSource->" + poolDataSource.getClass());
+        poolDataSource.setURL("");
+        poolDataSource.setUser("***");
+        poolDataSource.setPassword("***");
+        poolDataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
+        poolDataSource.setConnectionPoolName("My-POOL");
+        poolDataSource.setSQLForValidateConnection("SELECT * FROM DUAL");
+        poolDataSource.setFastConnectionFailoverEnabled(true);
+        poolDataSource.setValidateConnectionOnBorrow(true);
+        poolDataSource.setInitialPoolSize(1);
+        poolDataSource.setMinPoolSize(2);
+        poolDataSource.setMaxPoolSize(5);
+        poolDataSource.setConnectionWaitTimeout(15);
+        poolDataSource.setConnectionValidationTimeout(5);
+        poolDataSource.setInactiveConnectionTimeout(1800);
+        poolDataSource.setMaxConnectionReuseTime(1800);
+        poolDataSource.setAbandonedConnectionTimeout(60);
+        poolDataSource.setTimeToLiveConnectionTimeout(180);
+        Properties connectionProperties = new Properties();
+        connectionProperties.setProperty("oracle.net.keepAlive", "true");
+        connectionProperties.setProperty("oracle.net.TCP_KEEPIDLE", "60");
+        poolDataSource.setConnectionProperties(connectionProperties);
 
-        Connection connection = dataSource.getConnection();
+        Connection connection = poolDataSource.getConnection();
         System.out.println("Connection->" + connection.getClass());
 
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT DBTIMEZONE, SESSIONTIMEZONE FROM DUAL");
