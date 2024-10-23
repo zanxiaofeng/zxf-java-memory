@@ -142,8 +142,6 @@
 - BFILE = new Representation("BFILE", new Class[]{BFILE.class, OracleBfile.class, InputStream.class, byte[].class});
 - JSON = new Representation("JSON", (Class[])var0.toArray(new Class[var0.size()]));
 
-
-
 # Auto commit
 - If a connection is in auto-commit mode, then all its SQL statements will be executed and committed as individual transactions. Otherwise, its SQL statements are grouped into transactions that are terminated by a call to either the method commit or the method rollback. By default, new connections are in auto-commit mode.
 - The commit occurs when the statement completes. The time when the statement completes depends on the type of SQL Statement:
