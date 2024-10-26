@@ -187,5 +187,5 @@
 - . TIMESTAMP WITH TIME ZONE
 - For any pair of data types, Oracle Database converts the data type that has a smaller number in the preceding list to the data type with the larger number.
 # Explicit Conversion of Datetime Data Types
-If you want to do explicit conversion of datetime data types, use the CAST SQL function. You can explicitly convert DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE, and
-TIMESTAMP WITH LOCAL TIME ZONE to another data type in the list.
+- If you want to do explicit conversion of datetime data types, use the CAST SQL function. You can explicitly convert DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE, and
+- TIMESTAMP WITH LOCAL TIME ZONE to another data type in the list.
