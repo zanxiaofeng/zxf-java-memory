@@ -159,6 +159,7 @@
 - https://sqlfiddle.com/oracle/online-compiler
 
 # SQL Examples
+- ALTER DATABASE SET TIME_ZONE = 'Asia/Shanghai';
 - ALTER SESSION SET TIME_ZONE='Asia/Hong_Kong';
 - ALTER SESSION SET TIME_ZONE='+06:00';
 - SELECT DBTIMEZONE, SESSIONTIMEZONE FROM DUAL;
@@ -171,3 +172,20 @@
 - SELECT CAST(SYSTIMESTAMP AS TIMESTAMP), CAST(SYSTIMESTAMP AT LOCAL AS TIMESTAMP), CAST(SYSTIMESTAMP AT TIME ZONE '+06:00' AS TIMESTAMP) FROM DUAL;
 - SELECT DUMP(SYSDATE) FROM DUAL;
 - SELECT DATE '1998-12-25', TIMESTAMP '2024-10-22 00:00:00.00', TIMESTAMP '2024-10-22 00:00:00.00 +08:00' FROM DUAL;
+- ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS';
+- ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS.FF';
+- ALTER SESSION SET NLS_TIMESTAMP_TZ_FORMAT='YYYY-MM-DD HH24:MI:SS.FF TZR';
+
+# Datetime Comparisons
+- When you compare date and timestamp values, Oracle Database converts the data to the more precise data type before doing the comparison. For example, if you compare
+- data of TIMESTAMP WITH TIME ZONE data type with data of TIMESTAMP data type, Oracle Database converts the TIMESTAMP data to TIMESTAMP WITH TIME ZONE, using the
+- session time zone.
+- The order of precedence for converting date and timestamp data is as follows:
+- . DATE
+- . TIMESTAMP
+- . TIMESTAMP WITH LOCAL TIME ZONE
+- . TIMESTAMP WITH TIME ZONE
+- For any pair of data types, Oracle Database converts the data type that has a smaller number in the preceding list to the data type with the larger number.
+# Explicit Conversion of Datetime Data Types
+If you want to do explicit conversion of datetime data types, use the CAST SQL function. You can explicitly convert DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE, and
+TIMESTAMP WITH LOCAL TIME ZONE to another data type in the list.
