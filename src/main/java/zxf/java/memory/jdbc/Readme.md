@@ -3,8 +3,10 @@
 - TimeZone.getDefault();
 
 # Oracle中TimeZone相关的系统变量
-- DBTIMEZONE
-- SESSIONTIMEZONE
+## DBTIMEZONE(DB Level)
+- DBTIMEZONE returns the value of the database time zone. The return type is a time zone offset (a character type in the format '[+|-]TZH:TZM') or a time zone region name, depending on how the user specified the database time zone value in the most recent CREATE DATABASE or ALTER DATABASE statement.
+## SESSIONTIMEZONE(Session Level)
+- SESSIONTIMEZONE returns the time zone of the current session. The return type is a time zone offset (a character type in the format '[+|-]TZH:TZM') or a time zone region name, depending on how the user specified the session time zone value in the most recent ALTER SESSION statement.
 
 # Oracle中Date和Time相关的类型
 - DATE
@@ -166,9 +168,11 @@
 - SELECT CURRENT_DATE, CURRENT_TIMESTAMP, LOCALTIMESTAMP, SYSDATE, SYSTIMESTAMP FROM DUAL;
 - SELECT SYS_EXTRACT_UTC(LOCALTIMESTAMP), SYS_EXTRACT_UTC(CURRENT_TIMESTAMP) FROM DUAL;
 - SELECT TRUNC(SYSDATE),CAST(SYSDATE AS TIMESTAMP)  FROM DUAL;
-- SELECT FROM_TZ(LOCALTIMESTAMP, '8:00') FROM DUAL;
+
 - SELECT SYSTIMESTAMP AT TIME ZONE 'Asia/Hong_Kong', SYSTIMESTAMP AT LOCAL FROM DUAL;
 - SELECT CAST(TIMESTAMP '2024-10-22 00:00:00.00' AS TIMESTAMP WITH TIME ZONE) FROM DUAL;
+- SELECT FROM_TZ(TIMESTAMP '2024-10-22 00:00:00.00', '+06:00') FROM DUAL;
+- SELECT FROM_TZ(LOCALTIMESTAMP, '8:00') FROM DUAL;
 - SELECT CAST(SYSTIMESTAMP AS TIMESTAMP), CAST(SYSTIMESTAMP AT LOCAL AS TIMESTAMP), CAST(SYSTIMESTAMP AT TIME ZONE '+06:00' AS TIMESTAMP) FROM DUAL;
 - SELECT DUMP(SYSDATE) FROM DUAL;
 - SELECT DATE '1998-12-25', TIMESTAMP '2024-10-22 00:00:00.00', TIMESTAMP '2024-10-22 00:00:00.00 +08:00' FROM DUAL;
@@ -178,8 +182,7 @@
 
 # Datetime Comparisons
 - When you compare date and timestamp values, Oracle Database converts the data to the more precise data type before doing the comparison. For example, if you compare
-- data of TIMESTAMP WITH TIME ZONE data type with data of TIMESTAMP data type, Oracle Database converts the TIMESTAMP data to TIMESTAMP WITH TIME ZONE, using the
-- session time zone.
+- data of TIMESTAMP WITH TIME ZONE data type with data of TIMESTAMP data type, Oracle Database converts the TIMESTAMP data to TIMESTAMP WITH TIME ZONE, using the session time zone.
 - The order of precedence for converting date and timestamp data is as follows:
 - . DATE
 - . TIMESTAMP
@@ -187,5 +190,4 @@
 - . TIMESTAMP WITH TIME ZONE
 - For any pair of data types, Oracle Database converts the data type that has a smaller number in the preceding list to the data type with the larger number.
 # Explicit Conversion of Datetime Data Types
-- If you want to do explicit conversion of datetime data types, use the CAST SQL function. You can explicitly convert DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE, and
-- TIMESTAMP WITH LOCAL TIME ZONE to another data type in the list.
+- If you want to do explicit conversion of datetime data types, use the CAST SQL function. You can explicitly convert DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE, and TIMESTAMP WITH LOCAL TIME ZONE to another data type in the list.
