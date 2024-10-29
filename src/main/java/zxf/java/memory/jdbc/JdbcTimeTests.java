@@ -27,6 +27,7 @@ public class JdbcTimeTests {
         setupSessionTimezone(connection);
 
         testJdbcTimeFromOracleToJava(connection);
+        testJdbcTimeFromJavaToOracleDefault(connection);
         testJdbcTimeFromJavaToOracle(connection, LocalDateTime.now());
         testJdbcTimeFromJavaToOracle(connection, ZonedDateTime.now(ZoneId.of("GMT+06:00")));
 
