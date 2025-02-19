@@ -26,17 +26,26 @@ public class LeakController {
 
     @GetMapping("/byStaticReference")
     public Integer byStaticReference() {
-        return new StaticReferenceLeak().test();
+        DebugUtils.printMemInfoFromMXBean("byStaticReference.before");
+        Integer result = new StaticReferenceLeak().test();
+        DebugUtils.printMemInfoFromMXBean("byStaticReference.after");
+        return result;
     }
 
     @GetMapping("/byUnclosedResources")
     public Integer byUnclosedResources() throws IOException {
-        return new UnclosedResourcesLeak().test();
+        DebugUtils.printMemInfoFromMXBean("byUnclosedResources.before");
+        Integer result = new UnclosedResourcesLeak().test();
+        DebugUtils.printMemInfoFromMXBean("byUnclosedResources.after");
+        return result;
     }
 
     @GetMapping("/byHashAndEqualsNotImplemented")
     public Integer byHashAndEqualsNotImplemented() throws IOException {
-        return new HashAndEqualsNotImplementedLeak().test();
+        DebugUtils.printMemInfoFromMXBean("byHashAndEqualsNotImplemented.before");
+        Integer result = new HashAndEqualsNotImplementedLeak().test();
+        DebugUtils.printMemInfoFromMXBean("byHashAndEqualsNotImplemented.after");
+        return result;
     }
 
     @GetMapping("/byInnerClass")
