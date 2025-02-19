@@ -43,7 +43,6 @@ public class DebugUtils {
      *                    max
      */
     public static void printMemInfoFromMXBean(String title) {
-        printMemInfoFromRuntime(title + ".runtime");
         MemoryUsage heapMemoryUsage = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
         System.out.println(String.format("Heap usage for %s: max=%s, commit=%s, used=%s, free=%s, init=%s", title, formatSize(heapMemoryUsage.getMax()), formatSize(heapMemoryUsage.getCommitted()), formatSize(heapMemoryUsage.getUsed()), formatSize(heapMemoryUsage.getCommitted() - heapMemoryUsage.getUsed()), formatSize(heapMemoryUsage.getInit())));
 

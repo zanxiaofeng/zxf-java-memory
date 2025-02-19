@@ -12,6 +12,7 @@ public class TestThreadStackSpaceOOM {
         Scanner keyboard = new Scanner(System.in);
 
         DebugUtils.callJcmd("for stack space.begin");
+        DebugUtils.printMemInfoFromMXBean("for stack space.begin");
 
         System.out.println("Please press enter to start");
         keyboard.nextLine();
@@ -32,6 +33,7 @@ public class TestThreadStackSpaceOOM {
             thread.start();
             if (i % 5000 == 0) {
                 DebugUtils.callJcmd("for stack space...." + i);
+                DebugUtils.printMemInfoFromMXBean("for stack space...." + i);
             }
         }
 

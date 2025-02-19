@@ -20,6 +20,7 @@ public class TestHeapSpaceOOM {
                     Thread.sleep(2000);
                     System.out.println("..... " + i);
                     DebugUtils.callJcmd("for heap space." + i);
+                    DebugUtils.printMemInfoFromRuntime("for heap space." + i);
                 } catch (InterruptedException | IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -29,6 +30,7 @@ public class TestHeapSpaceOOM {
         Scanner keyboard = new Scanner(System.in);
 
         DebugUtils.callJcmd("for heap space.begin");
+        DebugUtils.printMemInfoFromRuntime("for heap space.begin");
 
         System.out.println("Please press enter to start");
         keyboard.nextLine();
