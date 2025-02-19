@@ -14,7 +14,7 @@ public class TestHeapSpaceOOM {
     public static void main(String[] args) throws InterruptedException, IOException {
         Thread thread = new Thread(() -> {
             for (int i = 0; i < 1024; i++) {
-                //16M
+                //64M
                 contents.add(new byte[1024 * 1024 * 64]);
                 try {
                     Thread.sleep(2000);
