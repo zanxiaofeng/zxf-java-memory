@@ -89,6 +89,27 @@
 - Extra options that are not supported by all JVM implementations and are usually subject to change. These options start with -X
 - Moreover, some of those additional options are more advanced and begin with -XX.
 
+## Container OOM
+- The memory limit of the current container
+- '$ cat /sys/fs/cgroup/memory/memory.limit_in_bytes'
+- The actual memory usage of the current
+- '$ cat /sys/fs/cgroup/memory/memory.usage_in_bytes'
+
+## JVM OOM
+### java.lang.OutOfMemoryError - Java heap space overflow
+- Java heap space overflow – This error is thrown when the heap space does not have enough space to store the newly created object. This is usually caused by memory leaks or improper heap size settings. For memory leaks, you need to use memory monitoring software to find the leaked code in the program, and the heap size can be modified using parameters (such as-Xms and-Xmx).
+### java.lang.OutOfMemoryError - PermGen space/Metaspace overflow**
+- PermGen space/Metaspace overflow – The objects that permanent generation stores include class information and constants. The JDK 1.8 uses Metaspace to replace the permanent generation. This error is usually reported because the number of classes loaded is too large or the size is too big. You can modify the-XX:MaxPermSize or-XX:MaxMetaspaceSize to expand the PermGen space/Metaspace.
+## java.lang.OutOfMemoryError - Unable to create a new native thread
+- Unable to create a new native thread. Each Java thread needs to occupy a certain amount of memory space. When the JVM sends a request to the underlying operating system to create a new native thread, such an error mentioned above will be reported if there aren't enough resources to be allocated. Possible causes are insufficient native memory, the number of threads exceeding the limit of the maximum number of threads in the operating system caused by thread leak, ulimit, or the number of threads exceeding the kernel.pid_max. You need to upgrade resources, limit the size of the thread pool, and reduce the size of the thread stack.
+
+## Native Memory Tracking (NMT)
+- JDK8 introduces the Native Memory Tracking (NMT) feature that tracks the internal memory usage of the JVM. 
+- Use the NativeMemoryTracking (NMT) to understand the JVM memory usage of your application. NMT can track the memory usage of the JVM. In tests, NMT can be used to figure out the approximate distribution of the memory used by the program JVM as a reference for memory capacity configuration. 
+- By default, NMT is turned off and on using the JVM parameter: -XX:NativeMemoryTracking=[off | summary | detail], After NMT is enabled, you can use the jcmd command to print the JVM memory usage.
+- jcmd <pid> VM.native_memory [summary | detail] [scale=MB]
+
+
 ## How to set mem size of java
 ### Option 1
 - `-Xms<size> set initial Java heap size`

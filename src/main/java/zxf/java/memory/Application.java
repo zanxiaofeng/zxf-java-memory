@@ -6,7 +6,7 @@ import zxf.java.memory.util.DebugUtils;
 
 @SpringBootApplication
 public class Application {
-    //Please run with options: -XX:+UseG1GC -Xms512M -Xmx1024M -XshowSettings -XX:+PrintFlagsFinal
+    //Please run with options: -XX:+UseG1GC -Xms256M -Xmx1024M -XshowSettings -XX:+PrintFlagsFinal -XX:NativeMemoryTracking=detail
     public static void main(String[] args) {
         DebugUtils.printMemInfoFromMXBean("Application.start");
 

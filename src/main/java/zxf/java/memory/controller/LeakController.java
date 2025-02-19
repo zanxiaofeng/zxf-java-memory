@@ -34,10 +34,16 @@ public class LeakController {
 
     @GetMapping("/byUnclosedResources")
     public Integer byUnclosedResources() throws IOException {
-        DebugUtils.printMemInfoFromMXBean("byUnclosedResources.before");
-        Integer result = new UnclosedResourcesLeak().test();
-        DebugUtils.printMemInfoFromMXBean("byUnclosedResources.after");
-        return result;
+        try {
+            DebugUtils.printMemInfoFromMXBean("byUnclosedResources.before");
+            Integer result = new UnclosedResourcesLeak().test();
+            DebugUtils.printMemInfoFromMXBean("byUnclosedResources.after");
+            return result;
+        } catch (Throwable throwable) {
+            DebugUtils.printMemInfoFromMXBean("byUnclosedResources.exception");
+            throwable.printStackTrace();
+            throw throwable;
+        }
     }
 
     @GetMapping("/byHashAndEqualsNotImplemented")
