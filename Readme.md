@@ -138,7 +138,7 @@
 - `java -XX:+PrintFlagsFinal -version | grep HeapSize`
 
 # JDK troubleshooting guide
-https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/
-https://docs.oracle.com/javase/9/troubleshoot/title.htm
-https://docs.oracle.com/en/java/javase/17/troubleshoot/troubleshooting-guide.pdf
-https://docs.oracle.com/en/java/javase/22/troubleshoot/troubleshooting-guide.pdf
+- https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/
+- https://docs.oracle.com/javase/9/troubleshoot/title.htm
+- https://docs.oracle.com/en/java/javase/17/troubleshoot/troubleshooting-guide.pdf
+- https://docs.oracle.com/en/java/javase/22/troubleshoot/troubleshooting-guide.pdf

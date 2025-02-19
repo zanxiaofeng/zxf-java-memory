@@ -1,7 +1,9 @@
 package zxf.java.memory.util;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryUsage;
 import java.util.Scanner;
@@ -50,22 +52,40 @@ public class DebugUtils {
     }
 
     public static void callJmap(String title) throws IOException, InterruptedException {
-        // Need JDK 9
-//        System.out.println("Call jmap: " + title + " - " + ProcessHandle.current().pid());
-//        Process process = Runtime.getRuntime().exec("jmap -histo " + ProcessHandle.current().pid());
-//        logOutput(process.getInputStream(), "");
-//        logOutput(process.getErrorStream(), "ERROR - ");
-//        if (process.waitFor(30, TimeUnit.MINUTES)) {
-//            System.out.println("Call jmap: exit code=" + process.exitValue());
-//        } else {
-//            System.out.println("Call jmap: timeout");
-//        }
+        String[] command = new String[]{"jmap", "-histo", getProcessId()};
+        runCommand(command, title);
+    }
+
+    public static void callJcmd(String title) throws IOException, InterruptedException {
+        String[] command = new String[]{"jcmd", getProcessId(), "VM.native_memory", "summary", "scale=MB"};
+        runCommand(command, title);
+    }
+
+    public static void runCommand(String[] command, String title) throws InterruptedException, IOException {
+        String commandLine = String.join(" ", command);
+        System.out.println(String.format("Call %s for %s", commandLine, title));
+        ProcessBuilder processBuilder = new ProcessBuilder(command);
+        processBuilder.redirectErrorStream(true);
+
+        Process process = processBuilder.start();
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+        }
+
+        if (process.waitFor(30, TimeUnit.MINUTES)) {
+            System.out.println(String.format("Call %s return with code %d", commandLine, process.exitValue()));
+        } else {
+            System.out.println(String.format("Call %s timeout", commandLine));
+        }
     }
 
     public static void main(String[] args) {
         System.out.println(formatSize(888));
         System.out.println(formatSize(888 * 1024));
-        System.out.println(formatSize(888 * 1024 + 512)) ;
+        System.out.println(formatSize(888 * 1024 + 512));
         System.out.println(formatSize(888 * 1024 * 1024 + 512 * 1024));
         System.out.println(formatSize(888 * 1024 * 1024 * 1024l + 512 * 1024 * 1024l));
     }
@@ -76,15 +96,8 @@ public class DebugUtils {
         return String.format("%.1f %sB", (double) v / (1L << (z * 10)), " KMGTPE".charAt(z));
     }
 
-    private static void logOutput(InputStream inputStream, String prefix) {
-        new Thread(() -> {
-            Scanner scanner = new Scanner(inputStream, "UTF-8");
-            while (scanner.hasNextLine()) {
-                synchronized (DebugUtils.class) {
-                    System.out.println(prefix + scanner.nextLine());
-                }
-            }
-            scanner.close();
-        }).start();
+    private static String getProcessId() {
+        String jvmName = ManagementFactory.getRuntimeMXBean().getName();
+        return jvmName.split("@")[0];
     }
 }

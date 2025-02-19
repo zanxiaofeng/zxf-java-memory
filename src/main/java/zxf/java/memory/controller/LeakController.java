@@ -55,12 +55,12 @@ public class LeakController {
     }
 
     @GetMapping("/byInnerClass")
-    public Integer byInnerClass() throws IOException {
+    public Integer byInnerClass(@RequestParam Integer count) throws IOException {
         DebugUtils.printMemInfoFromMXBean("byInnerClass.before");
-        for (int i = 0; i < 1024; i++) {
+        for (int i = 0; i < count; i++) {
             InnerClassLeak.InnerClass object = new InnerClassLeak().create();
             innerClasses.add(object);
-            if (i % 20 == 0) {
+            if (i % 5 == 0) {
                 DebugUtils.printMemInfoFromMXBean("byInnerClass." + i);
             }
         }
