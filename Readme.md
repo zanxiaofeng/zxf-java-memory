@@ -84,6 +84,11 @@
 - Metaspace size
 - Stack size
 
+## Java Options
+- Standard options that are guaranteed to be supported by all JVM implementations out there. Usually, these options are used for everyday actions such as –classpath, -cp, –version, and so on
+- Extra options that are not supported by all JVM implementations and are usually subject to change. These options start with -X
+- Moreover, some of those additional options are more advanced and begin with -XX.
+
 ## How to set mem size of java
 ### Option 1
 - `-Xms<size> set initial Java heap size`
@@ -101,7 +106,20 @@
 - `-XX:+CrashOnOutOfMemoryError`
 - `-XX:OnOutOfMemoryError="/path/to/oomKillAndRestart.sh"`
 
-## How to display JVM setting
-- java <OPTIONS> -XshowSettings:vm -version
-## Get Default HeapSize
+## JVM setting
+- java <OPTIONS> -XshowSettings <-version | entrypoint>
+- java <OPTIONS> -XshowSettings:vm <-version | entrypoint>
+
+## Global flags
+- `java -XX:+PrintFlagsInitial`
+- `java -XX:+PrintFlagsFinal <-version | entrypoint>`
+- `java -XX:+PrintCommandLineFlags <-version | entrypoint>`
 - `java -XX:+PrintFlagsFinal -version | grep HeapSize`
+
+# JDK troubleshooting guide
+https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/
+https://docs.oracle.com/javase/9/troubleshoot/title.htm
+https://docs.oracle.com/en/java/javase/17/troubleshoot/troubleshooting-guide.pdf
+https://docs.oracle.com/en/java/javase/22/troubleshoot/troubleshooting-guide.pdf
+
+

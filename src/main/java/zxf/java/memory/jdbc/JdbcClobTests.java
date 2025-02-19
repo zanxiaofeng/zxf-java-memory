@@ -19,12 +19,12 @@ import static oracle.jdbc.OracleConnection.CONNECTION_PROPERTY_DEFAULT_LOB_PREFE
 public class JdbcClobTests {
     public static void main(String[] args) throws SQLException, IOException {
         System.gc();
-        DebugUtils.printMemInfoFromRuntime("Start");
+        DebugUtils.printMemInfoFromMXBean("Start");
 
         testJdbcClob();
 
         System.gc();
-        DebugUtils.printMemInfoFromRuntime("End");
+        DebugUtils.printMemInfoFromMXBean("End");
     }
 
     public static void testJdbcClob() throws SQLException, IOException {
@@ -66,13 +66,13 @@ public class JdbcClobTests {
         System.out.println(GraphLayout.parseInstance(result).toFootprint());
 
         System.gc();
-        DebugUtils.printMemInfoFromRuntime("After Query");
+        DebugUtils.printMemInfoFromMXBean("After Query");
         return result;
     }
 
     public static void processJdbcClob(List<JdbcEntity> entities) throws SQLException, IOException {
         System.gc();
-        DebugUtils.printMemInfoFromRuntime("Before Process");
+        DebugUtils.printMemInfoFromMXBean("Before Process");
 
         Long totalSize = 0l;
         for (int i = 0; i < entities.size(); i++) {
@@ -87,12 +87,12 @@ public class JdbcClobTests {
             System.out.println(i + "::ID: " + entity.getId() + ", DATA: " + xmlFromData.length() * 2);
             if (i % 1000 == 0) {
                 System.gc();
-                DebugUtils.printMemInfoFromRuntime("In Process");
+                DebugUtils.printMemInfoFromMXBean("In Process");
             }
         }
         System.out.println("totalSize: " + DebugUtils.formatSize(totalSize));
 
         System.gc();
-        DebugUtils.printMemInfoFromRuntime("After Process");
+        DebugUtils.printMemInfoFromMXBean("After Process");
     }
 }

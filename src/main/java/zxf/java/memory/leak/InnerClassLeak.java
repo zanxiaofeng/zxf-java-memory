@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class InnerClassLeak {
-    private byte[] buffer = new byte[1024];
+    private byte[] buffer = new byte[1024 * 1024];
 
     public InnerClassLeak() {
         new Random().nextBytes(buffer);

@@ -19,9 +19,9 @@ public class LeakController {
 
     @GetMapping("/gc")
     public void gc() {
-        DebugUtils.printMemInfoFromRuntime("gc.before");
+        DebugUtils.printMemInfoFromMXBean("gc.before");
         System.gc();
-        DebugUtils.printMemInfoFromRuntime("gc.after");
+        DebugUtils.printMemInfoFromMXBean("gc.after");
     }
 
     @GetMapping("/byStaticReference")
@@ -41,12 +41,15 @@ public class LeakController {
 
     @GetMapping("/byInnerClass")
     public Integer byInnerClass() throws IOException {
-        DebugUtils.printMemInfoFromRuntime("byInnerClass.before");
+        DebugUtils.printMemInfoFromMXBean("byInnerClass.before");
         for (int i = 0; i < 1024; i++) {
             InnerClassLeak.InnerClass object = new InnerClassLeak().create();
             innerClasses.add(object);
+            if (i % 20 == 0) {
+                DebugUtils.printMemInfoFromMXBean("byInnerClass." + i);
+            }
         }
-        DebugUtils.printMemInfoFromRuntime("byInnerClass.after");
+        DebugUtils.printMemInfoFromMXBean("byInnerClass.after");
         return 1024;
     }
 
@@ -59,9 +62,9 @@ public class LeakController {
      */
     @GetMapping("/byThreadLocal")
     public Integer byThreadLocal(@RequestParam(defaultValue = "false") Boolean release) throws InterruptedException {
-        DebugUtils.printMemInfoFromRuntime("byThreadLocal.before, release=" + release);
+        DebugUtils.printMemInfoFromMXBean("byThreadLocal.before, release=" + release);
         Integer result = ThreadLocalsLeak.test(release);
-        DebugUtils.printMemInfoFromRuntime("byThreadLocal.after, release=" + release);
+        DebugUtils.printMemInfoFromMXBean("byThreadLocal.after, release=" + release);
         return result;
     }
 }

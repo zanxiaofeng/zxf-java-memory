@@ -15,18 +15,18 @@ public class PdfboxTests {
     public static void main(String[] args) throws IOException, InterruptedException {
         waitInputFromKeyboard("Please press any key for start");
         loadPdf();
-        DebugUtils.printMemInfoFromRuntime("main.1");
+        DebugUtils.printMemInfoFromMXBean("main.1");
         System.gc();
         waitInputFromKeyboard("Please press any key for end");
     }
 
     private static void loadPdf() throws IOException, InterruptedException {
         System.gc();
-        DebugUtils.printMemInfoFromRuntime("loadPdf.start");
+        DebugUtils.printMemInfoFromMXBean("loadPdf.start");
         //DebugUtils.callJmap("loadPdf.start");
         List<BufferedImage> results = new ArrayList<>();
         try (PDDocument pdfDocument = PDDocument.load(Paths.get("./test-pdf/developer-mozilla-org-CORS-en.pdf").toFile())) {
-            DebugUtils.printMemInfoFromRuntime("loadPdf.after.load");
+            DebugUtils.printMemInfoFromMXBean("loadPdf.after.load");
             //DebugUtils.callJmap("loadPdf.after.load");
             PDFRenderer pdfRenderer = new PDFRenderer(pdfDocument);
             for (int pageIndex = 0; pageIndex < pdfDocument.getNumberOfPages(); pageIndex++){
@@ -35,7 +35,7 @@ public class PdfboxTests {
                 waitInputFromKeyboard("Please press any key for loadPdf.each." + pageIndex);
             }
         }
-        DebugUtils.printMemInfoFromRuntime("loadPdf.end");
+        DebugUtils.printMemInfoFromMXBean("loadPdf.end");
         waitInputFromKeyboard("Please press any key for loadPdf.end");
         //DebugUtils.callJmap("loadPdf.end");
     }
