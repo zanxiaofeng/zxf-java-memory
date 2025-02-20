@@ -4,24 +4,24 @@ import zxf.java.memory.util.DebugUtils;
 import zxf.java.memory.util.MemoryMonitor;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class TestHeapSpaceOOM {
-    public static List<byte[]> contents = new ArrayList<>();
+public class TestDirectMemoryOOM {
+    public static List<ByteBuffer> contents = new ArrayList<>();
 
-    //Please run with options: -XX:+UseG1GC -Xms256M -Xmx1024M -XshowSettings -XX:+PrintFlagsFinal -XX:NativeMemoryTracking=detail
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Thread thread = new Thread(() -> {
             for (int i = 0; i < 1024; i++) {
                 //64M
-                contents.add(new byte[1024 * 1024 * 64]);
+                contents.add(ByteBuffer.allocateDirect(1024 * 1024));
                 try {
                     Thread.sleep(2000);
                     System.out.println("..... " + i);
-                    DebugUtils.callJcmd("for heap space." + i);
-                    DebugUtils.printMemInfoFromMXBean("for heap space." + i);
+                    DebugUtils.callJcmd("for direct memory space." + i);
+                    DebugUtils.printMemInfoFromMXBean("for direct memory space." + i);
                     MemoryMonitor.logMemoryUsage();
                 } catch (InterruptedException | IOException e) {
                     throw new RuntimeException(e);
@@ -31,8 +31,8 @@ public class TestHeapSpaceOOM {
 
         Scanner keyboard = new Scanner(System.in);
 
-        DebugUtils.callJcmd("for heap space.begin");
-        DebugUtils.printMemInfoFromMXBean("for heap space.begin");
+        DebugUtils.callJcmd("for direct memory space.begin");
+        DebugUtils.printMemInfoFromMXBean("for direct memory space.begin");
         MemoryMonitor.logMemoryUsage();
 
         System.out.println("Please press enter to start");

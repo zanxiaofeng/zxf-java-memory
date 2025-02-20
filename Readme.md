@@ -2,14 +2,15 @@
 - `jinfo <pid> #Print all info(Java System Properties, VM Flags, VM Arguments)`
 
 
-# How to enable/disable the named VM flag
-- `jinfo -flag <+|-> <name>`
+# How to enable/disable a named VM flag
+- `jinfo -flag <+|-><flag-name> <pid>`
 
+# How to set value for a named VM flag
+- `jinfo -flag <flag-name>=<value> <pid>`
 
 # How to get Heap info
 - `jmap -heap <pid>`
 - `jmap -histo <pid>`
-
 
 # How to trigger full gc
 - `jcmd <pid> GC.run`
