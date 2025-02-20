@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class TestHeapSpaceOOM {
     public static List<byte[]> contents = new ArrayList<>();
 
-    //Please run with options: -XX:+UseG1GC -Xms256M -Xmx1024M -XshowSettings -XX:+PrintFlagsFinal -XX:NativeMemoryTracking=detail
+    //Please run with options: -XX:+UseG1GC -Xms256M -Xmx1024M -XshowSettings -XX:+PrintGCDetails -XX:+PrintFlagsFinal -XX:NativeMemoryTracking=detail
     public static void main(String[] args) throws InterruptedException, IOException {
         Thread thread = new Thread(() -> {
             for (int i = 0; i < 1024; i++) {
@@ -20,11 +20,11 @@ public class TestHeapSpaceOOM {
                 try {
                     Thread.sleep(2000);
                     System.out.println("..... " + i);
-                    DebugUtils.callJcmd("for heap space." + i);
-                    DebugUtils.printMemInfoFromMXBean("for heap space." + i);
-                    MemoryMonitor.logMemoryUsage();
-                } catch (InterruptedException | IOException e) {
-                    throw new RuntimeException(e);
+                    //DebugUtils.callJcmd("for heap space." + i);
+                    //DebugUtils.printMemInfoFromMXBean("for heap space." + i);
+                    //MemoryMonitor.logMemoryUsage();
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
                 }
             }
         });
