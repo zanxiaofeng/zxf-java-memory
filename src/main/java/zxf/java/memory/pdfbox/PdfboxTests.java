@@ -3,6 +3,7 @@ package zxf.java.memory.pdfbox;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import zxf.java.memory.util.DebugUtils;
+import zxf.java.memory.util.MemoryMonitor;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -15,18 +16,18 @@ public class PdfboxTests {
     public static void main(String[] args) throws IOException, InterruptedException {
         waitInputFromKeyboard("Please press any key for start");
         loadPdf();
-        DebugUtils.printMemInfoFromMXBean("main.1");
+        MemoryMonitor.logMemoryInfoFromMXBean("main.1");
         System.gc();
         waitInputFromKeyboard("Please press any key for end");
     }
 
     private static void loadPdf() throws IOException, InterruptedException {
         System.gc();
-        DebugUtils.printMemInfoFromMXBean("loadPdf.start");
+        MemoryMonitor.logMemoryInfoFromMXBean("loadPdf.start");
         //DebugUtils.callJmap("loadPdf.start");
         List<BufferedImage> results = new ArrayList<>();
         try (PDDocument pdfDocument = PDDocument.load(Paths.get("./test-pdf/developer-mozilla-org-CORS-en.pdf").toFile())) {
-            DebugUtils.printMemInfoFromMXBean("loadPdf.after.load");
+            MemoryMonitor.logMemoryInfoFromMXBean("loadPdf.after.load");
             //DebugUtils.callJmap("loadPdf.after.load");
             PDFRenderer pdfRenderer = new PDFRenderer(pdfDocument);
             for (int pageIndex = 0; pageIndex < pdfDocument.getNumberOfPages(); pageIndex++){
@@ -35,7 +36,7 @@ public class PdfboxTests {
                 waitInputFromKeyboard("Please press any key for loadPdf.each." + pageIndex);
             }
         }
-        DebugUtils.printMemInfoFromMXBean("loadPdf.end");
+        MemoryMonitor.logMemoryInfoFromMXBean("loadPdf.end");
         waitInputFromKeyboard("Please press any key for loadPdf.end");
         //DebugUtils.callJmap("loadPdf.end");
     }

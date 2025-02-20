@@ -1,6 +1,5 @@
 package zxf.java.memory.oom;
 
-import zxf.java.memory.util.DebugUtils;
 import zxf.java.memory.util.MemoryMonitor;
 
 import java.io.IOException;
@@ -19,11 +18,8 @@ public class TestDirectMemoryOOM {
                 contents.add(ByteBuffer.allocateDirect(1024 * 1024));
                 try {
                     Thread.sleep(2000);
-                    System.out.println("..... " + i);
-                    DebugUtils.callJcmd("for direct memory space." + i);
-                    DebugUtils.printMemInfoFromMXBean("for direct memory space." + i);
-                    MemoryMonitor.logMemoryUsage();
-                } catch (InterruptedException | IOException e) {
+                    MemoryMonitor.loggingMonitoringInfo();
+                } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -31,9 +27,7 @@ public class TestDirectMemoryOOM {
 
         Scanner keyboard = new Scanner(System.in);
 
-        DebugUtils.callJcmd("for direct memory space.begin");
-        DebugUtils.printMemInfoFromMXBean("for direct memory space.begin");
-        MemoryMonitor.logMemoryUsage();
+        MemoryMonitor.loggingMonitoringInfo();
 
         System.out.println("Please press enter to start");
         keyboard.nextLine();

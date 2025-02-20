@@ -1,6 +1,7 @@
 package zxf.java.memory.oom;
 
 import zxf.java.memory.util.DebugUtils;
+import zxf.java.memory.util.MemoryMonitor;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,8 +12,7 @@ public class TestThreadStackSpaceOOM {
     public static void main(String[] args) throws InterruptedException, IOException {
         Scanner keyboard = new Scanner(System.in);
 
-        DebugUtils.callJcmd("for stack space.begin");
-        DebugUtils.printMemInfoFromMXBean("for stack space.begin");
+        MemoryMonitor.loggingMonitoringInfo();
 
         System.out.println("Please press enter to start");
         keyboard.nextLine();
@@ -32,8 +32,7 @@ public class TestThreadStackSpaceOOM {
             });
             thread.start();
             if (i % 5000 == 0) {
-                DebugUtils.callJcmd("for stack space...." + i);
-                DebugUtils.printMemInfoFromMXBean("for stack space...." + i);
+                MemoryMonitor.loggingMonitoringInfo();
             }
         }
 

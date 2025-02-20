@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import zxf.java.memory.leak.*;
 import zxf.java.memory.util.DebugUtils;
+import zxf.java.memory.util.MemoryMonitor;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,28 +20,28 @@ public class LeakController {
 
     @GetMapping("/gc")
     public void gc() {
-        DebugUtils.printMemInfoFromMXBean("gc.before");
+        MemoryMonitor.logMemoryInfoFromMXBean("gc.before");
         System.gc();
-        DebugUtils.printMemInfoFromMXBean("gc.after");
+        MemoryMonitor.logMemoryInfoFromMXBean("gc.after");
     }
 
     @GetMapping("/byStaticReference")
     public Integer byStaticReference() {
-        DebugUtils.printMemInfoFromMXBean("byStaticReference.before");
+        MemoryMonitor.logMemoryInfoFromMXBean("byStaticReference.before");
         Integer result = new StaticReferenceLeak().test();
-        DebugUtils.printMemInfoFromMXBean("byStaticReference.after");
+        MemoryMonitor.logMemoryInfoFromMXBean("byStaticReference.after");
         return result;
     }
 
     @GetMapping("/byUnclosedResources")
     public Integer byUnclosedResources() throws IOException {
         try {
-            DebugUtils.printMemInfoFromMXBean("byUnclosedResources.before");
+            MemoryMonitor.logMemoryInfoFromMXBean("byUnclosedResources.before");
             Integer result = new UnclosedResourcesLeak().test();
-            DebugUtils.printMemInfoFromMXBean("byUnclosedResources.after");
+            MemoryMonitor.logMemoryInfoFromMXBean("byUnclosedResources.after");
             return result;
         } catch (Throwable throwable) {
-            DebugUtils.printMemInfoFromMXBean("byUnclosedResources.exception");
+            MemoryMonitor.logMemoryInfoFromMXBean("byUnclosedResources.exception");
             throwable.printStackTrace();
             throw throwable;
         }
@@ -48,23 +49,23 @@ public class LeakController {
 
     @GetMapping("/byHashAndEqualsNotImplemented")
     public Integer byHashAndEqualsNotImplemented() throws IOException {
-        DebugUtils.printMemInfoFromMXBean("byHashAndEqualsNotImplemented.before");
+        MemoryMonitor.logMemoryInfoFromMXBean("byHashAndEqualsNotImplemented.before");
         Integer result = new HashAndEqualsNotImplementedLeak().test();
-        DebugUtils.printMemInfoFromMXBean("byHashAndEqualsNotImplemented.after");
+        MemoryMonitor.logMemoryInfoFromMXBean("byHashAndEqualsNotImplemented.after");
         return result;
     }
 
     @GetMapping("/byInnerClass")
     public Integer byInnerClass(@RequestParam Integer count) throws IOException {
-        DebugUtils.printMemInfoFromMXBean("byInnerClass.before");
+        MemoryMonitor.logMemoryInfoFromMXBean("byInnerClass.before");
         for (int i = 0; i < count; i++) {
             InnerClassLeak.InnerClass object = new InnerClassLeak().create();
             innerClasses.add(object);
             if (i % 5 == 0) {
-                DebugUtils.printMemInfoFromMXBean("byInnerClass." + i);
+                MemoryMonitor.logMemoryInfoFromMXBean("byInnerClass." + i);
             }
         }
-        DebugUtils.printMemInfoFromMXBean("byInnerClass.after");
+        MemoryMonitor.logMemoryInfoFromMXBean("byInnerClass.after");
         return 1024;
     }
 
@@ -77,9 +78,9 @@ public class LeakController {
      */
     @GetMapping("/byThreadLocal")
     public Integer byThreadLocal(@RequestParam(defaultValue = "false") Boolean release) throws InterruptedException {
-        DebugUtils.printMemInfoFromMXBean("byThreadLocal.before, release=" + release);
+        MemoryMonitor.logMemoryInfoFromMXBean("byThreadLocal.before, release=" + release);
         Integer result = ThreadLocalsLeak.test(release);
-        DebugUtils.printMemInfoFromMXBean("byThreadLocal.after, release=" + release);
+        MemoryMonitor.logMemoryInfoFromMXBean("byThreadLocal.after, release=" + release);
         return result;
     }
 }

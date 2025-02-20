@@ -5,6 +5,7 @@ import oracle.sql.CLOB;
 import org.apache.commons.io.IOUtils;
 import org.openjdk.jol.info.GraphLayout;
 import zxf.java.memory.util.DebugUtils;
+import zxf.java.memory.util.MemoryMonitor;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -19,12 +20,12 @@ import static oracle.jdbc.OracleConnection.CONNECTION_PROPERTY_DEFAULT_LOB_PREFE
 public class JdbcClobTests {
     public static void main(String[] args) throws SQLException, IOException {
         System.gc();
-        DebugUtils.printMemInfoFromMXBean("Start");
+        MemoryMonitor.logMemoryInfoFromMXBean("Start");
 
         testJdbcClob();
 
         System.gc();
-        DebugUtils.printMemInfoFromMXBean("End");
+        MemoryMonitor.logMemoryInfoFromMXBean("End");
     }
 
     public static void testJdbcClob() throws SQLException, IOException {
@@ -66,13 +67,13 @@ public class JdbcClobTests {
         System.out.println(GraphLayout.parseInstance(result).toFootprint());
 
         System.gc();
-        DebugUtils.printMemInfoFromMXBean("After Query");
+        MemoryMonitor.logMemoryInfoFromMXBean("After Query");
         return result;
     }
 
     public static void processJdbcClob(List<JdbcEntity> entities) throws SQLException, IOException {
         System.gc();
-        DebugUtils.printMemInfoFromMXBean("Before Process");
+        MemoryMonitor.logMemoryInfoFromMXBean("Before Process");
 
         Long totalSize = 0l;
         for (int i = 0; i < entities.size(); i++) {
@@ -87,12 +88,12 @@ public class JdbcClobTests {
             System.out.println(i + "::ID: " + entity.getId() + ", DATA: " + xmlFromData.length() * 2);
             if (i % 1000 == 0) {
                 System.gc();
-                DebugUtils.printMemInfoFromMXBean("In Process");
+                MemoryMonitor.logMemoryInfoFromMXBean("In Process");
             }
         }
         System.out.println("totalSize: " + DebugUtils.formatSize(totalSize));
 
         System.gc();
-        DebugUtils.printMemInfoFromMXBean("After Process");
+        MemoryMonitor.logMemoryInfoFromMXBean("After Process");
     }
 }

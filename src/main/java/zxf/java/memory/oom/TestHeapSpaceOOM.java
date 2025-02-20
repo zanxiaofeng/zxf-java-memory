@@ -1,6 +1,5 @@
 package zxf.java.memory.oom;
 
-import zxf.java.memory.util.DebugUtils;
 import zxf.java.memory.util.MemoryMonitor;
 
 import java.io.IOException;
@@ -20,9 +19,7 @@ public class TestHeapSpaceOOM {
                 try {
                     Thread.sleep(2000);
                     System.out.println("..... " + i);
-                    //DebugUtils.callJcmd("for heap space." + i);
-                    //DebugUtils.printMemInfoFromMXBean("for heap space." + i);
-                    //MemoryMonitor.logMemoryUsage();
+                    MemoryMonitor.loggingMonitoringInfo();
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -31,9 +28,7 @@ public class TestHeapSpaceOOM {
 
         Scanner keyboard = new Scanner(System.in);
 
-        DebugUtils.callJcmd("for heap space.begin");
-        DebugUtils.printMemInfoFromMXBean("for heap space.begin");
-        MemoryMonitor.logMemoryUsage();
+        MemoryMonitor.loggingMonitoringInfo();
 
         System.out.println("Please press enter to start");
         keyboard.nextLine();

@@ -5,12 +5,15 @@
 # How to enable/disable a named VM flag
 - `jinfo -flag <+|-><flag-name> <pid>`
 
+
 # How to set value for a named VM flag
 - `jinfo -flag <flag-name>=<value> <pid>`
+
 
 # How to get Heap info
 - `jmap -heap <pid>`
 - `jmap -histo <pid>`
+
 
 # How to trigger full gc
 - `jcmd <pid> GC.run`
@@ -44,6 +47,7 @@
 - MC, 元数据区大小
 - MU, 元数据区已使用大小
 
+
 # How to generate Heap Dump
 ## Generating a Heap Dump on demand with jmap
 - `jmap -dump:live,format=b,file=/path/to/dumpfile.hprof <pid>`
@@ -63,12 +67,13 @@
 
 
 # Type of Memory Leaks in Java
-## Memory Leak Through static Fields
-## Through Unclosed Resources
-## Inner Classes That Reference Outer Classes
-## Through finalize() Methods
-## Interned Strings
-## Using ThreadLocals
+- Memory Leak Through static Fields
+- Through Unclosed Resources
+- Inner Classes That Reference Outer Classes
+- Through finalize() Methods
+- Interned Strings
+- Using ThreadLocals
+
 
 ## OOM
 - Java虚拟机（JVM）在遇到内存溢出错误（OOM，OutOfMemoryError）时，并不一定会立即终止执行。OOM是Error类的一个子类，通常表示一种严重的运行时问题，它标志着JVM在尝试分配内存但无法满足请求时的错误状态。
@@ -78,23 +83,19 @@
 - 在容器化环境中，它的行为需要被理解和管理，以确保系统的稳定性和应用程序的性能。
 - 在Kubernetes中，每个Pod都有自己的cgroup，用于限制和监控资源使用。当Pod的内存使用量超过其cgroup的限制时，OOM Killer可能会被触发，选择并终止该Pod中的一个或多个容器以释放内存。然而，这并不意味着整个Pod都会被杀掉，因为Pod中的其他容器可能并未超过内存限制。
 
-## Memory parameters of JVM
-- Initial heap size
-- Maximum heap size
-- Eden zone size
-- Metaspace size
-- Stack size
 
 ## Java Options
 - Standard options that are guaranteed to be supported by all JVM implementations out there. Usually, these options are used for everyday actions such as –classpath, -cp, –version, and so on
 - Extra options that are not supported by all JVM implementations and are usually subject to change. These options start with -X
 - Moreover, some of those additional options are more advanced and begin with -XX.
 
+
 ## Container OOM
 - The memory limit of the current container
 - '$ cat /sys/fs/cgroup/memory/memory.limit_in_bytes'
 - The actual memory usage of the current
 - '$ cat /sys/fs/cgroup/memory/memory.usage_in_bytes'
+
 
 ## JVM OOM
 ### java.lang.OutOfMemoryError - Java heap space overflow
@@ -103,6 +104,7 @@
 - PermGen space/Metaspace overflow – The objects that permanent generation stores include class information and constants. The JDK 1.8 uses Metaspace to replace the permanent generation. This error is usually reported because the number of classes loaded is too large or the size is too big. You can modify the-XX:MaxPermSize or-XX:MaxMetaspaceSize to expand the PermGen space/Metaspace.
 ## java.lang.OutOfMemoryError - Unable to create a new native thread
 - Unable to create a new native thread. Each Java thread needs to occupy a certain amount of memory space. When the JVM sends a request to the underlying operating system to create a new native thread, such an error mentioned above will be reported if there aren't enough resources to be allocated. Possible causes are insufficient native memory, the number of threads exceeding the limit of the maximum number of threads in the operating system caused by thread leak, ulimit, or the number of threads exceeding the kernel.pid_max. You need to upgrade resources, limit the size of the thread pool, and reduce the size of the thread stack.
+
 
 ## Native Memory Tracking (NMT)
 - JDK8 introduces the Native Memory Tracking (NMT) feature that tracks the internal memory usage of the JVM. 
