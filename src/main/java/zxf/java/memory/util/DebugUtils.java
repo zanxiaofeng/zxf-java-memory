@@ -1,17 +1,15 @@
 package zxf.java.memory.util;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
-@Slf4j
 public class DebugUtils {
 
-    public static void runCommand(String[] command, String title) {
+    public static void runCommand(String[] command) {
         try {
-            log.info("Call {} for {}", command, title);
+            String commandLine = String.join(" ", command);
+            System.out.printf("Call %s\n", commandLine);
 
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             processBuilder.redirectErrorStream(true);
@@ -20,13 +18,13 @@ public class DebugUtils {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
-                log.info(line);
+                System.out.println(line);
             }
 
             if (process.waitFor(30, TimeUnit.MINUTES)) {
-                log.info("Call {} return with code {}", command, process.exitValue());
+                System.out.printf("Call %s return with code %d\n", commandLine, process.exitValue());
             } else {
-                log.info("Call {} timeout", command.toString());
+                System.out.printf("Call %s timeout\n", commandLine);
             }
         } catch (Exception ex) {
             throw new RuntimeException(ex);

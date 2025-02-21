@@ -11,6 +11,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import static org.apache.logging.log4j.util.ProcessIdUtil.getProcessId;
+import static zxf.java.memory.util.DebugUtils.formatSize;
 
 @Slf4j
 public class MemoryMonitor {
@@ -52,80 +53,57 @@ public class MemoryMonitor {
         MemoryMXBean memoryMXBean = ManagementFactory.getMemoryMXBean();
         List<MemoryPoolMXBean> memoryPoolMXBeans = ManagementFactory.getMemoryPoolMXBeans();
 
-        MemoryUsage heapMemoryUsage = memoryMXBean.getHeapMemoryUsage();
-        log.info("JVM Heap Memory Summary: {}", title);
-        log.info("Initial: {}, Used: {}, Committed: {}, Max: {}",
-                DebugUtils.formatSize(heapMemoryUsage.getInit()),
-                DebugUtils.formatSize(heapMemoryUsage.getUsed()),
-                DebugUtils.formatSize(heapMemoryUsage.getCommitted()),
-                DebugUtils.formatSize(heapMemoryUsage.getMax())
-        );
-        log.info("JVM Heap Memory Pools: {}", title);
+        System.out.println("=== JVM Heap Memory ===");
+        printMemoryUsage(memoryMXBean.getHeapMemoryUsage(), "");
         for (MemoryPoolMXBean memoryPoolMXBean : memoryPoolMXBeans) {
             if (memoryPoolMXBean.getType() == MemoryType.HEAP) {
-                MemoryUsage usage = memoryPoolMXBean.getUsage();
-                log.info("Memory Pool: {}, Type: {}, Managers: {}, Initial: {}, Used: {}, Committed: {}, Max: {}",
-                        memoryPoolMXBean.getName(), memoryPoolMXBean.getType(),
-                        memoryPoolMXBean.getMemoryManagerNames(),
-                        DebugUtils.formatSize(usage.getInit()),
-                        DebugUtils.formatSize(usage.getUsed()),
-                        DebugUtils.formatSize(usage.getCommitted()),
-                        DebugUtils.formatSize(usage.getMax()));
+                System.out.println("   *Pool: " + memoryPoolMXBean.getName());
+                printMemoryUsage(memoryPoolMXBean.getUsage(), "    ");
             }
         }
 
-        MemoryUsage nonHeapMemoryUsage = memoryMXBean.getNonHeapMemoryUsage();
-        log.info("JVM Non-Heap Memory Summary: {}", title);
-        log.info("Initial: {}, Used: {}, Committed: {}, Max: {}",
-                DebugUtils.formatSize(nonHeapMemoryUsage.getInit()),
-                DebugUtils.formatSize(nonHeapMemoryUsage.getUsed()),
-                DebugUtils.formatSize(nonHeapMemoryUsage.getCommitted()),
-                DebugUtils.formatSize(nonHeapMemoryUsage.getMax())
-        );
-
-        log.info("JVM Non-Heap Memory Pools: {}", title);
+        System.out.println("=== JVM Non-Heap Memory ===");
+        printMemoryUsage(memoryMXBean.getNonHeapMemoryUsage(), "");
         for (MemoryPoolMXBean memoryPoolMXBean : memoryPoolMXBeans) {
             if (memoryPoolMXBean.getType() == MemoryType.NON_HEAP) {
-                MemoryUsage usage = memoryPoolMXBean.getUsage();
-                log.info("Memory Pool: {}, Type: {}, Managers: {}, Initial: {}, Used: {}, Committed: {}, Max: {}",
-                        memoryPoolMXBean.getName(), memoryPoolMXBean.getType(),
-                        memoryPoolMXBean.getMemoryManagerNames(),
-                        DebugUtils.formatSize(usage.getInit()),
-                        DebugUtils.formatSize(usage.getUsed()),
-                        DebugUtils.formatSize(usage.getCommitted()),
-                        DebugUtils.formatSize(usage.getMax()));
+                System.out.println("   *Pool: " + memoryPoolMXBean.getName());
+                printMemoryUsage(memoryPoolMXBean.getUsage(), "    ");
             }
         }
 
-        log.info("Non-JVM Memory Pools: {}", title);
+        System.out.println("=== Non-JVM Memory Pools ===");
         for (BufferPoolMXBean bufferPoolMXBean : ManagementFactory.getPlatformMXBeans(BufferPoolMXBean.class)) {
-            log.info("Memory Pool: {}, Used: {},Count: {},Total Capacity: {}", bufferPoolMXBean.getName(),
-                    DebugUtils.formatSize(bufferPoolMXBean.getMemoryUsed()),
-                    DebugUtils.formatSize(bufferPoolMXBean.getCount()),
-                    DebugUtils.formatSize(bufferPoolMXBean.getTotalCapacity()));
+            System.out.println("   *Pool           : " + bufferPoolMXBean.getName());
+            System.out.println("    Used           : " + bufferPoolMXBean.getMemoryUsed());
+            System.out.println("    Count          : " + bufferPoolMXBean.getCount());
+            System.out.println("    Total Capacity : " + bufferPoolMXBean.getTotalCapacity());
         }
     }
 
     public static void logMemoryInfoFromNMT(String title) {
         log.info("logMemoryInfoFromNMT: {}", title);
-        String[] command = new String[]{"jcmd", getProcessId(), "VM.native_memory", "summary", "scale=MB"};
-        DebugUtils.runCommand(command, title);
+        DebugUtils.runCommand(new String[]{"jcmd", getProcessId(), "VM.native_memory", "summary", "scale=MB"});
     }
 
     public static void logMemoryInfoFromJmap(String title) {
         log.info("logMemoryInfoFromJmap: {}", title);
-        String[] command = new String[]{"jmap", "-histo", getProcessId()};
-        DebugUtils.runCommand(command, title);
+        DebugUtils.runCommand(new String[]{"jmap", "-histo", getProcessId()});
     }
 
     public static void logCgroupMemoryInfo(String title) {
         log.info("logCgroupMemoryInfo: {}", title);
         //Cgroup V1
-        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory/memory.limit_in_bytes"}, title);
-        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory/memory.usage_in_bytes"}, title);
+        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory/memory.limit_in_bytes"});
+        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory/memory.usage_in_bytes"});
 
         //Cgroup V2
-        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory/memory.max"}, title);
-        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory/memory.current"}, title);
+        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory.max"});
+        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory.current"});
+    }
+
+    private static void printMemoryUsage(MemoryUsage usage, String prefix) {
+        System.out.println(prefix + "Used : " + formatSize(usage.getUsed()));
+        System.out.println(prefix + "Committed : " + formatSize(usage.getCommitted()));
+        System.out.println(prefix + "Max : " + formatSize(usage.getMax()));
     }
 }

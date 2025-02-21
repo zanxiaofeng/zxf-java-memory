@@ -83,10 +83,10 @@
 - Moreover, some of those additional options are more advanced and begin with -XX.
 
 
-## Container OOM
+## Container oom-killed
 #### 查看内存使用量
 - docker stats
-#### Cgroup v1
+#### Cgroup V1
 - The memory limit of the current container
 - '$ cat /sys/fs/cgroup/memory/memory.limit_in_bytes'
 - The actual memory usage of the current container
@@ -101,12 +101,14 @@
 - '$ cat /sys/fs/cgroup/memory/memory.oom_control'
 - '$ cat /sys/fs/cgroup/memory/memory.pressure_level'
 - '$ cat /sys/fs/cgroup/memory/memory.stat'
-#### Cgroup v2
+#### Cgroup V2
 - The memory limit of the current container
-- '$ cat /sys/fs/cgroup/memory/memory.max'
+- '$ cat /sys/fs/cgroup/memory.max'
 - The actual memory usage of the current
-- '$ cat /sys/fs/cgroup/memory/memory.current'
-- '$ cat /sys/fs/cgroup/memory/memory.stat'
+- '$ cat /sys/fs/cgroup/memory.current'
+- The max memory usage of the current container
+- '$ cat /sys/fs/cgroup/memory.peak'
+- '$ cat /sys/fs/cgroup/memory.stat'
 
 
 ## JVM OOM
@@ -125,7 +127,7 @@
 - jcmd <pid> VM.native_memory [summary | detail] [scale=MB]
 
 
-## How to set mem size of java
+## Set memory size of JVM
 #### Option 1
 - `-Xms<size> set initial Java heap size`
 - `-Xmx<size> set maximum Java heap size`
@@ -133,10 +135,15 @@
 - `-Xmn<size> set eden zone size`
 - `-XX:MetaspaceSize set initial meta space size`
 - `-XX:MaxMetaspaceSize set maximum meta space size`
-#### Option 2(For container env)
-- -XX:InitialRAMPercentage=50.0
-- -XX:MinRAMPercentage=80.0
-- -XX:MaxRAMPercentage=60.0
+#### Option 2(For container env, jdk10+)
+- `-XX:+UseContainerSupport` #默认开启
+- `-XX:InitialRAMPercentage=50.0`
+- `-XX:MinRAMPercentage=80.0`
+- `-XX:MaxRAMPercentage=60.0`
+
+## Set memory size of Non-JVM
+- 
+
 
 ## How to kill java process after OOM
 - `-XX:+CrashOnOutOfMemoryError`
