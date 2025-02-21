@@ -4,7 +4,7 @@ package zxf.java.memory.util;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.management.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -22,10 +22,11 @@ public class MemoryMonitor {
     }
 
     public static void loggingMonitoringInfo() {
-        String title = LocalDate.now().toString();
+        String title = LocalDateTime.now().toString();
         logMemoryInfoFromMXBean(title);
         logMemoryInfoFromNMT(title);
         //logMemoryInfoFromJmap(title);
+        logCgroupMemoryInfo(title);
     }
 
     /*
@@ -47,6 +48,7 @@ public class MemoryMonitor {
      *                    max
      */
     public static void logMemoryInfoFromMXBean(String title) {
+        log.info("logMemoryInfoFromMXBean: {}", title);
         MemoryMXBean memoryMXBean = ManagementFactory.getMemoryMXBean();
         List<MemoryPoolMXBean> memoryPoolMXBeans = ManagementFactory.getMemoryPoolMXBeans();
 
@@ -105,12 +107,25 @@ public class MemoryMonitor {
     }
 
     public static void logMemoryInfoFromNMT(String title) {
+        log.info("logMemoryInfoFromNMT: {}", title);
         String[] command = new String[]{"jcmd", getProcessId(), "VM.native_memory", "summary", "scale=MB"};
         DebugUtils.runCommand(command, title);
     }
 
     public static void logMemoryInfoFromJmap(String title) {
+        log.info("logMemoryInfoFromJmap: {}", title);
         String[] command = new String[]{"jmap", "-histo", getProcessId()};
         DebugUtils.runCommand(command, title);
+    }
+
+    public static void logCgroupMemoryInfo(String title) {
+        log.info("logCgroupMemoryInfo: {}", title);
+        //Cgroup V1
+        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory/memory.limit_in_bytes"}, title);
+        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory/memory.usage_in_bytes"}, title);
+
+        //Cgroup V2
+        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory/memory.max"}, title);
+        DebugUtils.runCommand(new String[]{"cat", "/sys/fs/cgroup/memory/memory.current"}, title);
     }
 }

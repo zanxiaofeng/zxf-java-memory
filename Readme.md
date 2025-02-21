@@ -91,11 +91,17 @@
 
 
 ## Container OOM
+## Cgroup v1
 - The memory limit of the current container
 - '$ cat /sys/fs/cgroup/memory/memory.limit_in_bytes'
 - The actual memory usage of the current
 - '$ cat /sys/fs/cgroup/memory/memory.usage_in_bytes'
-
+## Cgroup v2
+- The memory limit of the current container
+- '$ cat /sys/fs/cgroup/memory/memory.max'
+- The actual memory usage of the current
+- '$ cat /sys/fs/cgroup/memory/memory.current'
+- '$ cat /sys/fs/cgroup/memory/memory.stat'
 
 ## JVM OOM
 ### java.lang.OutOfMemoryError - Java heap space overflow
