@@ -2,12 +2,9 @@
 - `jinfo <pid> #Print all info(Java System Properties, VM Flags, VM Arguments)`
 
 
-# How to enable/disable a named VM flag
-- `jinfo -flag <+|-><flag-name> <pid>`
-
-
-# How to set value for a named VM flag
-- `jinfo -flag <flag-name>=<value> <pid>`
+# How to set a named VM flag
+- `jinfo -flag <+|-><flag-name> <pid>` # enable/disable
+- `jinfo -flag <flag-name>=<value> <pid>` # set value
 
 
 # How to get Heap info
@@ -91,17 +88,27 @@
 
 
 ## Container OOM
+## 查看内存使用量
+- docker stats
 ## Cgroup v1
 - The memory limit of the current container
 - '$ cat /sys/fs/cgroup/memory/memory.limit_in_bytes'
-- The actual memory usage of the current
+- The actual memory usage of the current container
 - '$ cat /sys/fs/cgroup/memory/memory.usage_in_bytes'
+- The max memory usage of the current container
+- '$ cat /sys/fs/cgroup/memory/memory.max_usage_in_bytes'
+- The memory&swap limit of the current container
+- '$ cat /sys/fs/cgroup/memory/memory.memsw.limit_in_bytes'
+- The actual memory&swap usage of the current container
+- '$ cat /sys/fs/cgroup/memory/memory.memsw.usage_in_bytes'
 ## Cgroup v2
 - The memory limit of the current container
 - '$ cat /sys/fs/cgroup/memory/memory.max'
 - The actual memory usage of the current
 - '$ cat /sys/fs/cgroup/memory/memory.current'
 - '$ cat /sys/fs/cgroup/memory/memory.stat'
+
+## 网络检查
 
 ## JVM OOM
 ### java.lang.OutOfMemoryError - Java heap space overflow
