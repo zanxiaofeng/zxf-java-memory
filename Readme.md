@@ -84,9 +84,9 @@
 
 
 ## Container OOM
-## 查看内存使用量
+#### 查看内存使用量
 - docker stats
-## Cgroup v1
+#### Cgroup v1
 - The memory limit of the current container
 - '$ cat /sys/fs/cgroup/memory/memory.limit_in_bytes'
 - The actual memory usage of the current container
@@ -97,21 +97,24 @@
 - '$ cat /sys/fs/cgroup/memory/memory.memsw.limit_in_bytes'
 - The actual memory&swap usage of the current container
 - '$ cat /sys/fs/cgroup/memory/memory.memsw.usage_in_bytes'
-## Cgroup v2
+- '$ cat /sys/fs/cgroup/memory/memory.numa_stat'
+- '$ cat /sys/fs/cgroup/memory/memory.oom_control'
+- '$ cat /sys/fs/cgroup/memory/memory.pressure_level'
+- '$ cat /sys/fs/cgroup/memory/memory.stat'
+#### Cgroup v2
 - The memory limit of the current container
 - '$ cat /sys/fs/cgroup/memory/memory.max'
 - The actual memory usage of the current
 - '$ cat /sys/fs/cgroup/memory/memory.current'
 - '$ cat /sys/fs/cgroup/memory/memory.stat'
 
-## 网络检查
 
 ## JVM OOM
-### java.lang.OutOfMemoryError - Java heap space overflow
+#### java.lang.OutOfMemoryError - Java heap space overflow
 - Java heap space overflow – This error is thrown when the heap space does not have enough space to store the newly created object. This is usually caused by memory leaks or improper heap size settings. For memory leaks, you need to use memory monitoring software to find the leaked code in the program, and the heap size can be modified using parameters (such as-Xms and-Xmx).
-### java.lang.OutOfMemoryError - PermGen space/Metaspace overflow**
+#### java.lang.OutOfMemoryError - PermGen space/Metaspace overflow**
 - PermGen space/Metaspace overflow – The objects that permanent generation stores include class information and constants. The JDK 1.8 uses Metaspace to replace the permanent generation. This error is usually reported because the number of classes loaded is too large or the size is too big. You can modify the-XX:MaxPermSize or-XX:MaxMetaspaceSize to expand the PermGen space/Metaspace.
-## java.lang.OutOfMemoryError - Unable to create a new native thread
+#### java.lang.OutOfMemoryError - Unable to create a new native thread
 - Unable to create a new native thread. Each Java thread needs to occupy a certain amount of memory space. When the JVM sends a request to the underlying operating system to create a new native thread, such an error mentioned above will be reported if there aren't enough resources to be allocated. Possible causes are insufficient native memory, the number of threads exceeding the limit of the maximum number of threads in the operating system caused by thread leak, ulimit, or the number of threads exceeding the kernel.pid_max. You need to upgrade resources, limit the size of the thread pool, and reduce the size of the thread stack.
 
 
@@ -123,14 +126,14 @@
 
 
 ## How to set mem size of java
-### Option 1
+#### Option 1
 - `-Xms<size> set initial Java heap size`
 - `-Xmx<size> set maximum Java heap size`
 - `-Xss<size> set java thread stack size`
 - `-Xmn<size> set eden zone size`
 - `-XX:MetaspaceSize set initial meta space size`
 - `-XX:MaxMetaspaceSize set maximum meta space size`
-### Option 2(For container env)
+#### Option 2(For container env)
 - -XX:InitialRAMPercentage=50.0
 - -XX:MinRAMPercentage=80.0
 - -XX:MaxRAMPercentage=60.0
