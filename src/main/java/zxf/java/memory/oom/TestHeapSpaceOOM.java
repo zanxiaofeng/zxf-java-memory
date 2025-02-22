@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class TestHeapSpaceOOM {
     public static List<byte[]> contents = new ArrayList<>();
 
-    //Please run with options: -XX:+UseG1GC -Xms256M -Xmx1024M -XshowSettings -XX:+PrintGCDetails -XX:+PrintFlagsFinal -XX:NativeMemoryTracking=detail
+    //Please run with options: -XX:+UseG1GC -Xms256M -Xmx1024M -XshowSettings -XX:+PrintGCDetails -XX:+PrintFlagsFinal -XX:+PrintCommandLineFlags -XX:NativeMemoryTracking=detail
     public static void main(String[] args) throws InterruptedException, IOException {
         Thread thread = new Thread(() -> {
             for (int i = 0; i < 1024; i++) {

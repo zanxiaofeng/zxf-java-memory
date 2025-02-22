@@ -142,7 +142,7 @@
 - `-XX:MaxRAMPercentage=60.0`
 
 ## Set memory size of Non-JVM
-- 
+- `-XX:MaxDirectMemorySize=512M`
 
 
 ## How to kill java process after OOM

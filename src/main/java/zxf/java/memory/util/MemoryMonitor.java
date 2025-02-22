@@ -74,9 +74,9 @@ public class MemoryMonitor {
         System.out.println("=== Non-JVM Memory Pools ===");
         for (BufferPoolMXBean bufferPoolMXBean : ManagementFactory.getPlatformMXBeans(BufferPoolMXBean.class)) {
             System.out.println("   *Pool           : " + bufferPoolMXBean.getName());
-            System.out.println("    Used           : " + bufferPoolMXBean.getMemoryUsed());
+            System.out.println("    Used           : " + formatSize(bufferPoolMXBean.getMemoryUsed()));
             System.out.println("    Count          : " + bufferPoolMXBean.getCount());
-            System.out.println("    Total Capacity : " + bufferPoolMXBean.getTotalCapacity());
+            System.out.println("    Total Capacity : " + formatSize(bufferPoolMXBean.getTotalCapacity()));
         }
     }
 

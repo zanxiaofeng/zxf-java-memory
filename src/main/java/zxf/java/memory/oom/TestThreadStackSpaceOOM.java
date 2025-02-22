@@ -1,6 +1,5 @@
 package zxf.java.memory.oom;
 
-import zxf.java.memory.util.DebugUtils;
 import zxf.java.memory.util.MemoryMonitor;
 
 import java.io.IOException;
@@ -8,7 +7,7 @@ import java.util.Scanner;
 
 public class TestThreadStackSpaceOOM {
 
-    //Please run with options: -XX:+UseG1GC -Xss64M -XshowSettings -XX:+PrintFlagsFinal -XX:NativeMemoryTracking=detail
+    //Please run with options: -XX:+UseG1GC -Xss64M -XshowSettings -XX:+PrintFlagsFinal -XX:+PrintCommandLineFlags -XX:NativeMemoryTracking=detail
     public static void main(String[] args) throws InterruptedException, IOException {
         Scanner keyboard = new Scanner(System.in);
 
