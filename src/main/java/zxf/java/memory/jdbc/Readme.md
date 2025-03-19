@@ -8,6 +8,22 @@
 ## SESSIONTIMEZONE(Session Level)
 - SESSIONTIMEZONE returns the time zone of the current session. The return type is a time zone offset (a character type in the format '[+|-]TZH:TZM') or a time zone region name, depending on how the user specified the session time zone value in the most recent ALTER SESSION statement.
 
+# Oracle中Date和Time相关的系统变量
+- SYSDATE(DATE, OS level)
+- SYSTIMESTAMP(TIMESTAMP (6) WITH TIME ZONE, OS level)
+- CURRENT_DATE(DATE, Session level)
+- CURRENT_TIMESTAMP(TIMESTAMP (6) WITH TIME ZONE, Session level)
+- LOCALTIMESTAMP(TIMESTAMP (6), Session level)
+
+# SQL for TIMEZONE and DATETIME
+- ALTER SESSION SET TIME_ZONE = '-12:0';
+- SELECT DBTIMEZONE,SESSIONTIMEZONE FROM DUAL;
+- SELECT CURRENT_DATE, CURRENT_TIMESTAMP, LOCALTIMESTAMP, SYSDATE, SYSTIMESTAMP FROM DUAL;
+
+# Date和Time类型的使用原则
+- 尽量使用带时区的类型
+- 不要使用不带时区的类型与带时区的类型比较
+
 # Oracle中Date和Time相关的类型
 - DATE
 - TIMESTAMP (6)
@@ -47,18 +63,6 @@
 - java.sql.PreparedStatement::executeQuery():ResultSet --> 
 - java.sql.ResultSet::get****(int columnIndex ****)
 - java.sql.ResultSet::get****(String columnLabel ****)
-
-# Oracle中Date和Time相关的系统变量
-- SYSDATE(DATE, OS level)
-- SYSTIMESTAMP(TIMESTAMP (6) WITH TIME ZONE, OS level)
-- CURRENT_DATE(DATE, Session level)
-- CURRENT_TIMESTAMP(TIMESTAMP (6) WITH TIME ZONE, Session level)
-- LOCALTIMESTAMP(TIMESTAMP (6), Session level)
-
-# SQL for TIMEZONE and DATETIME
-- ALTER SESSION SET TIME_ZONE = '-12:0';
-- SELECT DBTIMEZONE,SESSIONTIMEZONE FROM DUAL;
-- SELECT CURRENT_DATE, CURRENT_TIMESTAMP, LOCALTIMESTAMP, SYSDATE, SYSTIMESTAMP FROM DUAL;
 
 # JDBC classes of DATE and TIME
 - java.sql.Date
@@ -179,6 +183,8 @@
 - ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS';
 - ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS.FF';
 - ALTER SESSION SET NLS_TIMESTAMP_TZ_FORMAT='YYYY-MM-DD HH24:MI:SS.FF TZR';
+- SELECT UTL_RAW.CAST_TO_RAW('中国'),UNISTR('\U4E2D\U56FD')，ASCIISTR('中国') FROM DUAL;
+- SELECT * FROM v$parameter
 
 # Datetime Comparisons
 - When you compare date and timestamp values, Oracle Database converts the data to the more precise data type before doing the comparison. For example, if you compare
