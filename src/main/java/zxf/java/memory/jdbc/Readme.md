@@ -183,8 +183,8 @@
 - ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS';
 - ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS.FF';
 - ALTER SESSION SET NLS_TIMESTAMP_TZ_FORMAT='YYYY-MM-DD HH24:MI:SS.FF TZR';
-- SELECT UTL_RAW.CAST_TO_RAW('中国'),UNISTR('\U4E2D\U56FD')，ASCIISTR('中国') FROM DUAL;
-- SELECT * FROM v$parameter
+- SELECT UTL_RAW.CAST_TO_RAW('中国'),UNISTR('\4E2D\56FD')，ASCIISTR('中国') FROM DUAL;
+- SELECT * FROM v$nls_parameters;
 
 # Datetime Comparisons
 - When you compare date and timestamp values, Oracle Database converts the data to the more precise data type before doing the comparison. For example, if you compare
