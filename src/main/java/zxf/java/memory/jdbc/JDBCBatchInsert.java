@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class JDBCBatchInsert {
     public static void main(String[] args) throws SQLException {
-        try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@host:port/service", "user", "passowrd")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/FREE", "system", "123456")) {
             connection.setAutoCommit(false);
 
             String sql = "INSERT INTO MY_TABLE_1(column1) VALUES(?)";

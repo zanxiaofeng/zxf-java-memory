@@ -1,13 +1,10 @@
 package zxf.java.memory.jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class JDBCMannualTransaction {
     public static void main(String[] args) throws SQLException {
-        try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@host:port/service", "user", "passowrd")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/FREE", "system", "123456")) {
             connection.setAutoCommit(false);
 
             try (Statement statement = connection.createStatement()) {

@@ -19,9 +19,9 @@ public class JdbcDataSourceTests {
     private static void testOracleDataSource() throws SQLException {
         OracleDataSource dataSource = new OracleDataSource();
         dataSource.setDriverType("oracle.jdbc.OracleDriver");
-        dataSource.setURL("jdbc:log4jdbc:oracle:thin:@host:port/service");
-        dataSource.setUser("***");
-        dataSource.setPassword("***");
+        dataSource.setURL("jdbc:oracle:thin:@//localhost:1521/FREE");
+        dataSource.setUser("system");
+        dataSource.setPassword("123456");
         System.out.println("DataSource->" + dataSource.getClass());
 
         Connection connection = dataSource.getConnection();
@@ -46,9 +46,9 @@ public class JdbcDataSourceTests {
     private static void testPoolOracleDataSource() throws SQLException {
         PoolDataSource poolDataSource = PoolDataSourceFactory.getPoolDataSource();
         System.out.println("DataSource->" + poolDataSource.getClass());
-        poolDataSource.setURL("");
-        poolDataSource.setUser("***");
-        poolDataSource.setPassword("***");
+        poolDataSource.setURL("jdbc:oracle:thin:@//localhost:1521/FREE");
+        poolDataSource.setUser("system");
+        poolDataSource.setPassword("123456");
         poolDataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
         poolDataSource.setConnectionPoolName("My-POOL");
         poolDataSource.setSQLForValidateConnection("SELECT * FROM DUAL");

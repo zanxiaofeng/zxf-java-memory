@@ -31,10 +31,10 @@ public class JdbcClobTests {
     public static void testJdbcClob() throws SQLException, IOException {
         System.out.println("oracle.jdbc.defaultLobPrefetchSize: " + CONNECTION_PROPERTY_DEFAULT_LOB_PREFETCH_SIZE_DEFAULT);
         Properties jdbcProperties = new Properties();
-        jdbcProperties.setProperty("oracle.jdbc.user", "***");
-        jdbcProperties.setProperty("oracle.jdbc.password", "***");
+        jdbcProperties.setProperty("oracle.jdbc.user", "system");
+        jdbcProperties.setProperty("oracle.jdbc.password", "123456");
         jdbcProperties.setProperty(CONNECTION_PROPERTY_DEFAULT_LOB_PREFETCH_SIZE, "4000");
-        Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@host:port/service", jdbcProperties);
+        Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/FREE", jdbcProperties);
         List<JdbcEntity> entities = queryJdbcClob(connection);
         processJdbcClob(entities);
         connection.close();

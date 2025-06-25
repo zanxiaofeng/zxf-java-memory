@@ -19,11 +19,11 @@ public class JdbcTimeTests {
         TimeZone.setDefault(TimeZone.getTimeZone("GMT+10:00"));
 
         Properties jdbcProperties = new Properties();
-        jdbcProperties.setProperty("oracle.jdbc.user", "***");
-        jdbcProperties.setProperty("oracle.jdbc.password", "***");
+        jdbcProperties.setProperty("oracle.jdbc.user", "system");
+        jdbcProperties.setProperty("oracle.jdbc.password", "123456");
 
         DriverManager.setLogWriter(new PrintWriter(System.out));
-        Connection connection = DriverManager.getConnection("jdbc:log4jdbc:oracle:thin:@host:port/service", jdbcProperties);
+        Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/FREE", jdbcProperties);
         setupSessionTimezone(connection);
 
         testJdbcTimeFromOracleToJava(connection);
