@@ -149,6 +149,12 @@
 - `-XX:+CrashOnOutOfMemoryError`
 - `-XX:OnOutOfMemoryError="/path/to/oomKillAndRestart.sh"`
 
+## How to override the template
+- -Djava.io.tmpdir=/path/to/custom/temp
+- System.setProperty("java.io.tmpdir", "/path/to/custom/temp");
+- java.io.tmpdir=/path/to/custom/temp #@application.properties
+- System.out.println("Temporary directory: " + System.getProperty("java.io.tmpdir"))
+
 ## JVM setting
 - java <OPTIONS> -XshowSettings <-version | entrypoint>
 - java <OPTIONS> -XshowSettings:vm <-version | entrypoint>
