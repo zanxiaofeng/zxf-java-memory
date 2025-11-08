@@ -10,6 +10,7 @@
 # How to get Heap info
 - `jmap -heap <pid>`
 - `jmap -histo <pid>`
+- `jmap -histo:live <pid>`
 
 
 # How to trigger full gc
