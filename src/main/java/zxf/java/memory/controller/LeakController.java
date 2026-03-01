@@ -1,6 +1,7 @@
 package zxf.java.memory.controller;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/leak")
 public class LeakController {
@@ -42,7 +44,21 @@ public class LeakController {
             return result;
         } catch (Throwable throwable) {
             MemoryMonitor.logMemoryInfoFromMXBean("byUnclosedResources.exception");
-            throwable.printStackTrace();
+            log.error("byUnclosedResources failed", throwable);
+            throw throwable;
+        }
+    }
+
+    @GetMapping("/byUnclosedResources-restTemplate")
+    public Integer byUnclosedResources_RestTemplate() throws Exception {
+        try {
+            MemoryMonitor.logMemoryInfoFromMXBean("byUnclosedResources.before");
+            Integer result = new UnclosedResourcesLeak().testRestTemplate();
+            MemoryMonitor.logMemoryInfoFromMXBean("byUnclosedResources.after");
+            return result;
+        } catch (Throwable throwable) {
+            MemoryMonitor.logMemoryInfoFromMXBean("byUnclosedResources.exception");
+            log.error("byUnclosedResources-restTemplate failed", throwable);
             throw throwable;
         }
     }

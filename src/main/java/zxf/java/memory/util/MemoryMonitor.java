@@ -10,7 +10,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static org.apache.logging.log4j.util.ProcessIdUtil.getProcessId;
 import static zxf.java.memory.util.DebugUtils.formatSize;
 
 @Slf4j
@@ -25,8 +24,8 @@ public class MemoryMonitor {
     public static void loggingMonitoringInfo() {
         String title = LocalDateTime.now().toString();
         logMemoryInfoFromMXBean(title);
-        logMemoryInfoFromNMT(title);
-        //logMemoryInfoFromJmap(title);
+        //logMemoryInfoFromNMT(title);
+        logMemoryInfoFromJmap(title);
         logCgroupMemoryInfo(title);
     }
 
@@ -53,41 +52,41 @@ public class MemoryMonitor {
         MemoryMXBean memoryMXBean = ManagementFactory.getMemoryMXBean();
         List<MemoryPoolMXBean> memoryPoolMXBeans = ManagementFactory.getMemoryPoolMXBeans();
 
-        System.out.println("=== JVM Heap Memory ===");
+        log.info("=== JVM Heap Memory ===");
         printMemoryUsage(memoryMXBean.getHeapMemoryUsage(), "");
         for (MemoryPoolMXBean memoryPoolMXBean : memoryPoolMXBeans) {
             if (memoryPoolMXBean.getType() == MemoryType.HEAP) {
-                System.out.println("   *Pool: " + memoryPoolMXBean.getName());
+                log.info("   *Pool: {}", memoryPoolMXBean.getName());
                 printMemoryUsage(memoryPoolMXBean.getUsage(), "    ");
             }
         }
 
-        System.out.println("=== JVM Non-Heap Memory ===");
+        log.info("=== JVM Non-Heap Memory ===");
         printMemoryUsage(memoryMXBean.getNonHeapMemoryUsage(), "");
         for (MemoryPoolMXBean memoryPoolMXBean : memoryPoolMXBeans) {
             if (memoryPoolMXBean.getType() == MemoryType.NON_HEAP) {
-                System.out.println("   *Pool: " + memoryPoolMXBean.getName());
+                log.info("   *Pool: {}", memoryPoolMXBean.getName());
                 printMemoryUsage(memoryPoolMXBean.getUsage(), "    ");
             }
         }
 
-        System.out.println("=== Non-JVM Memory Pools ===");
+        log.info("=== Non-JVM Memory Pools ===");
         for (BufferPoolMXBean bufferPoolMXBean : ManagementFactory.getPlatformMXBeans(BufferPoolMXBean.class)) {
-            System.out.println("   *Pool           : " + bufferPoolMXBean.getName());
-            System.out.println("    Used           : " + formatSize(bufferPoolMXBean.getMemoryUsed()));
-            System.out.println("    Count          : " + bufferPoolMXBean.getCount());
-            System.out.println("    Total Capacity : " + formatSize(bufferPoolMXBean.getTotalCapacity()));
+            log.info("   *Pool           : {}", bufferPoolMXBean.getName());
+            log.info("    Used           : {}", formatSize(bufferPoolMXBean.getMemoryUsed()));
+            log.info("    Count          : {}", bufferPoolMXBean.getCount());
+            log.info("    Total Capacity : {}", formatSize(bufferPoolMXBean.getTotalCapacity()));
         }
     }
 
     public static void logMemoryInfoFromNMT(String title) {
         log.info("logMemoryInfoFromNMT: {}", title);
-        DebugUtils.runCommand(new String[]{"jcmd", getProcessId(), "VM.native_memory", "summary", "scale=MB"});
+        DebugUtils.runCommand(new String[]{"jcmd", String.valueOf(ProcessHandle.current().pid()), "VM.native_memory", "summary", "scale=MB"});
     }
 
     public static void logMemoryInfoFromJmap(String title) {
         log.info("logMemoryInfoFromJmap: {}", title);
-        DebugUtils.runCommand(new String[]{"jmap", "-histo", getProcessId()});
+        DebugUtils.runCommand(new String[]{"jmap", "-histo", String.valueOf(ProcessHandle.current().pid())});
     }
 
     public static void logCgroupMemoryInfo(String title) {
@@ -102,8 +101,8 @@ public class MemoryMonitor {
     }
 
     private static void printMemoryUsage(MemoryUsage usage, String prefix) {
-        System.out.println(prefix + "Used : " + formatSize(usage.getUsed()));
-        System.out.println(prefix + "Committed : " + formatSize(usage.getCommitted()));
-        System.out.println(prefix + "Max : " + formatSize(usage.getMax()));
+        log.info("{}Used : {}", prefix, formatSize(usage.getUsed()));
+        log.info("{}Committed : {}", prefix, formatSize(usage.getCommitted()));
+        log.info("{}Max : {}", prefix, formatSize(usage.getMax()));
     }
 }

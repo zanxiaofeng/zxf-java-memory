@@ -1,5 +1,6 @@
 package zxf.java.memory.pdfbox;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import zxf.java.memory.util.DebugUtils;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@Slf4j
 public class PdfboxTests {
     public static void main(String[] args) throws IOException, InterruptedException {
         waitInputFromKeyboard("Please press any key for start");
@@ -43,7 +45,7 @@ public class PdfboxTests {
 
     private static void waitInputFromKeyboard(String prompt){
         Scanner keyboardScanner = new Scanner(System.in);
-        System.out.println(prompt + ":\n");
+        log.info("{}:", prompt);
         keyboardScanner.next();
     }
 }

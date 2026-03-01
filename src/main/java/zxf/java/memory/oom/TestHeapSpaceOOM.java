@@ -1,5 +1,6 @@
 package zxf.java.memory.oom;
 
+import lombok.extern.slf4j.Slf4j;
 import zxf.java.memory.util.MemoryMonitor;
 
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@Slf4j
 public class TestHeapSpaceOOM {
     public static List<byte[]> contents = new ArrayList<>();
 
@@ -18,7 +20,7 @@ public class TestHeapSpaceOOM {
                 contents.add(new byte[1024 * 1024 * 64]);
                 try {
                     Thread.sleep(2000);
-                    System.out.println("..... " + i);
+                    log.info("..... {}", i);
                     MemoryMonitor.loggingMonitoringInfo();
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
@@ -30,13 +32,13 @@ public class TestHeapSpaceOOM {
 
         MemoryMonitor.loggingMonitoringInfo();
 
-        System.out.println("Please press enter to start");
+        log.info("Please press enter to start");
         keyboard.nextLine();
-        System.out.println("Started");
+        log.info("Started");
 
         thread.start();
 
-        System.out.println("Please press enter to end");
+        log.info("Please press enter to end");
         keyboard.nextLine();
     }
 }

@@ -1,7 +1,10 @@
 package zxf.java.memory.jdbc;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.sql.*;
 
+@Slf4j
 public class JDBCDataInitializer {
     public static void main(String[] args) throws SQLException {
         try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/FREE", "system", "123456")) {
@@ -23,9 +26,9 @@ public class JDBCDataInitializer {
                     statement.executeUpdate("CREATE TABLE MY_TABLE_2 (column1 VARCHAR(255), column2 VARCHAR(255))");
                 }
 
-                System.out.println("Transaction committed successfully");
+                log.info("Transaction committed successfully");
             } catch (Exception ex) {
-                ex.printStackTrace();
+                log.error("JDBCDataInitializer failed", ex);
             }
         }
     }

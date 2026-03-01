@@ -1,9 +1,11 @@
 package zxf.java.memory.jdbc;
 
+import lombok.extern.slf4j.Slf4j;
 import oracle.jdbc.pool.OracleDataSourceFactory;
 
 import java.sql.*;
 
+@Slf4j
 public class JDBCBatchInsert {
     public static void main(String[] args) throws SQLException {
         try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/FREE", "system", "123456")) {
@@ -21,10 +23,10 @@ public class JDBCBatchInsert {
                 statement.executeBatch();
 
                 connection.commit();
-                System.out.println("Transaction committed successfully");
+                log.info("Transaction committed successfully");
             } catch (Exception ex) {
                 connection.rollback();
-                System.out.println("Transaction rolled back due to error: " + ex.getMessage());
+                log.error("Transaction rolled back due to error", ex);
             }
         }
     }

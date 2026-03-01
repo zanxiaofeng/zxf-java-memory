@@ -1,7 +1,10 @@
 package zxf.java.memory.jdbc;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.sql.*;
 
+@Slf4j
 public class JDBCMannualTransaction {
     public static void main(String[] args) throws SQLException {
         try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/FREE", "system", "123456")) {
@@ -12,10 +15,10 @@ public class JDBCMannualTransaction {
                 statement.executeUpdate("UPDATE MY_TABLE_2 SET column2='345' WHERE column1='123'");
                 //Add other operations here like local file I/O or network I/O.
                 connection.commit();
-                System.out.println("Transaction committed successfully");
+                log.info("Transaction committed successfully");
             } catch (Exception ex) {
                 connection.rollback();
-                System.out.println("Transaction rolled back due to error: " + ex.getMessage());
+                log.error("Transaction rolled back due to error", ex);
             }
         }
         // Assumption: the autoCommit will be set to true when the connection's close method is called.

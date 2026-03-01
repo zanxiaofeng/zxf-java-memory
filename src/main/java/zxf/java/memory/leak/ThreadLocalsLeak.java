@@ -1,13 +1,13 @@
 package zxf.java.memory.leak;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 import zxf.java.memory.bean.MyThreadLocalBean;
 
-import java.io.IOException;
-import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Slf4j
 public class ThreadLocalsLeak {
     private static ExecutorService threadPool = new ThreadPoolExecutor(1, 10, 60, TimeUnit.SECONDS, new ArrayBlockingQueue<>(1024 * 4 + 600), new CustomizableThreadFactory("zxf-byThreadLocal-"), new ThreadPoolExecutor.CallerRunsPolicy());
     private static AtomicInteger counter = new AtomicInteger();
@@ -17,7 +17,7 @@ public class ThreadLocalsLeak {
     public void execute(Boolean release) throws InterruptedException {
         try {
             MyThreadLocalBean myThreadLocalBean = new MyThreadLocalBean();
-            System.out.println("ThreadLocalsLeak::execute, " + myThreadLocalBean + ", " + Thread.currentThread().getName());
+            log.info("ThreadLocalsLeak::execute, {}, {}", myThreadLocalBean, Thread.currentThread().getName());
             threadLocal.set(myThreadLocalBean);
             Thread.sleep(1);
         } finally {
@@ -35,7 +35,7 @@ public class ThreadLocalsLeak {
                 try {
                     new ThreadLocalsLeak().execute(release);
                 } catch (Exception ex) {
-                    ex.printStackTrace();
+                    log.error("ThreadLocalsLeak execution failed", ex);
                 } finally {
                     countDownLatch.countDown();
                 }

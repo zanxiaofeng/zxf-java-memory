@@ -1,18 +1,19 @@
 package zxf.java.memory;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import zxf.java.memory.util.MemoryMonitor;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
+@Slf4j
 @SpringBootApplication
 public class Application {
     //Please run with options: -XX:+UseG1GC -Xms256M -Xmx1024M -XshowSettings -XX:+PrintFlagsFinal -XX:NativeMemoryTracking=detail
     public static void main(String[] args) {
         Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
-            System.out.println("Exception, thread=" + thread + ", throwable=" + throwable);
-            throwable.printStackTrace(System.out);
+            log.error("Exception, thread={}", thread, throwable);
         });
 
         SpringApplication.run(Application.class, args);
@@ -20,6 +21,6 @@ public class Application {
 
     @PostConstruct
     public void afterStarted() {
-        MemoryMonitor.startMonitoring(30);
+        MemoryMonitor.startMonitoring(150);
     }
 }

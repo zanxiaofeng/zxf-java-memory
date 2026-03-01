@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.8</version>
+        <version>3.5.11</version>
         <relativePath/>
     </parent>
 
@@ -16,14 +16,17 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <java.version>21</java.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
@@ -37,18 +40,18 @@
         </dependency>
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
-            <version>23.4.0.24.05</version>
+            <artifactId>ojdbc11</artifactId>
+            <version>23.26.1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ucp</artifactId>
-            <version>23.4.0.24.05</version>
+            <version>23.26.1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.oracle.database.ha</groupId>
             <artifactId>ons</artifactId>
-            <version>23.4.0.24.05</version>
+            <version>23.26.1.0.0</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>

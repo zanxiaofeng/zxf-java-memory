@@ -1,5 +1,7 @@
 package zxf.java.memory.jdbc;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.PrintWriter;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -7,14 +9,15 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.concurrent.atomic.AtomicReference;
 
+@Slf4j
 public class JdbcDriverTests {
     public static void main(String[] args) {
         DriverManager.setLogWriter(new PrintWriter(System.out));
 
-        AtomicReference<Driver> oracleDriver = new AtomicReference();
+        AtomicReference<Driver> oracleDriver = new AtomicReference<>();
         //classpath:/META-INF/services/java.sql.Driver
         Collections.list(DriverManager.getDrivers()).forEach(driver -> {
-            System.out.println("Driver: " + driver.getClass().getName());
+            log.info("Driver: {}", driver.getClass().getName());
             try {
                 if (driver.acceptsURL("jdbc:oracle:thin:@")) {
                     oracleDriver.set(driver);
@@ -25,10 +28,10 @@ public class JdbcDriverTests {
         });
 
         if (oracleDriver.get() == null) {
-            System.out.println("Can not find the oracle driver.");
+            log.info("Can not find the oracle driver.");
             return;
         }
 
-        System.out.println("Find the oracle driver: " + oracleDriver.get().getClass().getName());
+        log.info("Find the oracle driver: {}", oracleDriver.get().getClass().getName());
     }
 }
