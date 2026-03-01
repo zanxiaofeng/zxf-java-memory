@@ -10,27 +10,34 @@ import java.util.concurrent.TimeUnit;
 public class DebugUtils {
 
     public static void runCommand(String[] command) {
+        String commandLine = String.join(" ", command);
+        Process process = null;
         try {
-            String commandLine = String.join(" ", command);
             log.info("Call {}", commandLine);
 
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             processBuilder.redirectErrorStream(true);
-            Process process = processBuilder.start();
+            process = processBuilder.start();
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                log.info(line);
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    log.info(line);
+                }
             }
 
-            if (process.waitFor(30, TimeUnit.MINUTES)) {
+            if (process.waitFor(60, TimeUnit.SECONDS)) {
                 log.info("Call {} return with code {}", commandLine, process.exitValue());
             } else {
-                log.warn("Call {} timeout", commandLine);
+                log.warn("Call {} timeout, destroying process", commandLine);
+                process.destroyForcibly();
             }
         } catch (Exception ex) {
             throw new RuntimeException(ex);
+        } finally {
+            if (process != null && process.isAlive()) {
+                process.destroyForcibly();
+            }
         }
     }
 

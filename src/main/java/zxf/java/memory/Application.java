@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import zxf.java.memory.util.MemoryMonitor;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @Slf4j
 @SpringBootApplication
@@ -22,5 +23,10 @@ public class Application {
     @PostConstruct
     public void afterStarted() {
         MemoryMonitor.startMonitoring(150);
+    }
+
+    @PreDestroy
+    public void beforeShutdown() {
+        MemoryMonitor.stopMonitoring();
     }
 }

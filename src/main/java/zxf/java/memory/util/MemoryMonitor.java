@@ -15,10 +15,23 @@ import static zxf.java.memory.util.DebugUtils.formatSize;
 @Slf4j
 public class MemoryMonitor {
 
+    private static ScheduledExecutorService scheduler;
+
     public static void startMonitoring(int intervalSeconds) {
-        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+        scheduler = Executors.newSingleThreadScheduledExecutor(r -> {
+            Thread t = new Thread(r, "memory-monitor");
+            t.setDaemon(true);
+            return t;
+        });
         scheduler.scheduleAtFixedRate(MemoryMonitor::loggingMonitoringInfo, 0, intervalSeconds, TimeUnit.SECONDS);
         log.info("Memory monitoring started with interval: {} seconds", intervalSeconds);
+    }
+
+    public static void stopMonitoring() {
+        if (scheduler != null && !scheduler.isShutdown()) {
+            scheduler.shutdownNow();
+            log.info("Memory monitoring stopped");
+        }
     }
 
     public static void loggingMonitoringInfo() {
