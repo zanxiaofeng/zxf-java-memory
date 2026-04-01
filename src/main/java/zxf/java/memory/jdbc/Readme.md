@@ -8,7 +8,13 @@
 ## SESSIONTIMEZONE(Session Level)
 - SESSIONTIMEZONE returns the time zone of the current session. The return type is a time zone offset (a character type in the format '[+|-]TZH:TZM') or a time zone region name, depending on how the user specified the session time zone value in the most recent ALTER SESSION statement.
 
-# Oracle中Date和Time相关的系统变量
+# Oracle中Date和Time相关的类型和系统变量
+## Oracle中Date和Time相关的类型
+- DATE
+- TIMESTAMP (6)
+- TIMESTAMP (6) WITH TIME ZONE
+- TIMESTAMP (6) WITH LOCAL TIME ZONE
+## Oracle中Date和Time相关的系统变量
 - SYSDATE(DATE, OS level)
 - SYSTIMESTAMP(TIMESTAMP (6) WITH TIME ZONE, OS level)
 - CURRENT_DATE(DATE, Session level)
@@ -16,19 +22,58 @@
 - LOCALTIMESTAMP(TIMESTAMP (6), Session level)
 
 # SQL for TIMEZONE and DATETIME
-- ALTER SESSION SET TIME_ZONE = '-12:0';
+- ALTER SESSION SET TIME_ZONE = 'Asia/Hong_Kong';
+- ALTER SESSION SET TIME_ZONE = '+06:00';
+- ALTER SESSION SET TIME_ZONE = 'UTC';
 - SELECT DBTIMEZONE,SESSIONTIMEZONE FROM DUAL;
 - SELECT CURRENT_DATE, CURRENT_TIMESTAMP, LOCALTIMESTAMP, SYSDATE, SYSTIMESTAMP FROM DUAL;
+
+# Datetime Comparisons
+- When you compare date and timestamp values, Oracle Database converts the data to the more precise data type before doing the comparison. For example, if you compare
+- data of TIMESTAMP WITH TIME ZONE data type with data of TIMESTAMP data type, Oracle Database converts the TIMESTAMP data to TIMESTAMP WITH TIME ZONE, using the session time zone.
+- The order of precedence for converting date and timestamp data is as follows:
+- . DATE
+- . TIMESTAMP
+- . TIMESTAMP WITH LOCAL TIME ZONE
+- . TIMESTAMP WITH TIME ZONE
+- For any pair of data types, Oracle Database converts the data type that has a smaller number in the preceding list to the data type with the larger number.
+# Explicit Conversion of Datetime Data Types
+- If you want to do explicit conversion of datetime data types, use the CAST SQL function. You can explicitly convert DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE, and TIMESTAMP WITH LOCAL TIME ZONE to another data type in the list.
 
 # Date和Time类型的使用原则
 - 尽量使用带时区的类型
 - 不要使用不带时区的类型与带时区的类型比较
 
-# Oracle中Date和Time相关的类型
-- DATE
-- TIMESTAMP (6)
-- TIMESTAMP (6) WITH TIME ZONE
-- TIMESTAMP (6) WITH LOCAL TIME ZONE
+# The Best Mappings between Java Type and Oracle Type
+- LocalDateTime  <->  TIMESTAMP (6)
+- ZonedDateTime  <->  TIMESTAMP (6) WITH TIME ZONE
+- ZonedDateTime  <->  TIMESTAMP (6) WITH LOCAL TIME ZONE
+
+# SQL Fidddle
+- https://sqlfiddle.com/oracle/online-compiler
+
+# SQL Examples
+- ALTER DATABASE SET TIME_ZONE = 'Asia/Shanghai';
+- ALTER SESSION SET TIME_ZONE='Asia/Hong_Kong';
+- ALTER SESSION SET TIME_ZONE='+06:00';
+- SELECT DBTIMEZONE, SESSIONTIMEZONE FROM DUAL;
+- SELECT CURRENT_DATE, CURRENT_TIMESTAMP, LOCALTIMESTAMP, SYSDATE, SYSTIMESTAMP FROM DUAL;
+- SELECT SYS_EXTRACT_UTC(LOCALTIMESTAMP), SYS_EXTRACT_UTC(CURRENT_TIMESTAMP) FROM DUAL;
+- SELECT TRUNC(SYSDATE),CAST(SYSDATE AS TIMESTAMP)  FROM DUAL;
+
+- SELECT SYSTIMESTAMP AT TIME ZONE 'Asia/Hong_Kong', SYSTIMESTAMP AT LOCAL FROM DUAL;
+- SELECT CAST(TIMESTAMP '2024-10-22 00:00:00.00' AS TIMESTAMP WITH TIME ZONE) FROM DUAL;
+- SELECT FROM_TZ(TIMESTAMP '2024-10-22 00:00:00.00', '+06:00') FROM DUAL;
+- SELECT FROM_TZ(LOCALTIMESTAMP, '8:00') FROM DUAL;
+- SELECT CAST(SYSTIMESTAMP AS TIMESTAMP), CAST(SYSTIMESTAMP AT LOCAL AS TIMESTAMP), CAST(SYSTIMESTAMP AT TIME ZONE '+06:00' AS TIMESTAMP) FROM DUAL;
+- SELECT DUMP(SYSDATE) FROM DUAL;
+- SELECT DATE '1998-12-25', TIMESTAMP '2024-10-22 00:00:00.00', TIMESTAMP '2024-10-22 00:00:00.00 +08:00' FROM DUAL;
+- ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS';
+- ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS.FF';
+- ALTER SESSION SET NLS_TIMESTAMP_TZ_FORMAT='YYYY-MM-DD HH24:MI:SS.FF TZR';
+- SELECT UTL_RAW.CAST_TO_RAW('中国'), UNISTR('\4E2D\56FD'), ASCIISTR('中国') FROM DUAL;
+- SELECT * FROM v$nls_parameters;
+
 
 # JDBC core classes
 - java.sql.Driver;
@@ -160,40 +205,3 @@
 - In JDBC, when the auto-commit mode is set to true, it means that each individual SQL statement is treated as a transaction and will be automatically committed right after it is executed.
 ## Manual transaction
 - If your need combine multiple JDBC executions or JDBC executions and other executions(Local file I/O, Network I/0), you need a manual transaction.
-
-# SQL Fidddle
-- https://sqlfiddle.com/oracle/online-compiler
-
-# SQL Examples
-- ALTER DATABASE SET TIME_ZONE = 'Asia/Shanghai';
-- ALTER SESSION SET TIME_ZONE='Asia/Hong_Kong';
-- ALTER SESSION SET TIME_ZONE='+06:00';
-- SELECT DBTIMEZONE, SESSIONTIMEZONE FROM DUAL;
-- SELECT CURRENT_DATE, CURRENT_TIMESTAMP, LOCALTIMESTAMP, SYSDATE, SYSTIMESTAMP FROM DUAL;
-- SELECT SYS_EXTRACT_UTC(LOCALTIMESTAMP), SYS_EXTRACT_UTC(CURRENT_TIMESTAMP) FROM DUAL;
-- SELECT TRUNC(SYSDATE),CAST(SYSDATE AS TIMESTAMP)  FROM DUAL;
-
-- SELECT SYSTIMESTAMP AT TIME ZONE 'Asia/Hong_Kong', SYSTIMESTAMP AT LOCAL FROM DUAL;
-- SELECT CAST(TIMESTAMP '2024-10-22 00:00:00.00' AS TIMESTAMP WITH TIME ZONE) FROM DUAL;
-- SELECT FROM_TZ(TIMESTAMP '2024-10-22 00:00:00.00', '+06:00') FROM DUAL;
-- SELECT FROM_TZ(LOCALTIMESTAMP, '8:00') FROM DUAL;
-- SELECT CAST(SYSTIMESTAMP AS TIMESTAMP), CAST(SYSTIMESTAMP AT LOCAL AS TIMESTAMP), CAST(SYSTIMESTAMP AT TIME ZONE '+06:00' AS TIMESTAMP) FROM DUAL;
-- SELECT DUMP(SYSDATE) FROM DUAL;
-- SELECT DATE '1998-12-25', TIMESTAMP '2024-10-22 00:00:00.00', TIMESTAMP '2024-10-22 00:00:00.00 +08:00' FROM DUAL;
-- ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS';
-- ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS.FF';
-- ALTER SESSION SET NLS_TIMESTAMP_TZ_FORMAT='YYYY-MM-DD HH24:MI:SS.FF TZR';
-- SELECT UTL_RAW.CAST_TO_RAW('中国'), UNISTR('\4E2D\56FD'), ASCIISTR('中国') FROM DUAL;
-- SELECT * FROM v$nls_parameters;
-
-# Datetime Comparisons
-- When you compare date and timestamp values, Oracle Database converts the data to the more precise data type before doing the comparison. For example, if you compare
-- data of TIMESTAMP WITH TIME ZONE data type with data of TIMESTAMP data type, Oracle Database converts the TIMESTAMP data to TIMESTAMP WITH TIME ZONE, using the session time zone.
-- The order of precedence for converting date and timestamp data is as follows:
-- . DATE
-- . TIMESTAMP
-- . TIMESTAMP WITH LOCAL TIME ZONE
-- . TIMESTAMP WITH TIME ZONE
-- For any pair of data types, Oracle Database converts the data type that has a smaller number in the preceding list to the data type with the larger number.
-# Explicit Conversion of Datetime Data Types
-- If you want to do explicit conversion of datetime data types, use the CAST SQL function. You can explicitly convert DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE, and TIMESTAMP WITH LOCAL TIME ZONE to another data type in the list.
